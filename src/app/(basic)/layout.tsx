@@ -21,7 +21,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true} className={cn(fontSans.variable, "bg-gray-100")}>
         <ThemeProvider theme={theme}>
           <Header />
-          <main className="min-h-screen pt-20">{children}</main>
+          <main className="min-h-screen pt-16 lg:pt-20">{children}</main>
         </ThemeProvider>
       </body>
     </html>
