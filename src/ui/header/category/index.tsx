@@ -76,7 +76,7 @@ const CategoryGroup = () => {
           <ListItemText primary="Category" />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit className="shadow">
+        <Collapse in={open} timeout="auto" unmountOnExit className="shadow bg-slate-50 rounded-b">
           {listCategory.map((cate) => {
             if (cate.children.length > 0) {
               return (

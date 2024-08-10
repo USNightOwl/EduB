@@ -37,7 +37,6 @@
     // no let exports
     "import/no-mutable-exports": "error",
 
-
     // allow {} even though it's unsafe but comes handy
     "@typescript-eslint/ban-types": [
       "error",

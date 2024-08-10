@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Banner from "@/ui/banner";
 
 export const metadata: Metadata = {
   title: "EduB - Choose your course, master your future",
@@ -7,5 +8,20 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <div>hello</div>;
+  return (
+    <div>
+      <Banner />
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+      <div>Hello</div>
+    </div>
+  );
 }
