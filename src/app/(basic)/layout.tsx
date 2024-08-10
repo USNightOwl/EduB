@@ -1,0 +1,29 @@
+"use client";
+import "../globals.css";
+import { ThemeProvider } from "@emotion/react";
+import { Exo as FontSans } from "next/font/google";
+import Header from "@/ui/header";
+import theme from "@/themes";
+import { cn } from "@/lib/utils";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body suppressHydrationWarning={true} className={cn(fontSans.variable, "bg-gray-100")}>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <main className="min-h-screen pt-20">{children}</main>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}

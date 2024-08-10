@@ -18,6 +18,8 @@
     "import/no-cycle": "off",
     "react-compiler/react-compiler": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unused-vars": "off",
 
     // this doesn't make any sense
@@ -35,7 +37,6 @@
     // no let exports
     "import/no-mutable-exports": "error",
 
-    "import/no-default-export": "error",
 
     // allow {} even though it's unsafe but comes handy
     "@typescript-eslint/ban-types": [
@@ -114,7 +115,8 @@
         ".prettierrc",
         "middleware.ts",
         "commitlint.config.ts",
-        "vitest.config.ts"
+        "vitest.config.ts",
+        "libs/prismadb.ts"
       ],
       "rules": {
         "import/no-default-export": "off"
