@@ -53,7 +53,7 @@ const linkGroup = [
 const Footer = () => {
   return (
     <footer className="text-white bg-gradient-to-b from-[#222023] to-[#1e2c47]">
-      <div className="p-1 max-w-[1140px] max-md:max-w-[720px] max-lg:max-w-[900px] mx-auto">
+      <div className="p-2 max-w-[1140px] max-md:max-w-[720px] max-lg:max-w-[900px] mx-auto">
         <div className="py-2 pb-8 grid grid-cols-4 max-sm:grid-cols-1 max-lg:grid-cols-2 gap-5">
           <ContactGroup />
           {linkGroup.map((link, index) => (
