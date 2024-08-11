@@ -8,6 +8,7 @@ import Collapse from "@mui/material/Collapse";
 import Button from "@mui/material/Button";
 import Cate from "./cate";
 import Topic from "./topic";
+import { useOutsideClick } from "@/hooks/use-outside-click";
 
 const listCategory = [
   {
@@ -70,10 +71,12 @@ const CategoryGroup = () => {
     setOpen(!open);
   };
 
+  const ref = useOutsideClick(() => setOpen(false));
+
   return (
-    <div className="relative w-1/12 max-lg:w-full flex items-center justify-center h-10 z-[1000]">
+    <div className="relative w-1/12 max-lg:w-full flex items-center justify-center h-10 z-[1000]" ref={ref}>
       <List className="absolute -top-3 left-0 max-lg:left-1/2 max-lg:-translate-x-1/2">
-        <ListItemButton onClick={handleClick}>
+        <ListItemButton onClick={handleClick} className="flex">
           <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg">
             <ListItemText primary="Category" />
             {open ? <ExpandLess /> : <ExpandMore />}

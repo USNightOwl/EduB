@@ -18,6 +18,7 @@ const Banner = () => {
         alt="main banner"
         width={1000}
         height={200}
+        priority={true}
         className="object-contain w-full absolute top-0 left-0 -z-10"
       />
       <div className="text-white w-full h-full flex items-center justify-center flex-col px-6">
