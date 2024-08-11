@@ -72,7 +72,7 @@ const CategoryGroup = () => {
 
   return (
     <div className="relative w-1/12 max-lg:w-full flex items-center justify-center h-10 z-[1000]">
-      <List className="absolute left-0 max-lg:-top-3 max-lg:left-1/2 max-lg:-translate-x-1/2">
+      <List className="absolute -top-3 left-0 max-lg:left-1/2 max-lg:-translate-x-1/2">
         <ListItemButton onClick={handleClick}>
           <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg">
             <ListItemText primary="Category" />
