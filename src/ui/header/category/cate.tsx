@@ -27,7 +27,7 @@ const Cate = ({ children, title, slug }: ICate) => {
 
   return (
     <>
-      <ListItemButton onClick={handleClick}>
+      <ListItemButton onClick={handleClick} className="text-slate-700">
         <ListItemText primary={title} className="capitalize text-nowrap" />
         {open && cateOpenSlug === slug ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>

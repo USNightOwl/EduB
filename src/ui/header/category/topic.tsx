@@ -9,7 +9,7 @@ interface ITopic {
 const Topic = ({ title }: ITopic) => {
   return (
     <ListItemButton sx={{ pl: 4 }}>
-      <ListItemText primary={title} className="capitalize text-nowrap" />
+      <ListItemText primary={title} className="capitalize text-nowrap text-slate-700" />
     </ListItemButton>
   );
 };

@@ -5,6 +5,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
+import Button from "@mui/material/Button";
 import Cate from "./cate";
 import Topic from "./topic";
 
@@ -73,8 +74,10 @@ const CategoryGroup = () => {
     <div className="relative w-1/12 max-lg:w-full flex items-center justify-center h-10 z-[1000]">
       <List className="absolute -top-2 left-0 max-lg:left-1/2 max-lg:-translate-x-1/2">
         <ListItemButton onClick={handleClick}>
-          <ListItemText primary="Category" />
-          {open ? <ExpandLess /> : <ExpandMore />}
+          <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg">
+            <ListItemText primary="Category" />
+            {open ? <ExpandLess /> : <ExpandMore />}
+          </Button>
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit className="shadow bg-slate-50 rounded-b">
           {listCategory.map((cate) => {
