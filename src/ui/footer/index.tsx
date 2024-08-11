@@ -1,9 +1,8 @@
 import React from "react";
-import Link from "next/link";
-import Logo from "../logo";
 import SocialGroup from "./social-group";
 import LinkGroup from "./link-group";
 import ContactGroup from "./contact-group";
+import FooterContent from "./footer-content";
 
 const linkGroup = [
   {
@@ -65,10 +64,7 @@ const Footer = () => {
           </div>
         </div>
         <hr />
-        <div className="flex justify-between items-center mt-5">
-          <Logo color="text-white" />
-          <div>EduB 2024 HCMUS @nxhawk</div>
-        </div>
+        <FooterContent />
       </div>
     </footer>
   );
