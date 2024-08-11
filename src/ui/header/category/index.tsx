@@ -70,8 +70,8 @@ const CategoryGroup = () => {
   };
 
   return (
-    <div className="relative w-1/12 h-10 z-[1000]">
-      <List className="absolute -top-2 left-0">
+    <div className="relative w-1/12 max-lg:w-full flex items-center justify-center h-10 z-[1000]">
+      <List className="absolute -top-2 left-0 max-lg:left-1/2 max-lg:-translate-x-1/2">
         <ListItemButton onClick={handleClick}>
           <ListItemText primary="Category" />
           {open ? <ExpandLess /> : <ExpandMore />}
