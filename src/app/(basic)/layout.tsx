@@ -6,6 +6,7 @@ import { GlobalContextProvider } from "../context/GlobalContext";
 import Header from "@/ui/header";
 import theme from "@/themes";
 import { cn } from "@/lib/utils";
+import Footer from "@/ui/footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
           <GlobalContextProvider>
             <Header />
             <main className="min-h-screen pt-16">{children}</main>
+            <Footer />
           </GlobalContextProvider>
         </ThemeProvider>
       </body>
