@@ -80,7 +80,7 @@ const CategoryGroup = () => {
           {listCategory.map((cate) => {
             if (cate.children.length > 0) {
               return (
-                <Cate title={cate.name} key={cate.slug}>
+                <Cate title={cate.name} key={cate.slug} slug={cate.slug}>
                   {cate.children.map((topic) => (
                     <Topic title={topic.name} key={topic.slug} />
                   ))}
