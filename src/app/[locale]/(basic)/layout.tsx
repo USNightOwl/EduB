@@ -1,8 +1,8 @@
 "use client";
-import "../globals.css";
+import "../../globals.css";
 import { ThemeProvider } from "@emotion/react";
 import { Exo as FontSans } from "next/font/google";
-import { GlobalContextProvider } from "../../context/GlobalContext";
+import { GlobalContextProvider } from "../../../context/GlobalContext";
 import Header from "@/ui/header";
 import theme from "@/themes";
 import Footer from "@/ui/footer";
