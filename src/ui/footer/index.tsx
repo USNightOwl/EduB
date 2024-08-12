@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 import SocialGroup from "./social-group";
 import LinkGroup from "./link-group";
 import ContactGroup from "./contact-group";
@@ -6,43 +7,43 @@ import FooterContent from "./footer-content";
 
 const linkGroup = [
   {
-    title: "Page links",
+    title: "page-links",
     links: [
       {
-        title: "Home",
+        title: "home",
         url: "/",
       },
       {
-        title: "About",
+        title: "about",
         url: "/",
       },
       {
-        title: "Testimonial",
+        title: "testimonial",
         url: "/",
       },
       {
-        title: "Blog",
+        title: "blog",
         url: "/",
       },
       {
-        title: "Contact",
+        title: "contact",
         url: "/",
       },
     ],
   },
   {
-    title: "More Info",
+    title: "more-info",
     links: [
       {
-        title: "Contact",
+        title: "contact",
         url: "/",
       },
       {
-        title: "Security",
+        title: "security",
         url: "/",
       },
       {
-        title: "Term of service",
+        title: "term-of-service",
         url: "/",
       },
     ],
@@ -50,6 +51,8 @@ const linkGroup = [
 ];
 
 const Footer = () => {
+  const t = useTranslations("Footer");
+
   return (
     <footer className="text-white bg-gradient-to-b from-[#222023] to-[#1e2c47]">
       <div className="p-2 max-w-[1140px] max-md:max-w-[720px] max-lg:max-w-[900px] mx-auto">
@@ -59,7 +62,7 @@ const Footer = () => {
             <LinkGroup title={link.title} links={link.links} key={index} />
           ))}
           <div>
-            <div className="text-xl font-bold border-b-2 border-red-800 pb-4">Social Media</div>
+            <div className="text-xl font-bold border-b-2 border-red-800 pb-4">{t("social-media")}</div>
             <SocialGroup />
           </div>
         </div>

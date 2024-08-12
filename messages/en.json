@@ -1,0 +1,25 @@
+{
+  "Header": {
+    "login": "login",
+    "logout": "logout",
+    "signup": "signup",
+    "category": "Category",
+    "search-placeholder": "What're you searching for?"
+  },
+  "Footer": {
+    "address": "University Of Science, 227 Nguyen Van Cu Ward 4, District 5, Ho Chi Minh City",
+
+    "page-links": "Page links",
+    "home": "Home",
+    "about": "About EduB",
+    "testimonial": "Testimonial",
+    "blog": "Blog",
+    "contact": "Contact",
+
+    "more-info": "More Info",
+    "security": "Security",
+    "term-of-service": "Term of ervice",
+
+    "social-media": "Social Media"
+  }
+}

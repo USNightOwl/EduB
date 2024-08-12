@@ -6,10 +6,12 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import Button from "@mui/material/Button";
+import { useTranslations } from "next-intl";
 import ListCategory from "./list-category";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 const CategoryGroup = () => {
+  const t = useTranslations("Header");
   const [open, setOpen] = React.useState(false);
   const handleClick = () => {
     setOpen(!open);
@@ -18,11 +20,11 @@ const CategoryGroup = () => {
   const ref = useOutsideClick(() => setOpen(false));
 
   return (
-    <div className="relative w-1/12 max-lg:w-full flex items-center justify-center h-10 z-[1000]" ref={ref}>
+    <div className="relative w-[18%] max-lg:w-full flex items-center justify-center h-10 z-[1000]" ref={ref}>
       <List className="absolute -top-3 left-0 max-lg:left-1/2 max-lg:-translate-x-1/2">
         <ListItemButton onClick={handleClick} className="flex">
           <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg">
-            <ListItemText primary="Category" />
+            <ListItemText primary={t("category")} className="text-nowrap" />
             {open ? <ExpandLess /> : <ExpandMore />}
           </Button>
         </ListItemButton>

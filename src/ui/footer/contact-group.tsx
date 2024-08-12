@@ -1,8 +1,11 @@
 import React from "react";
 import PhoneEnabledIcon from "@mui/icons-material/PhoneEnabled";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useTranslations } from "next-intl";
 
 const ContactGroup = () => {
+  const t = useTranslations("Footer");
+
   return (
     <div className="flex gap-6 sm:gap-10 flex-col">
       <div className="text-4xl font-bold pb-2">EduB</div>
@@ -13,7 +16,7 @@ const ContactGroup = () => {
         </li>
         <li className="flex items-start gap-2">
           <LocationOnIcon />
-          <span>University Of Science, 227 Nguyen Van Cu Ward 1, District 3, Ho Chi Minh City</span>
+          <span>{t("address")}</span>
         </li>
       </ul>
     </div>
