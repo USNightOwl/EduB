@@ -6,64 +6,8 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import Button from "@mui/material/Button";
-import Cate from "./cate";
-import Topic from "./topic";
+import ListCategory from "./list-category";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-
-const listCategory = [
-  {
-    name: "development",
-    slug: "development",
-    children: [
-      {
-        name: "web development",
-        slug: "web-development",
-      },
-      {
-        name: "game development",
-        slug: "game-development",
-      },
-    ],
-  },
-  {
-    name: "design",
-    slug: "design",
-    children: [
-      {
-        name: "3D & Animation",
-        slug: "3d-animation",
-      },
-      {
-        name: "design tools",
-        slug: "design-tools",
-      },
-    ],
-  },
-  {
-    name: "office productivity",
-    slug: "office-productivity",
-    children: [
-      {
-        name: "microsoft office",
-        slug: "microsoft-office",
-      },
-      {
-        name: "powerpoint",
-        slug: "powerpoint",
-      },
-    ],
-  },
-  {
-    name: "marketing",
-    slug: "marketing",
-    children: [
-      {
-        name: "digital marketing",
-        slug: "digital-marketing",
-      },
-    ],
-  },
-];
 
 const CategoryGroup = () => {
   const [open, setOpen] = React.useState(false);
@@ -83,18 +27,7 @@ const CategoryGroup = () => {
           </Button>
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit className="shadow bg-slate-50 rounded-b">
-          {listCategory.map((cate) => {
-            if (cate.children.length > 0) {
-              return (
-                <Cate title={cate.name} key={cate.slug} slug={cate.slug}>
-                  {cate.children.map((topic) => (
-                    <Topic title={topic.name} key={topic.slug} />
-                  ))}
-                </Cate>
-              );
-            }
-            return <Topic title={cate.name} key={cate.slug} />;
-          })}
+          <ListCategory />
         </Collapse>
       </List>
     </div>

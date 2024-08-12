@@ -4,7 +4,7 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import React, { useContext, useEffect } from "react";
-import { GlobalContext } from "@/app/context/GlobalContext";
+import { GlobalContext } from "@/context/GlobalContext";
 
 interface ICate {
   children: React.ReactNode;

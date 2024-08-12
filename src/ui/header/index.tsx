@@ -1,11 +1,12 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
+import Drawer from "@mui/material/Drawer";
 import Logo from "../logo";
 import SearchBar from "./search-bar";
 import LoginGroup from "./login-group";
 import CategoryGroup from "./category";
-import { cn } from "@/lib/utils";
+import TreeCategory from "./category/tree";
 
 const Header = () => {
   const [open, setOpen] = React.useState(false);
@@ -21,17 +22,24 @@ const Header = () => {
           <MenuIcon />
         </Button>
       </div>
-      <div
-        className={cn(
-          "flex-1 flex items-center justify-between lg:gap-10 max-lg:flex-col-reverse gap-2",
-          open ? "max-lg:flex" : "max-lg:hidden",
-        )}
-      >
+
+      <div className="flex-1 flex items-center justify-between lg:gap-10 max-lg:flex-col-reverse gap-2 max-lg:hidden">
         <CategoryGroup />
         <div className="w-4/12 max-lg:w-full flex items-center justify-center">
           <SearchBar />
         </div>
         <LoginGroup />
+      </div>
+      <div className="lg:hidden">
+        <Drawer anchor="right" open={open} onClose={handleClick}>
+          <div className="flex items-center justify-center mt-4 mb-2">
+            <LoginGroup />
+          </div>
+          <div className="p-2 max-lg:w-full flex items-center justify-center">
+            <SearchBar />
+          </div>
+          <TreeCategory />
+        </Drawer>
       </div>
     </div>
   );
