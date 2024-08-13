@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useState } from "react";
 import { useLocalStorage } from "@/hooks/use-localstorage";
-import { type ETheme } from "@/types/theme";
+import { ETheme } from "@/types/theme";
 
 interface GlobalProps {
   cateOpenSlug: string;
@@ -16,7 +16,7 @@ const GlobalContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [cateOpenSlug, setCateOpenSlug] = useState<string>("");
   const [theme, setTheme] = useLocalStorage({
     key: "theme",
-    initialState: "Light",
+    initialState: ETheme.LIGHT,
   });
 
   return (

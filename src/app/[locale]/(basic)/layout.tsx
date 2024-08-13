@@ -24,7 +24,7 @@ export default function RootLayout({
   const { theme } = useContext(GlobalContext)!;
   const [current_theme, setCurrent_theme] = useState<ETheme>(ETheme.LIGHT);
   useEffect(() => {
-    setCurrent_theme(theme);
+    setCurrent_theme(theme || ETheme.LIGHT);
   }, [theme]);
 
   return (
