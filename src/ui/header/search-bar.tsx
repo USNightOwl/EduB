@@ -11,7 +11,7 @@ const SearchBar = () => {
       <div className="flex w-fit">
         <input placeholder={t("search-placeholder")} className="bg-transparent w-48 focus:none outline-none" />
         <IconButton color="primary" aria-label="search" size="small">
-          <SearchIcon className="text-blue-600" />
+          <SearchIcon />
         </IconButton>
       </div>
     </div>

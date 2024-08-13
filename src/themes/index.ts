@@ -1,5 +1,15 @@
-import createTheme from "@mui/material/styles/createTheme";
+import blue from "./blue";
+import dark from "./dark";
+import light from "./light";
+import orange from "./orange";
+import red from "./red";
 
-const theme = createTheme({});
+const themes = {
+  light,
+  dark,
+  red,
+  blue,
+  orange,
+};
 
-export default theme;
+export default themes;

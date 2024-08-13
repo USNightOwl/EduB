@@ -1,11 +1,15 @@
 "use client";
 import "../../globals.css";
-import { ThemeProvider } from "@emotion/react";
 import { Exo as FontSans } from "next/font/google";
-import { GlobalContextProvider } from "../../../context/GlobalContext";
+import { useContext, useEffect, useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { GlobalContext } from "../../../context/GlobalContext";
 import Header from "@/ui/header";
-import theme from "@/themes";
 import Footer from "@/ui/footer";
+import { cn } from "@/lib/utils";
+import ChangeTheme from "@/ui/button/change-theme";
+import themes from "@/themes";
+import { ETheme } from "@/types/theme";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,14 +21,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { theme } = useContext(GlobalContext)!;
+  const [current_theme, setCurrent_theme] = useState<ETheme>(ETheme.LIGHT);
+  useEffect(() => {
+    setCurrent_theme(theme);
+  }, [theme]);
+
   return (
-    <div className={fontSans.variable}>
-      <ThemeProvider theme={theme}>
-        <GlobalContextProvider>
-          <Header />
-          <main className="min-h-screen pt-16">{children}</main>
-          <Footer />
-        </GlobalContextProvider>
+    <div className={cn(fontSans.variable, "relative")}>
+      <ThemeProvider theme={createTheme(themes[current_theme])}>
+        <Header />
+        <main className="min-h-screen pt-16">{children}</main>
+        <Footer />
+        <ChangeTheme />
       </ThemeProvider>
     </div>
   );

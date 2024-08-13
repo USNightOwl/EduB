@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
+import { Box } from "@mui/material";
 import Logo from "../logo";
 import ChangeLanguage from "../button/change-language";
 import SearchBar from "./search-bar";
@@ -16,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between bg-gray-50 max-lg:flex-col z-[999]">
+    <Box className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between bg-gray-50 max-lg:flex-col z-[999]">
       <div className="flex justify-between items-center">
         <Logo />
         <div className="lg:hidden flex justify-center items-center gap-1">
@@ -45,7 +46,7 @@ const Header = () => {
           <TreeCategory />
         </Drawer>
       </div>
-    </div>
+    </Box>
   );
 };
 
