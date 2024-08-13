@@ -3,6 +3,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
+import FormControl from "@mui/material/FormControl";
+import Image from "next/image";
+import { fullLocales } from "@/utils/locales";
 
 const ChangeLanguage = () => {
   const locale = useLocale();
@@ -14,12 +17,23 @@ const ChangeLanguage = () => {
   };
 
   return (
-    <div className="p-2">
-      <Select value={locale} onChange={handleChange}>
-        <MenuItem value="en">English</MenuItem>
-        <MenuItem value="vi">Vietnam</MenuItem>
+    <FormControl variant="standard" sx={{ minWidth: 100 }}>
+      <Select value={locale} onChange={handleChange} className="text-sm">
+        {fullLocales.map((lang) => (
+          <MenuItem value={lang.label} key={lang.label}>
+            <div className="flex items-center gap-1">
+              <Image
+                src={`https://flagsapi.com/${lang.prefix.toUpperCase()}/flat/64.png`}
+                alt={lang.prefix}
+                width={25}
+                height={25}
+              />
+              <span className="text-sm">{lang.language}</span>
+            </div>
+          </MenuItem>
+        ))}
       </Select>
-    </div>
+    </FormControl>
   );
 };
 

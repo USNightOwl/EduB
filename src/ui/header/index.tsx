@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import Logo from "../logo";
+import ChangeLanguage from "../button/change-language";
 import SearchBar from "./search-bar";
 import LoginGroup from "./login-group";
 import CategoryGroup from "./category";
@@ -15,17 +16,20 @@ const Header = () => {
   };
 
   return (
-    <div className="w-full lg:gap-5 p-3 fixed top-0 left-0 flex lg:items-center justify-between bg-gray-50 max-lg:flex-col z-[999]">
+    <div className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between bg-gray-50 max-lg:flex-col z-[999]">
       <div className="flex justify-between items-center">
         <Logo />
-        <Button variant="text" color="error" className="gap-1 lg:hidden" onClick={handleClick}>
-          <MenuIcon />
-        </Button>
+        <div className="lg:hidden flex justify-center items-center gap-1">
+          <ChangeLanguage />
+          <Button variant="text" color="error" onClick={handleClick}>
+            <MenuIcon />
+          </Button>
+        </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-between lg:gap-10 max-lg:flex-col-reverse gap-2 max-lg:hidden">
+      <div className="flex-1 flex items-center justify-between max-lg:flex-col-reverse max-lg:hidden gap-2">
         <CategoryGroup />
-        <div className="w-4/12 max-lg:w-full flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center">
           <SearchBar />
         </div>
         <LoginGroup />

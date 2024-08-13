@@ -20,10 +20,10 @@ const CategoryGroup = () => {
   const ref = useOutsideClick(() => setOpen(false));
 
   return (
-    <div className="relative w-[18%] max-lg:w-full flex items-center justify-center h-10 z-[1000]" ref={ref}>
-      <List className="absolute -top-3 left-0 max-lg:left-1/2 max-lg:-translate-x-1/2">
+    <div className="relative w-[170px] flex items-center justify-center h-10 z-[1000]" ref={ref}>
+      <List className="absolute -top-[0.675rem] left-0">
         <ListItemButton onClick={handleClick} className="flex">
-          <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg">
+          <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg" size="small">
             <ListItemText primary={t("category")} className="text-nowrap" />
             {open ? <ExpandLess /> : <ExpandMore />}
           </Button>

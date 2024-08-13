@@ -7,10 +7,10 @@ const SearchBar = () => {
   const t = useTranslations("Header");
 
   return (
-    <div className="py-1 pl-6 pr-4 border rounded-full shadow-[0_0.125rem_0.25rem_rgba(0,0,0,0.075)] w-fit">
-      <div className="flex w-fit gap-2">
+    <div className="py-1 px-3 border rounded-full shadow-[0_0.125rem_0.25rem_rgba(0,0,0,0.075)] w-fit">
+      <div className="flex w-fit">
         <input placeholder={t("search-placeholder")} className="bg-transparent w-48 focus:none outline-none" />
-        <IconButton color="primary" aria-label="search">
+        <IconButton color="primary" aria-label="search" size="small">
           <SearchIcon className="text-blue-600" />
         </IconButton>
       </div>

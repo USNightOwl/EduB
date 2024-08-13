@@ -2,6 +2,10 @@
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ["flagsapi.com"],
+  },
+};
 
 export default withNextIntl(nextConfig);
