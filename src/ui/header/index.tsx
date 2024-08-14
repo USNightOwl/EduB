@@ -17,12 +17,15 @@ const Header = () => {
   };
 
   return (
-    <Box className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between bg-gray-50 max-lg:flex-col z-[999]">
+    <Box
+      sx={{ bgcolor: "background.default" }}
+      className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between max-lg:flex-col z-[999]"
+    >
       <div className="flex justify-between items-center">
         <Logo />
         <div className="lg:hidden flex justify-center items-center gap-1">
           <ChangeLanguage />
-          <Button variant="text" color="error" onClick={handleClick}>
+          <Button variant="text" sx={{ color: "primary.main" }} onClick={handleClick}>
             <MenuIcon />
           </Button>
         </div>
@@ -36,7 +39,17 @@ const Header = () => {
         <LoginGroup />
       </div>
       <div className="lg:hidden">
-        <Drawer anchor="right" open={open} onClose={handleClick}>
+        <Drawer
+          anchor="right"
+          open={open}
+          onClose={handleClick}
+          PaperProps={{
+            sx: {
+              backgroundColor: "background.default",
+              color: "primary.main",
+            },
+          }}
+        >
           <div className="flex items-center justify-center mt-4 mb-2">
             <LoginGroup />
           </div>

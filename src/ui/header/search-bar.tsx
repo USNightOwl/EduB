@@ -2,19 +2,60 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import { useTranslations } from "next-intl";
+import Input from "@mui/material/Input";
+import { alpha, styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 
 const SearchBar = () => {
   const t = useTranslations("Header");
 
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(3),
+      width: "auto",
+    },
+  }));
+
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }));
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      width: "100%",
+    },
+  }));
   return (
-    <div className="py-1 px-3 border rounded-full shadow-[0_0.125rem_0.25rem_rgba(0,0,0,0.075)] w-fit">
-      <div className="flex w-fit">
-        <input placeholder={t("search-placeholder")} className="bg-transparent w-48 focus:none outline-none" />
-        <IconButton color="primary" aria-label="search" size="small">
-          <SearchIcon />
-        </IconButton>
-      </div>
-    </div>
+    <Search className="shadow">
+      <SearchIconWrapper>
+        <SearchIcon sx={{ color: "primary.main" }} />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder={t("search-placeholder")}
+        inputProps={{ "aria-label": "search" }}
+        sx={{ color: "placeholder.main" }}
+      />
+    </Search>
   );
 };
 

@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import FormControl from "@mui/material/FormControl";
 import Image from "next/image";
+import Typography from "@mui/material/Typography";
 import { fullLocales } from "@/utils/locales";
 
 const ChangeLanguage = () => {
@@ -18,7 +19,7 @@ const ChangeLanguage = () => {
 
   return (
     <FormControl variant="standard" sx={{ minWidth: 100 }}>
-      <Select value={locale} onChange={handleChange} className="text-sm">
+      <Select value={locale} onChange={handleChange} className="text-sm" sx={{ color: "primary.main" }}>
         {fullLocales.map((lang) => (
           <MenuItem value={lang.label} key={lang.label}>
             <div className="flex items-center gap-1">
@@ -28,7 +29,9 @@ const ChangeLanguage = () => {
                 width={25}
                 height={25}
               />
-              <span className="text-sm">{lang.language}</span>
+              <Typography variant="h6" className="text-sm">
+                {lang.language}
+              </Typography>
             </div>
           </MenuItem>
         ))}

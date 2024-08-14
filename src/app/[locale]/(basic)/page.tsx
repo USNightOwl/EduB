@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Container } from "@mui/material";
 import Banner from "@/ui/banner";
 
 export const metadata: Metadata = {
@@ -11,17 +12,19 @@ export default function Home() {
   return (
     <div>
       <Banner />
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
-      <div>Hello</div>
+      <Container maxWidth={false} sx={{ bgcolor: "background.default", color: "primary.main" }} className="p-2">
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+        <div>Hello</div>
+      </Container>
     </div>
   );
 }

@@ -4,6 +4,9 @@ const red = {
       main: "#f44336",
       light: "#427D9D",
     },
+    placeholder: {
+      main: "#000000",
+    },
     secondary: {
       main: "#427D9D",
       light: "#DDF2FD",
@@ -21,7 +24,7 @@ const red = {
       main: "#4caf50",
     },
     background: {
-      default: "#fff",
+      default: "#FFE6E6",
     },
   },
 };

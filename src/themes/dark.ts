@@ -1,8 +1,11 @@
 const dark = {
   palette: {
     primary: {
-      main: "#000000",
+      main: "#ffffff",
       light: "#1E201E",
+    },
+    placeholder: {
+      main: "#ffffff",
     },
     secondary: {
       main: "#427D9D",
@@ -21,7 +24,7 @@ const dark = {
       main: "#4caf50",
     },
     background: {
-      default: "#000",
+      default: "#000000",
     },
   },
 };

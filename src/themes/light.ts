@@ -4,6 +4,9 @@ const light = {
       main: "#000000",
       light: "#427D9D",
     },
+    placeholder: {
+      main: "#000000",
+    },
     secondary: {
       main: "#427D9D",
       light: "#DDF2FD",

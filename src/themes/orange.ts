@@ -4,6 +4,9 @@ const orange = {
       main: "#ff9800",
       light: "#427D9D",
     },
+    placeholder: {
+      main: "#000000",
+    },
     secondary: {
       main: "#427D9D",
       light: "#DDF2FD",
@@ -21,7 +24,7 @@ const orange = {
       main: "#4caf50",
     },
     background: {
-      default: "#fff",
+      default: "#FFEE63",
     },
   },
 };

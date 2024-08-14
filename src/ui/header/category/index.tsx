@@ -23,7 +23,7 @@ const CategoryGroup = () => {
     <div className="relative w-[170px] flex items-center justify-center h-10 z-[1000]" ref={ref}>
       <List className="absolute -top-[0.675rem] left-0">
         <ListItemButton onClick={handleClick} className="flex">
-          <Button variant="outlined" className="!text-slate-700 !border-slate-400 rounded-lg" size="small">
+          <Button variant="outlined" className="rounded-lg" size="small">
             <ListItemText primary={t("category")} className="text-nowrap" />
             {open ? <ExpandLess /> : <ExpandMore />}
           </Button>

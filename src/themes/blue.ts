@@ -8,6 +8,9 @@ const blue = {
       main: "#427D9D",
       light: "#DDF2FD",
     },
+    placeholder: {
+      main: "#000000",
+    },
     error: {
       main: "#f44336",
     },
@@ -21,7 +24,7 @@ const blue = {
       main: "#4caf50",
     },
     background: {
-      default: "#fff",
+      default: "#DCF2F1",
     },
   },
 };
