@@ -14,8 +14,8 @@ interface ICoureCard extends ICourse {
 
 const CourseCard = (props: ICoureCard) => {
   function sizeImage() {
-    if (!props.isSingleSlide) return { height: 200 };
-    return { height: 280, width: 400 };
+    if (!props.isSingleSlide) return { height: 240 };
+    return { height: 240, width: 400 };
   }
 
   return (
