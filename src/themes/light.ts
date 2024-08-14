@@ -24,7 +24,8 @@ const light = {
       main: "#4caf50",
     },
     background: {
-      default: "#fff",
+      default: "#ffffff",
+      main: "#F6F5F2",
     },
   },
 };

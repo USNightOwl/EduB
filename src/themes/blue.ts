@@ -24,7 +24,8 @@ const blue = {
       main: "#4caf50",
     },
     background: {
-      default: "#DCF2F1",
+      main: "#DCF2F1",
+      default: "#DAF5FF",
     },
   },
 };

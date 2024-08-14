@@ -31,7 +31,7 @@ export default function RootLayout({
     <div className={cn(fontSans.variable, "relative")}>
       <ThemeProvider theme={createTheme(themes[current_theme])}>
         <Header />
-        <main className="min-h-screen pt-16">{children}</main>
+        <main className="pt-16">{children}</main>
         <Footer />
         <ChangeTheme />
       </ThemeProvider>

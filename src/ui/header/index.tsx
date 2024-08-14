@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <Box
       sx={{ bgcolor: "background.default" }}
-      className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between max-lg:flex-col z-[999]"
+      className="w-full lg:gap-3 p-3 fixed top-0 left-0 flex lg:items-center justify-between max-lg:flex-col z-[999] shadow"
     >
       <div className="flex justify-between items-center">
         <Logo />

@@ -24,7 +24,8 @@ const red = {
       main: "#4caf50",
     },
     background: {
-      default: "#FFE6E6",
+      default: "#FFCAD4",
+      main: "#FFCAC8",
     },
   },
 };

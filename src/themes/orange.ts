@@ -24,7 +24,8 @@ const orange = {
       main: "#4caf50",
     },
     background: {
-      default: "#FFEE63",
+      default: "#F2F597",
+      main: "#F2EEAD",
     },
   },
 };

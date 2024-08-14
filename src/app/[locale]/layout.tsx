@@ -8,7 +8,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang={locale}>
-      <body suppressHydrationWarning={true} className="bg-gray-100">
+      <body suppressHydrationWarning={true}>
         <GlobalContextProvider>
           <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
         </GlobalContextProvider>

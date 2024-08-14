@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div>
       <Banner />
-      <Container maxWidth={false} sx={{ bgcolor: "background.default", color: "primary.main" }} className="p-2">
+      <Container maxWidth={false} sx={{ bgcolor: "background.main", color: "primary.main" }} className="p-2">
         <div>Hello</div>
         <div>Hello</div>
         <div>Hello</div>
