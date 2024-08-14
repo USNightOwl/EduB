@@ -21,6 +21,7 @@ export default function Home() {
         sx={{ bgcolor: "background.main", color: "primary.main" }}
         className="p-2 py-3 max-md:px-1"
       >
+        <CustomSlide title={t("popular-course")} description={t("popular-course-desc")} perView={2} />
         <CustomSlide title={t("most-viewing")} isSingleSlide={true} />
         <CustomSlide title={t("newest-course")} />
       </Container>

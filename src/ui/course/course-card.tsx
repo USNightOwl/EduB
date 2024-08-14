@@ -15,7 +15,7 @@ interface ICoureCard extends ICourse {
 const CourseCard = (props: ICoureCard) => {
   function sizeImage() {
     if (!props.isSingleSlide) return { height: 240 };
-    return { height: 240, width: 400 };
+    return { width: 400 };
   }
 
   return (
@@ -23,8 +23,13 @@ const CourseCard = (props: ICoureCard) => {
       className={cn("shadow relative", props.isSingleSlide && "flex max-md:flex-col")}
       sx={{ bgcolor: "box.bg", color: "box.text" }}
     >
-      <CardMedia sx={sizeImage()} image={props.thumbnail} title={props.title} className="max-md:w-full !max-md:h-20" />
-      <CardContent>
+      <CardMedia
+        sx={sizeImage()}
+        image={props.thumbnail}
+        title={props.title}
+        className={cn("!w-full !min-h-[240px]", props.isSingleSlide && "lg:max-w-[400px] md:max-w-[250px]")}
+      />
+      <CardContent className="py-[1.7rem]">
         <Typography component="div" className="font-semibold text-lg">
           {props.title}
         </Typography>
