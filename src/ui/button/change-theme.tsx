@@ -29,7 +29,7 @@ export default function ChangeTheme() {
   };
 
   return (
-    <div className="fixed bottom-0 right-0">
+    <div className="fixed bottom-0 right-0 z-[10000]">
       <Box sx={{ height: 320, transform: "translateZ(0px)", flexGrow: 1 }}>
         <SpeedDial
           ariaLabel="SpeedDial basic example"
@@ -43,7 +43,7 @@ export default function ChangeTheme() {
               tooltipTitle={toCapitalize(action.name)}
               onClick={() => handleClick(action.name)}
               className={cn(
-                "bg-slate-300/80 hover:bg-slate-300/40",
+                "bg-slate-300/80 hover:bg-slate-300/40 z-[10000]",
                 theme === action.name && "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500",
               )}
             />

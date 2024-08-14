@@ -1,4 +1,12 @@
 {
+  "Global": {
+    "Title": {
+      "Card": {
+        "most-viewing": "Most Viewing",
+        "newest-course": "Newest Course"
+      }
+    }
+  },
   "Header": {
     "login": "login",
     "logout": "logout",
@@ -21,5 +29,5 @@
     "term-of-service": "Term of ervice",
 
     "social-media": "Social Media"
-  }
+  }  
 }

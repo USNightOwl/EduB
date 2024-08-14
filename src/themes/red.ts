@@ -1,11 +1,15 @@
 const red = {
   palette: {
     primary: {
-      main: "#f44336",
+      main: "#FF0000",
       light: "#427D9D",
     },
     placeholder: {
       main: "#000000",
+    },
+    box: {
+      text: "#ffffff",
+      bg: "#f44336",
     },
     secondary: {
       main: "#427D9D",

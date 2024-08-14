@@ -1,4 +1,12 @@
 {
+  "Global": {
+    "Title": {
+      "Card": {
+        "most-viewing": "Xem nhiều nhất",
+        "newest-course": "Khóa học mới nhất"
+      }
+    }
+  },
   "Header": {
     "login": "Đăng nhập",
     "logout": "Đăng xuất",

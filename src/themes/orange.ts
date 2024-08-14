@@ -1,11 +1,15 @@
 const orange = {
   palette: {
     primary: {
-      main: "#ff9800",
+      main: "#EB5B00",
       light: "#427D9D",
     },
     placeholder: {
       main: "#000000",
+    },
+    box: {
+      text: "#ffffff",
+      bg: "#EB5B00",
     },
     secondary: {
       main: "#427D9D",
@@ -24,8 +28,8 @@ const orange = {
       main: "#4caf50",
     },
     background: {
-      default: "#F2F597",
-      main: "#F2EEAD",
+      default: "#FFDA76",
+      main: "#FFF078",
     },
   },
 };

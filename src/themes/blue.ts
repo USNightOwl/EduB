@@ -11,6 +11,10 @@ const blue = {
     placeholder: {
       main: "#000000",
     },
+    box: {
+      text: "#ffffff",
+      bg: "#1976d2",
+    },
     error: {
       main: "#f44336",
     },

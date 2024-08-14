@@ -7,9 +7,9 @@ const dark = {
     placeholder: {
       main: "#ffffff",
     },
-    secondary: {
-      main: "#427D9D",
-      light: "#DDF2FD",
+    box: {
+      text: "#ffffff",
+      bg: "#000000",
     },
     error: {
       main: "#f44336",
