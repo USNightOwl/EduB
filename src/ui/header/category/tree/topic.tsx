@@ -7,7 +7,9 @@ interface ITopic {
 }
 
 const Topic = ({ title, slug }: ITopic) => {
-  return <CustomTreeItem itemId={slug} label={title} className="capitalize text-nowrap" />;
+  return (
+    <CustomTreeItem itemId={slug} label={title} className="capitalize text-nowrap" sx={{ color: "primary.main" }} />
+  );
 };
 
 export default Topic;

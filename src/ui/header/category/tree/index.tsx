@@ -82,7 +82,7 @@ export const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   [`& .${treeItemClasses.groupTransition}`]: {
     marginLeft: 15,
     paddingLeft: 18,
-    borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`,
+    borderLeft: `1px dashed ${alpha(theme.palette.primary.main, 0.4)}`,
   },
 }));
 
@@ -96,6 +96,7 @@ const TreeCategory = () => {
               key={category.slug}
               itemId={category.slug}
               label={category.name}
+              sx={{ color: "primary.main" }}
               className="capitalize text-nowrap"
             >
               {category.children.map((cate) => (
