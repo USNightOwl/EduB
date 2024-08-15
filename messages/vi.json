@@ -10,6 +10,14 @@
       }
     }
   },
+  "Course": {
+    "total-lecture": "Tổng số bài học: ",
+    "total-length": "Tổng thời gian học: ",
+    "average-rating": "Đánh giá trung bình: ",
+    "number-of-rating": "Số đánh giá: ",
+    "number-of-student": "Số người học: ",
+    "last-modify": "Cập nhật gần đây: "
+  },
   "Header": {
     "login": "Đăng nhập",
     "logout": "Đăng xuất",

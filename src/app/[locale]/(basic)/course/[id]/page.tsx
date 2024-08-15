@@ -1,3 +1,30 @@
+import Container from "@mui/material/Container";
+import React from "react";
+import { type Metadata } from "next";
+import Banner from "@/ui/course/banner";
+import MyBreadcrumbs from "@/ui/common/my-breadcrumbs";
+import { type IBreadcumb } from "@/types/global";
+import CourseHeader from "@/ui/course/course-header";
+
+export const metadata: Metadata = {
+  title: "EduB - Course React Native - The Practical Guide [2023]",
+  description: "Choose your course, master your future",
+  icons: "logo.svg",
+};
+
+const listBread: IBreadcumb[] = [
+  {
+    name: "Development",
+    slug: "development",
+    id: "1",
+  },
+  {
+    name: "Web development",
+    slug: "web-development",
+    id: "2",
+  },
+];
+
 const Page = async ({
   params,
   searchParams,
@@ -5,7 +32,19 @@ const Page = async ({
   params: { id: string };
   searchParams?: Record<string, string | string[] | undefined>;
 }) => {
-  return <div>{params.id}</div>;
+  return (
+    <React.Fragment>
+      <Banner />
+      <Container
+        maxWidth={false}
+        sx={{ bgcolor: "background.main", color: "primary.main" }}
+        className="p-2 py-4 max-md:px-1"
+      >
+        <MyBreadcrumbs listBread={listBread} />
+        <CourseHeader />
+      </Container>
+    </React.Fragment>
+  );
 };
 
 export default Page;

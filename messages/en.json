@@ -10,6 +10,14 @@
       }
     }
   },
+  "Course": {
+    "total-lecture": "Total lecture: ",
+    "total-length": "Total length: ",
+    "average-rating": "Average rating: ",
+    "number-of-rating": "Number of rating: ",
+    "number-of-student": "Number of student: ",
+    "last-modify": "Last modify: "
+  },
   "Header": {
     "login": "login",
     "logout": "logout",

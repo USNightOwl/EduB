@@ -12,7 +12,7 @@ const fontSans = Caveat({
 
 const Banner = () => {
   return (
-    <div className="h-80 max-lg:h-[12rem] overflow-clip w-full !bg-black/60 relative ">
+    <div className="h-80 max-lg:h-[12rem] overflow-clip w-full !bg-black/60 relative">
       <Image
         src="/main-banner.jpg"
         alt="main banner"
