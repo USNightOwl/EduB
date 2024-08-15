@@ -28,16 +28,17 @@ interface ISlide {
   perView?: number;
 }
 
-const CustomSlide = ({ title, description, isSingleSlide = false, perView = 3 }: ISlide) => {
-  const matches_1 = useMediaQuery("(max-width:1024px)");
-  const matches_2 = useMediaQuery("(max-width:640px)");
+const CustomSlide = ({ title, description, isSingleSlide = false, perView = 4 }: ISlide) => {
+  const matches_1 = useMediaQuery("(max-width:1380px)");
+  const matches_2 = useMediaQuery("(max-width:1024px)");
+  const matches_3 = useMediaQuery("(max-width:640px)");
 
   function calcPerView(perView: number) {
     return Math.max(1, perView);
   }
 
   return (
-    <Container>
+    <Container maxWidth={false} className="mb-5 sm:mb-10">
       <div className="mb-1">
         <Typography variant="h5" className={cn("uppercase mb-0 text-nowrap", fontSans.className)}>
           {title}
@@ -52,7 +53,9 @@ const CustomSlide = ({ title, description, isSingleSlide = false, perView = 3 }:
             ? 1
             : matches_1
               ? matches_2
-                ? calcPerView(perView - 2)
+                ? matches_3
+                  ? calcPerView(perView - 3)
+                  : calcPerView(perView - 2)
                 : calcPerView(perView - 1)
               : calcPerView(perView)
         }

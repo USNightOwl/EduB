@@ -5,7 +5,8 @@
         "most-viewing": "Most Viewing",
         "newest-course": "Newest Course",
         "popular-course": "Popular Course",
-        "popular-course-desc": "The courses that receive the most positives from students as well as the most viewed and bought."
+        "popular-course-desc": "The courses that receive the most positives from students as well as the most viewed and bought.",
+        "recommended-topic": "Recommended Topic"
       }
     }
   },
