@@ -13,7 +13,7 @@ export default function Home() {
       <Container
         maxWidth={false}
         sx={{ bgcolor: "background.main", color: "primary.main" }}
-        className="p-2 py-3 max-md:px-1"
+        className="p-2 py-3 max-md:px-1 mt-1"
       >
         <CustomSlide title={t("popular-course")} description={t("popular-course-desc")} perView={3} />
         <CustomSlide title={t("most-viewing")} isSingleSlide={true} />

@@ -1,14 +1,14 @@
 import React from "react";
-import Link from "next/link";
 import Typography from "@mui/material/Typography";
 import PriceBox from "../common/price-box";
 import UserRating from "./user-rating";
 import { type ICourseContent } from "@/types/course";
+import { Link } from "@/navigation";
 
 const CourseContent = (props: ICourseContent) => {
   return (
     <React.Fragment>
-      <Link href={"/"}>
+      <Link href={{ pathname: "/course/[id]", params: { id: "1" } }}>
         <Typography component="div" className="font-semibold text-lg">
           {props.title}
         </Typography>

@@ -3,10 +3,10 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import { useRouter } from "next/navigation";
 import CourseContent from "./course-content";
 import { type ICourseContent, type ICourse } from "@/types/course";
 import { cn } from "@/lib/utils";
+import { useRouter } from "@/navigation";
 
 interface ICoureCard extends ICourse {
   isSingleSlide: boolean;
@@ -33,7 +33,7 @@ const CourseCard = (props: ICoureCard) => {
           "!w-full !min-h-[240px] cursor-pointer",
           props.isSingleSlide && "lg:max-w-[400px] md:max-w-[250px]",
         )}
-        onClick={() => router.push("/dashboard")}
+        onClick={() => router.push({ pathname: "/course/[id]", params: { id: "1" } })}
       />
       <CardContent className="py-[1.7rem]">
         <CourseContent {...(props as ICourseContent)} />

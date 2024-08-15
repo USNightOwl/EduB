@@ -11,3 +11,8 @@ export const fullLocales = [
     language: "Tiếng Việt",
   },
 ];
+
+export const pathnames = {
+  "/": "/",
+  "/course/[id]": "/course/[id]",
+};
