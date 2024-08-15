@@ -1,15 +1,8 @@
-import type { Metadata } from "next";
 import { Container } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Banner from "@/ui/banner";
 import CustomSlide from "@/ui/common/custom-slide";
 import RecommendedTopic from "@/ui/topic/recommended-topic";
-
-export const metadata: Metadata = {
-  title: "EduB - Choose your course, master your future",
-  description: "Choose your course, master your future",
-  icons: "/logo.png",
-};
 
 export default function Home() {
   const t = useTranslations("Global.Title.Card");

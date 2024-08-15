@@ -1,11 +1,11 @@
+"use client";
 import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
-import PriceBox from "../common/price-box";
-import UserRating from "./user-rating";
-import { type ICourse } from "@/types/course";
+import { useRouter } from "next/navigation";
+import CourseContent from "./course-content";
+import { type ICourseContent, type ICourse } from "@/types/course";
 import { cn } from "@/lib/utils";
 
 interface ICoureCard extends ICourse {
@@ -13,6 +13,8 @@ interface ICoureCard extends ICourse {
 }
 
 const CourseCard = (props: ICoureCard) => {
+  const router = useRouter();
+
   function sizeImage() {
     if (!props.isSingleSlide) return { height: 240 };
     return { width: 400 };
@@ -27,17 +29,14 @@ const CourseCard = (props: ICoureCard) => {
         sx={sizeImage()}
         image={props.thumbnail}
         title={props.title}
-        className={cn("!w-full !min-h-[240px]", props.isSingleSlide && "lg:max-w-[400px] md:max-w-[250px]")}
+        className={cn(
+          "!w-full !min-h-[240px] cursor-pointer",
+          props.isSingleSlide && "lg:max-w-[400px] md:max-w-[250px]",
+        )}
+        onClick={() => router.push("/dashboard")}
       />
       <CardContent className="py-[1.7rem]">
-        <Typography component="div" className="font-semibold text-lg">
-          {props.title}
-        </Typography>
-        <Typography component="div" className="text-base my-2">
-          {props.author}
-        </Typography>
-        <UserRating rating={props.rating} />
-        <PriceBox price={props.price} discount={props.discount} />
+        <CourseContent {...(props as ICourseContent)} />
       </CardContent>
       <div className="absolute top-0.5 right-0.5 z-[10] bg-red-600 text-white rounded p-1 px-2 text-xs capitalize italic outline-none border-0 font-semibold">
         {props.topic}

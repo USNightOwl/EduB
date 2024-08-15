@@ -4,7 +4,28 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
   images: {
-    domains: ["flagsapi.com", "cdn-icons-png.flaticon.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.dribbble.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "flagsapi.com",
+        pathname: "**",
+      },
+    ],
   },
 };
 
