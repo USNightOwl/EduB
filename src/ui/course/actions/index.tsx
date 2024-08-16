@@ -1,6 +1,6 @@
 import React from "react";
 import CourseDescription from "../course-description";
-import ListContent from "../list-content";
+import ListContent from "../contents";
 import InstructorInfo from "./instructor-info";
 import UserHandle from "./user-handle";
 
