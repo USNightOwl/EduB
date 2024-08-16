@@ -40,8 +40,8 @@ const Page = async ({
         <MyBreadcrumbs listBread={listBread} />
         <CourseHeader />
       </Container>
-      <Container maxWidth={false} sx={{ bgcolor: "background.main", color: "primary.main" }}>
-        <Container className="py-4">
+      <Container maxWidth={false} sx={{ bgcolor: "background.main", color: "primary.main" }} className="max-sm:px-1">
+        <Container className="py-4 max-sm:px-1">
           <CourseActions />
         </Container>
       </Container>
