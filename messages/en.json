@@ -11,12 +11,21 @@
     }
   },
   "Course": {
+    "course-contents": "course's contents",
     "total-lecture": "Total lecture: ",
     "total-length": "Total length: ",
     "average-rating": "Average rating: ",
     "number-of-rating": "Number of rating: ",
     "number-of-student": "Number of student: ",
-    "last-modify": "Last modify: "
+    "last-modify": "Last modify: ",
+    "what-you-will-learn-header": "What you will learn in this course",
+    "instructor-information": "Instructor Information",
+    "Actions": {
+      "add-to-watch-list": "add to watch list",
+      "buy-now": "buy now",
+      "refund": "Ensuring refund in 30 days",
+      "lifetime": "Full lifetime access"
+    }
   },
   "Header": {
     "login": "login",

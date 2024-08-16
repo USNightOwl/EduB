@@ -6,7 +6,7 @@ import { GlobalContextProvider } from "@/context/GlobalContext";
 export const metadata: Metadata = {
   title: "EduB - Choose your course, master your future",
   description: "Choose your course, master your future",
-  icons: "logo.svg",
+  icons: "/logo.svg",
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
