@@ -5,11 +5,12 @@ import Banner from "@/ui/course/banner";
 import MyBreadcrumbs from "@/ui/common/my-breadcrumbs";
 import { type IBreadcumb } from "@/types/global";
 import CourseHeader from "@/ui/course/course-header";
+import CourseActions from "@/ui/course/actions";
 
 export const metadata: Metadata = {
   title: "EduB - Course React Native - The Practical Guide [2023]",
   description: "Choose your course, master your future",
-  icons: "logo.svg",
+  icons: "/logo.svg",
 };
 
 const listBread: IBreadcumb[] = [
@@ -35,13 +36,14 @@ const Page = async ({
   return (
     <React.Fragment>
       <Banner />
-      <Container
-        maxWidth={false}
-        sx={{ bgcolor: "background.main", color: "primary.main" }}
-        className="p-2 py-4 max-md:px-1"
-      >
+      <Container maxWidth={false} className="p-2 py-4 max-md:px-1 text-white bg-black/90">
         <MyBreadcrumbs listBread={listBread} />
         <CourseHeader />
+      </Container>
+      <Container maxWidth={false} sx={{ bgcolor: "background.main", color: "primary.main" }}>
+        <Container className="py-4">
+          <CourseActions />
+        </Container>
       </Container>
     </React.Fragment>
   );

@@ -7,19 +7,14 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { type IBreadcumb } from "@/types/global";
 import { Link } from "@/navigation";
 
-const CustomTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
-}));
+const CustomTypography = styled(Typography)(({ theme }) => ({}));
 
 const MyBreadcrumbs = ({ listBread }: { listBread: IBreadcumb[] }) => {
   return (
-    <Breadcrumbs
-      aria-label="breadcrumb"
-      separator={<NavigateNextIcon fontSize="medium" sx={{ color: "primary.main" }} />}
-    >
+    <Breadcrumbs aria-label="breadcrumb" separator={<NavigateNextIcon fontSize="medium" className="text-blue-500" />}>
       {listBread.map((item) => (
         <Link href={{ pathname: "/course/[id]", params: { id: item.id } }} key={item.slug}>
-          <CustomTypography className="font-bold hover:underline" variant="h6">
+          <CustomTypography className="font-bold hover:underline text-blue-500" variant="h6">
             {item.name}
           </CustomTypography>
         </Link>
