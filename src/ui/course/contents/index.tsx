@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import React from "react";
+import SingleContent from "./single-content";
 
 const ListContent = () => {
   const t = useTranslations("Course");
@@ -10,7 +11,11 @@ const ListContent = () => {
       <Typography variant="h4" className="capitalize">
         {t("course-contents")}
       </Typography>
-      <div></div>
+      <div className="mt-3">
+        {[1, 2, 3].map((item) => (
+          <SingleContent key={item} />
+        ))}
+      </div>
     </div>
   );
 };

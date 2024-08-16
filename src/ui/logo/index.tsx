@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "next/link";
 import { Dancing_Script } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Link } from "@/navigation";
 
 const myFont = Dancing_Script({
   weight: "400",
