@@ -6,6 +6,7 @@ import MyBreadcrumbs from "@/ui/common/my-breadcrumbs";
 import { type IBreadcumb } from "@/types/global";
 import CourseHeader from "@/ui/course/course-header";
 import CourseActions from "@/ui/course/actions";
+import RelevantCourse from "@/ui/course/relevant-course";
 
 export const metadata: Metadata = {
   title: "EduB - Course React Native - The Practical Guide [2023]",
@@ -44,6 +45,7 @@ const Page = async ({
         <Container className="py-4 max-sm:px-1">
           <CourseActions />
         </Container>
+        <RelevantCourse />
       </Container>
     </React.Fragment>
   );
