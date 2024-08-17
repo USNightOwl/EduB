@@ -2,7 +2,7 @@
 import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
 import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import FormControl from "@mui/material/FormControl";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
@@ -13,12 +13,15 @@ import { replaceNewLang } from "@/utils/helper";
 const ChangeLanguage = () => {
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const locale = useLocale();
   const router = useRouter();
 
   const handleChange = (event: SelectChangeEvent) => {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    const url = `${pathname}?${searchParams}`;
     startTransition(() => {
-      router.replace(replaceNewLang(pathname, event.target.value));
+      router.replace(replaceNewLang(url, event.target.value));
     });
   };
 
