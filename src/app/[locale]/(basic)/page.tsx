@@ -19,7 +19,6 @@ export default function Home() {
         <CustomSlide title={t("most-viewing")} isSingleSlide={true} />
         <CustomSlide title={t("newest-course")} />
         <RecommendedTopic />
-        <div>Review</div>
       </Container>
     </div>
   );

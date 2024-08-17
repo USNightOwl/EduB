@@ -24,8 +24,8 @@ const dark = {
       main: "#4caf50",
     },
     background: {
-      default: "#000000",
-      main: "#0C0C0C",
+      default: "#0C0C0C",
+      main: "#0F101F",
     },
   },
 };
