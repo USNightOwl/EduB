@@ -5,6 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import LoginIcon from "@mui/icons-material/Login";
 import { useTranslations } from "next-intl";
 import ChangeLanguage from "../button/change-language";
+import { Link } from "@/navigation";
 
 const LoginGroup = () => {
   const t = useTranslations("Header");
@@ -15,12 +16,16 @@ const LoginGroup = () => {
         <ChangeLanguage />
       </div>
       <Button variant="text" className="gap-1 text-nowrap">
-        <PersonIcon />
-        {t("signup")}
+        <Link href={"/auth/register"}>
+          <PersonIcon />
+          {t("signup")}
+        </Link>
       </Button>
       <Button variant="contained" className="gap-1 text-nowrap">
-        <LoginIcon />
-        {t("login")}
+        <Link href={"/auth/login"}>
+          <LoginIcon />
+          {t("login")}
+        </Link>
       </Button>
     </div>
   );

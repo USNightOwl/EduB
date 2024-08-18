@@ -8,7 +8,9 @@
         "popular-course-desc": "The courses that receive the most positives from students as well as the most viewed and bought.",
         "recommended-topic": "Recommended Topic"
       }
-    }
+    },
+    "now": "now",
+    "with": "with"
   },
   "Course": {
     "course-contents": "course's contents",
@@ -29,9 +31,9 @@
     "relevant-course": "Relevant Course"
   },
   "Header": {
-    "login": "login",
-    "logout": "logout",
-    "signup": "signup",
+    "login": "Login",
+    "logout": "Logout",
+    "signup": "Signup",
     "category": "Category",
     "search-placeholder": "What're you searching for?"
   },
@@ -50,5 +52,16 @@
     "term-of-service": "Term of ervice",
 
     "social-media": "Social Media"
+  },
+  "Auth": {
+    "Form": {
+      "email-account": "or use your email account",
+      "email": "Email",
+      "fullname": "Full Name",
+      "password": "Password",
+      "re-password": "Re-password",
+      "not-a-member": "Not a member?",
+      "have-account": "Already have an account?"
+    }
   }
 }

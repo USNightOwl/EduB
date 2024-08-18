@@ -8,7 +8,9 @@
         "popular-course-desc": "Các khóa học nhận được nhiều phản hồi tích cực nhất từ ​​học viên cũng như được xem và mua nhiều nhất.",
         "recommended-topic": "Chủ đề được đề xuất"
       }
-    }
+    },
+    "now": "ngay",
+    "with": "với"
   },
   "Course": {
     "course-contents": "nội dung khóa học",
@@ -50,5 +52,16 @@
     "term-of-service": "Điều khoản dịch vụ",
 
     "social-media": "Mạng xã hội"
+  },
+  "Auth": {
+    "Form": {
+      "email-account": "hoặc sử dụng tài khoản email của bạn",
+      "email": "Email",
+      "fullname": "Tên đầy đủ",
+      "password": "Mật khẩu",
+      "re-password": "Nhập lại mật khẩu",
+      "not-a-member": "Không là thành viên?",
+      "have-account": "Đã có tài khoản?"
+    }
   }
 }
