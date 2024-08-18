@@ -8,6 +8,7 @@ const red = {
       main: "#000000",
     },
     box: {
+      main: "#ffffff",
       text: "#ffffff",
       bg: "#f44336",
     },
