@@ -11,6 +11,7 @@ declare module "@mui/material/styles" {
   }
 
   interface PaletteColor {
+    main: string;
     text?: string;
     bg?: string;
   }
