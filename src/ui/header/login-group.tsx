@@ -7,8 +7,13 @@ import { useTranslations } from "next-intl";
 import ChangeLanguage from "../button/change-language";
 import { Link } from "@/navigation";
 
-const LoginGroup = () => {
+const LoginGroup = ({ handleClose }: { handleClose?: () => void }) => {
   const t = useTranslations("Header");
+  const handleClick = () => {
+    if (handleClose) {
+      handleClose();
+    }
+  };
 
   return (
     <div className="flex items-center justify-center gap-1">
@@ -16,13 +21,13 @@ const LoginGroup = () => {
         <ChangeLanguage />
       </div>
       <Button variant="text" className="gap-1 text-nowrap">
-        <Link href={"/auth/register"}>
+        <Link href={"/auth/register"} onClick={handleClick}>
           <PersonIcon />
           {t("signup")}
         </Link>
       </Button>
       <Button variant="contained" className="gap-1 text-nowrap">
-        <Link href={"/auth/login"}>
+        <Link href={"/auth/login"} onClick={handleClick}>
           <LoginIcon />
           {t("login")}
         </Link>

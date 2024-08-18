@@ -51,7 +51,7 @@ const Header = () => {
           }}
         >
           <div className="flex items-center justify-center mt-4 mb-2">
-            <LoginGroup />
+            <LoginGroup handleClose={handleClick} />
           </div>
           <div className="p-2 max-lg:w-full flex items-center justify-center">
             <SearchBar />
