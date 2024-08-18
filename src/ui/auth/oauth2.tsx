@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";

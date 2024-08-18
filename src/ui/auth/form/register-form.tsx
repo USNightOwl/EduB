@@ -26,7 +26,7 @@ const RegisterForm = () => {
             <Stack direction="column" className="w-full" spacing={1} mt={1}>
               <Stack spacing={1} direction="row">
                 <Typography>{t("Auth.Form.have-account")}</Typography>
-                <Link href={"/auth/register"} className="text-blue-700 hover:underline">
+                <Link href={"/auth/login"} className="text-blue-700 hover:underline">
                   {t("Header.login") + " " + t("Global.now")}
                 </Link>
               </Stack>
