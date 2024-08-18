@@ -8,6 +8,7 @@ const light = {
       main: "#000000",
     },
     box: {
+      main: "#000000",
       text: "#000000",
       bg: "#ffffff",
     },

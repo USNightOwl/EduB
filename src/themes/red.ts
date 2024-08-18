@@ -8,6 +8,7 @@ const red = {
       main: "#000000",
     },
     box: {
+      main: "#ffffff",
       text: "#ffffff",
       bg: "#f44336",
     },
@@ -16,7 +17,7 @@ const red = {
       light: "#DDF2FD",
     },
     error: {
-      main: "#f44336",
+      main: "#FF0000",
     },
     warning: {
       main: "#ff9800",

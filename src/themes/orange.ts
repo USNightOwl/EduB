@@ -8,6 +8,7 @@ const orange = {
       main: "#000000",
     },
     box: {
+      main: "#ffffff",
       text: "#ffffff",
       bg: "#EB5B00",
     },

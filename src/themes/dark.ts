@@ -8,6 +8,7 @@ const dark = {
       main: "#ffffff",
     },
     box: {
+      main: "#ffffff",
       text: "#ffffff",
       bg: "#000000",
     },

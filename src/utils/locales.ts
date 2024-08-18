@@ -14,5 +14,7 @@ export const fullLocales = [
 
 export const pathnames = {
   "/": "/",
+  "/auth/register": "/auth/register",
+  "/auth/login": "/auth/login",
   "/course/[id]": "/course/[id]",
 };

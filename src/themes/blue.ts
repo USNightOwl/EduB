@@ -12,6 +12,7 @@ const blue = {
       main: "#000000",
     },
     box: {
+      main: "#ffffff",
       text: "#ffffff",
       bg: "#1976d2",
     },
