@@ -8,9 +8,9 @@ declare global {
 const prisma = globalThis.prisma || new PrismaClient();
 if (process.env.NODE_ENV === "development") globalThis.prisma = prisma;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-prisma.$use(async (params: any, next: any) => {
-  return next(params) as void;
-});
+// // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// prisma.$use(async (params: any, next: any) => {
+//   return next(params) as void;
+// });
 
 export default prisma;

@@ -3,3 +3,9 @@ export interface IBreadcumb {
   slug: string;
   id: string;
 }
+
+export enum AUTH_STATUS {
+  LOADING = "loading",
+  AUTHENTICATED = "authenticated",
+  UNAUTHENTICATED = "unauthenticated",
+}
