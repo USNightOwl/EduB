@@ -7,7 +7,7 @@ const MAX_AGE = 1 * 24 * 60 * 60;
 
 const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
-  debug: process.env.NODE_ENV === "development" ? true : false,
+  debug: true,
   session: {
     strategy: "jwt",
     maxAge: MAX_AGE,
