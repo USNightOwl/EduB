@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
+
 import { signIn } from "next-auth/react";
 
 const Oauth2 = () => {
@@ -14,7 +15,6 @@ const Oauth2 = () => {
   const loginWithFacebook = () => {
     signIn("facebook", { callbackUrl: "/" });
   };
-
   return (
     <div className="mt-2 flex flex-col items-center justify-center">
       <Typography>{t("Global.with")}</Typography>
