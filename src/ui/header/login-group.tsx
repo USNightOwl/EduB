@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import PersonIcon from "@mui/icons-material/Person";
 import LoginIcon from "@mui/icons-material/Login";
 import { useTranslations } from "next-intl";
+import CircularProgress from "@mui/material/CircularProgress";
 import ChangeLanguage from "../button/change-language";
 import UserMenu from "./user-menu";
 import { Link } from "@/navigation";
@@ -24,7 +25,7 @@ const LoginGroup = ({ handleClose }: { handleClose?: () => void }) => {
         <ChangeLanguage />
       </div>
       {status === AUTH_STATUS.LOADING ? (
-        <div></div>
+        <CircularProgress />
       ) : (
         <React.Fragment>
           {status === "authenticated" ? (

@@ -11,11 +11,15 @@ const Oauth2 = () => {
     signIn("google", { callbackUrl: "/" });
   };
 
+  const loginWithFacebook = () => {
+    signIn("facebook", { callbackUrl: "/" });
+  };
+
   return (
     <div className="mt-2 flex flex-col items-center justify-center">
       <Typography>{t("Global.with")}</Typography>
       <div className="flex gap-3 items-center my-2">
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={loginWithFacebook}>
           <Image src="/assets/facebook.png" width={40} height={40} alt="facebook" />
         </div>
         <div className="cursor-pointer" onClick={loginWithGoogle}>

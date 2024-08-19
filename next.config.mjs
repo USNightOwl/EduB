@@ -12,6 +12,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "platform-lookaside.fbsbx.com",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
         hostname: "cdn-icons-png.flaticon.com",
         pathname: "**",
       },
