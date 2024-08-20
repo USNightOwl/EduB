@@ -62,6 +62,14 @@
       "re-password": "Nhập lại mật khẩu",
       "not-a-member": "Không là thành viên?",
       "have-account": "Đã có tài khoản?"
+    },
+    "Errors": {
+      "name": "Tên phải ít nhất 5 kí tự",
+      "emai-required": "Email là bắt buộc",
+      "email-valid": "Email không hợp lệ",
+      "password": "Mật khẩu phải ít nhất 8 kí tự",
+      "rePassword": "Xác nhận mật khẩu phải ít nhất 8 kí tự",
+      "rePassword-match": "Xác nhận mật khẩu không khớp"
     }
   }
 }

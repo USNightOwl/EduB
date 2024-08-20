@@ -62,6 +62,14 @@
       "re-password": "Re-password",
       "not-a-member": "Not a member?",
       "have-account": "Already have an account?"
+    },
+    "Errors": {
+      "name": "Name must be at least 5 characters",
+      "emai-required": "Email is required",
+      "email-valid": "Invalid email",
+      "password": "Password must be at least 8 characters",
+      "rePassword": "Confirm password must be at least 8 characters",
+      "rePassword-match": "Confirm passwords do not match"
     }
   }
 }
