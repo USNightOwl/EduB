@@ -2,6 +2,7 @@
 import { Button, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useTranslations } from "next-intl";
+import toast from "react-hot-toast";
 import Oauth2 from "../oauth2";
 import InputField from "@/ui/common/input-field";
 import PasswordField from "@/ui/common/password-field";
@@ -22,7 +23,7 @@ const RegisterForm = () => {
   const [errors, setErrors] = React.useState<ErrorProps[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -46,6 +47,29 @@ const RegisterForm = () => {
 
       setErrors([]);
       // all good, now
+      try {
+        const res = await fetch("/api/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            rePassword,
+          }),
+        });
+
+        const json = await res.json();
+        if (json.message === "success") {
+          toast.success(t("Auth.register-success"));
+        } else {
+          toast.error(json.message as string);
+        }
+      } catch (error) {
+        toast.error(t("Auth.register-failure"));
+      }
     } catch (error) {
     } finally {
       setIsLoading(false);

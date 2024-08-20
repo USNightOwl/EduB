@@ -10,17 +10,18 @@ datasource db {
 }
 
 model User {
-  id              String          @id @default(auto()) @map("_id") @db.ObjectId
-  name            String?
-  email           String?          @unique
-  password        String?
-  image           String?
-  emailVerified   DateTime?
-  role            Role            @default(USER)
-  OTP             String?
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-  accounts        Account[]
+  id                  String          @id @default(auto()) @map("_id") @db.ObjectId
+  name                String?
+  email               String?         @unique
+  password            String?
+  image               String?
+  emailVerified       DateTime?
+  emailVerifiedByUser Boolean         @default(true)
+  role                Role            @default(USER)
+  OTP                 String?
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  accounts            Account[]
 }
 
 model Account {

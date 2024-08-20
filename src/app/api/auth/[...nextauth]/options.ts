@@ -1,8 +1,10 @@
 import { type AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prismadb";
+import { verificationEmail } from "@/models/user";
 const MAX_AGE = 1 * 24 * 60 * 60;
 
 const authOptions: AuthOptions = {
@@ -27,6 +29,20 @@ const authOptions: AuthOptions = {
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
       allowDangerousEmailAccountLinking: true,
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
+      },
+      async authorize(credentials) {
+        return {
+          id: "",
+          email: "",
+          password: "",
+        };
+      },
     }),
   ],
   callbacks: {

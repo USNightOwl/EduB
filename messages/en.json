@@ -69,7 +69,9 @@
       "email-valid": "Invalid email",
       "password": "Password must be at least 8 characters",
       "rePassword": "Confirm password must be at least 8 characters",
-      "rePassword-match": "Confirm passwords do not match"
-    }
+      "rePassword-match": "Confirm password do not match"
+    },
+    "register-success": "Registered successfully",
+    "register-failure": "Registration failed"
   }
 }

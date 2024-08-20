@@ -37,3 +37,15 @@ export const validateEmail = (email: string) => {
   const regex = /[^\s@]+@[^\s@]+\.[^\s@]+/gi;
   return email.match(regex);
 };
+
+export function generateOTP(otpLen = 5) {
+  const digits = "0123456789";
+  const len = digits.length;
+
+  let OTP = "";
+  for (let i = 0; i < otpLen; i++) {
+    OTP += digits[Math.floor(Math.random() * len)];
+  }
+
+  return OTP;
+}
