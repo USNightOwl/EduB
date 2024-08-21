@@ -24,8 +24,10 @@ export async function sendOTPverifyEmail(email: string) {
 
   const user = await prisma.user.findUnique({
     where: { email },
+    select: { emailVerifiedByUser: true },
   });
   if (!user) return { message: "Email not found", status: 400 };
+  if (user.emailVerifiedByUser) return { message: "Email verified", status: 200 };
   await prisma.user.update({
     where: { email },
     data: { OTP: token },

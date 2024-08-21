@@ -97,7 +97,7 @@ const VerifyForm = () => {
     <div className="flex w-[60%] max-md:w-full max-lg:w-[80%] mx-auto py-5 max-sm:py-3">
       <Paper elevation={5} className="p-4 w-full" sx={{ bgcolor: "box.bg", color: "box.text" }}>
         <div className="flex items-center flex-col justify-center">
-          <Typography variant="h4" className="uppercase">
+          <Typography variant="h4" className="uppercase text-center">
             {t("Auth.verify-account")}
           </Typography>
           <Image src={"/assets/check-mark.png"} height={80} width={80} alt="success" />
