@@ -84,5 +84,11 @@
     "verify-failure": "Account authentication failed, please try again",
     "verify-none": "Account is not verified",
     "verify-now": "Verify account now"
+  },
+  "User": {
+    "user-profile": "User profile",
+    "my-learning": "Learning",
+    "my-watchlist": "Watchlist",
+    "account": "Account"
   }
 }

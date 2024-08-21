@@ -84,5 +84,11 @@
     "verify-failure": "Xác thực tài khoản không thành công, hãy thử lại",
     "verify-none": "Tài khoản chưa được xác minh",
     "verify-now": "Xác thực tài khoản ngay"
+  },
+  "User": {
+    "user-profile": "Hồ sơ cá nhân",
+    "my-learning": "Học tập",
+    "my-watchlist": "Theo dõi",
+    "account": "Tài khoản"
   }
 }
