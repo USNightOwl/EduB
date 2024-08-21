@@ -4,7 +4,7 @@ import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prismadb";
-import { verificationEmail } from "@/models/user";
+import { auth, verificationEmail } from "@/models/user";
 const MAX_AGE = 1 * 24 * 60 * 60;
 
 const authOptions: AuthOptions = {
@@ -37,10 +37,21 @@ const authOptions: AuthOptions = {
         password: { label: "password", type: "password" },
       },
       async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Invalid Credentials");
+        }
+
+        const user = await auth(credentials.email, credentials.password);
+
+        if (!user) {
+          throw new Error("Invalid Credentials");
+        }
+
         return {
-          id: "",
-          email: "",
-          password: "",
+          id: user.id,
+          image: user.image,
+          email: user.email,
+          name: user.name,
         };
       },
     }),

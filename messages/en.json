@@ -10,7 +10,8 @@
       }
     },
     "now": "now",
-    "with": "with"
+    "with": "with",
+    "confirm": "Confirm"
   },
   "Course": {
     "course-contents": "course's contents",
@@ -69,9 +70,17 @@
       "email-valid": "Invalid email",
       "password": "Password must be at least 8 characters",
       "rePassword": "Confirm password must be at least 8 characters",
-      "rePassword-match": "Confirm password do not match"
+      "rePassword-match": "Confirm password do not match",
+      "otp-length": "OTP must be 5 numeric characters long"
     },
     "register-success": "Registered successfully",
-    "register-failure": "Registration failed"
+    "register-failure": "Registration failed",
+    "login-success": "Log in successfully",
+    "login-failure": "Login failed",
+    "verify-account": "Verify account",
+    "otp": "OTP Code",
+    "verify-success": "Account has been verified",
+    "verify-failure": "Account authentication failed, please try again",
+    "verify-none": "Account is not verified"
   }
 }

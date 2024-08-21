@@ -10,7 +10,8 @@
       }
     },
     "now": "ngay",
-    "with": "với"
+    "with": "với",
+    "confirm": "Xác thực"
   },
   "Course": {
     "course-contents": "nội dung khóa học",
@@ -69,9 +70,17 @@
       "email-valid": "Email không hợp lệ",
       "password": "Mật khẩu phải ít nhất 8 kí tự",
       "rePassword": "Xác nhận mật khẩu phải ít nhất 8 kí tự",
-      "rePassword-match": "Xác nhận mật khẩu không khớp"
+      "rePassword-match": "Xác nhận mật khẩu không khớp",
+      "otp-length": "OTP phải có độ dài là 5 kí tự số"
     },
     "register-success": "Đăng ký thành công",
-    "register-failure": "Đăng ký thất bại"
+    "register-failure": "Đăng ký thất bại",
+    "login-success": "Đăng nhập thành công",
+    "login-failure": "Đăng nhập thất bại",
+    "verify-account": "Xác thực tài khoản",
+    "otp": "Mã OTP" ,
+    "verify-success": "Tài khoản đã được xác minh",
+    "verify-failure": "Xác thực tài khoản không thành công, hãy thử lại",
+    "verify-none": "Tài khoản chưa được xác minh"
   }
 }

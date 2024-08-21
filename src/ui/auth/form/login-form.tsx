@@ -2,19 +2,23 @@
 import { Button, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useTranslations } from "next-intl";
+import toast from "react-hot-toast";
+import { signIn, useSession } from "next-auth/react";
 import Oauth2 from "../oauth2";
 import InputField from "@/ui/common/input-field";
 import PasswordField from "@/ui/common/password-field";
-import { Link } from "@/navigation";
+import { Link, useRouter } from "@/navigation";
 import { loginFormSchema } from "@/schemas/login-form.schema";
 
-interface ErrorProps {
+export interface ErrorProps {
   for: string | number;
   message: string;
 }
 
 const LoginForm = () => {
   const t = useTranslations();
+  const router = useRouter();
+  const session = useSession();
 
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
@@ -22,7 +26,13 @@ const LoginForm = () => {
   const [errors, setErrors] = React.useState<ErrorProps[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  React.useLayoutEffect(() => {
+    if (session?.status === "authenticated") {
+      router.push("/");
+    }
+  }, [session?.status, router]);
+
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -44,6 +54,37 @@ const LoginForm = () => {
 
       setErrors([]);
       // all good, now
+      // check account verified
+      try {
+        const res = await fetch("/api/auth/verify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            OTP: "aaaaa",
+          }),
+        });
+        if (res.status === 200) {
+          // login now
+          console.log("Inside hello");
+          const res = await signIn("credentials", {
+            email,
+            password,
+            redirect: false,
+          });
+
+          if (res?.error) {
+            toast.error(t("Auth.login-failure"));
+          } else {
+            toast.success(t("Auth.login-success"));
+            router.push("/");
+          }
+        } else throw new Error("error");
+      } catch (error) {
+        toast.error(t("Auth.verify-none"));
+      }
     } catch (error) {
     } finally {
       setIsLoading(false);

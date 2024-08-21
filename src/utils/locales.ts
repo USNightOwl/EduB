@@ -16,5 +16,6 @@ export const pathnames = {
   "/": "/",
   "/auth/register": "/auth/register",
   "/auth/login": "/auth/login",
+  "/auth/verify": "/auth/verify",
   "/course/[id]": "/course/[id]",
 };

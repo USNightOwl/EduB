@@ -38,6 +38,11 @@ export const validateEmail = (email: string) => {
   return email.match(regex);
 };
 
+export const validateOTPcode = (otp: string) => {
+  if (otp.length !== 5) return false;
+  return /^\d+$/.test(otp);
+};
+
 export function generateOTP(otpLen = 5) {
   const digits = "0123456789";
   const len = digits.length;

@@ -58,3 +58,35 @@ export async function verificationEmail(email: string) {
 
   return updateEmail;
 }
+
+export async function checkOTPtoVerifyEmail(email: string, OTP: string) {
+  const user = await prisma.user.findUnique({
+    select: { OTP: true, emailVerifiedByUser: true },
+    where: { email },
+  });
+  if (!user) return { message: "Email not exists", status: 400 };
+  if (user.emailVerifiedByUser) return { message: "Email verified", status: 200 };
+  if (user.OTP != OTP) return { message: "OTP doesn't match", status: 400 };
+  // update verification status
+  await verificationEmail(email);
+  return { message: "Account has been verified", status: 200 };
+}
+
+export async function auth(email: string, password: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+
+  if (!user?.password) {
+    throw new Error("Invalid Credentials");
+  }
+
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    throw new Error("Invalid Credentials");
+  }
+
+  return user;
+}
