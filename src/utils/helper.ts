@@ -32,3 +32,25 @@ export function replaceNewLang(pathname: string, newLang: string) {
 }
 
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+export const validateEmail = (email: string) => {
+  const regex = /[^\s@]+@[^\s@]+\.[^\s@]+/gi;
+  return email.match(regex);
+};
+
+export const validateOTPcode = (otp: string) => {
+  if (otp.length !== 5) return false;
+  return /^\d+$/.test(otp);
+};
+
+export function generateOTP(otpLen = 5) {
+  const digits = "0123456789";
+  const len = digits.length;
+
+  let OTP = "";
+  for (let i = 0; i < otpLen; i++) {
+    OTP += digits[Math.floor(Math.random() * len)];
+  }
+
+  return OTP;
+}

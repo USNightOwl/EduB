@@ -49,19 +49,29 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
 interface InputProps {
   title: string;
   placeholder?: string;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  errorMessage?: string;
 }
 
-const InputField = ({ title, placeholder = "" }: InputProps) => {
+const InputField = ({ title, value, setValue, errorMessage, placeholder = "" }: InputProps) => {
   const t = useTranslations();
   return (
     <div className="w-full">
       <label htmlFor={`${title}-input`}>
         <Typography className="text-lg">{t(title)}</Typography>
       </label>
-      <BootstrapInput error={false} id={`${title}-input`} className="w-full" placeholder={placeholder} />
-      {/* <Typography ml={1} className="text-xs text-[#FF0000]">
-        Please not leave this field blank
-      </Typography> */}
+      <BootstrapInput
+        error={errorMessage ? true : false}
+        id={`${title}-input`}
+        className="w-full"
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      {errorMessage && (
+        <Typography className="text-[0.8rem] font-[600] text-[#FF0000]">{t(`Auth.Errors.${errorMessage}`)}</Typography>
+      )}
     </div>
   );
 };

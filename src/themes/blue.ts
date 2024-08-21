@@ -4,10 +4,6 @@ const blue = {
       main: "#1976d2",
       light: "#427D9D",
     },
-    secondary: {
-      main: "#427D9D",
-      light: "#DDF2FD",
-    },
     placeholder: {
       main: "#000000",
     },

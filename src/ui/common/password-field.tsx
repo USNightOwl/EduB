@@ -10,9 +10,12 @@ import { BootstrapInput } from "./input-field";
 interface InputProps {
   title: string;
   placeholder?: string;
+  value: string;
+  errorMessage?: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const PasswordField = ({ title, placeholder = "Type your password" }: InputProps) => {
+const PasswordField = ({ title, value, setValue, errorMessage, placeholder = "Type your password" }: InputProps) => {
   const t = useTranslations();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -28,10 +31,13 @@ const PasswordField = ({ title, placeholder = "Type your password" }: InputProps
         <Typography className="text-lg">{t(title)}</Typography>
       </label>
       <BootstrapInput
+        error={errorMessage ? true : false}
         id={`${title}-input`}
         className="w-full"
         placeholder={placeholder}
         type={showPassword ? "text" : "password"}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -44,6 +50,9 @@ const PasswordField = ({ title, placeholder = "Type your password" }: InputProps
           </InputAdornment>
         }
       />
+      {errorMessage && (
+        <Typography className="text-[0.8rem] font-[600] text-[#FF0000]">{t(`Auth.Errors.${errorMessage}`)}</Typography>
+      )}
     </div>
   );
 };

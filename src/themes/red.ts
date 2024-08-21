@@ -12,10 +12,6 @@ const red = {
       text: "#ffffff",
       bg: "#f44336",
     },
-    secondary: {
-      main: "#427D9D",
-      light: "#DDF2FD",
-    },
     error: {
       main: "#FF0000",
     },
