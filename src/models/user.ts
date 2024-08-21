@@ -25,7 +25,7 @@ export async function sendOTPverifyEmail(email: string) {
   const user = await prisma.user.findUnique({
     where: { email },
   });
-  if (!user) return;
+  if (!user) return { message: "Email not found", status: 400 };
   await prisma.user.update({
     where: { email },
     data: { OTP: token },
@@ -40,9 +40,9 @@ export async function sendOTPverifyEmail(email: string) {
       html: `<h1>Your token: ${token}</h1>`,
     });
     if (error) throw new Error(error.message);
-    return true;
+    return { message: "success", status: 200 };
   } catch (error) {
-    return false;
+    return { message: "Opps! Send email error", status: 400 };
   }
 }
 
@@ -66,6 +66,7 @@ export async function checkOTPtoVerifyEmail(email: string, OTP: string) {
   });
   if (!user) return { message: "Email not exists", status: 400 };
   if (user.emailVerifiedByUser) return { message: "Email verified", status: 200 };
+  if (OTP === "login") return { message: "Email chưa được xác thực", status: 400, code: "123" };
   if (user.OTP != OTP) return { message: "OTP doesn't match", status: 400 };
   // update verification status
   await verificationEmail(email);

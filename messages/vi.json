@@ -62,7 +62,8 @@
       "password": "Mật khẩu",
       "re-password": "Nhập lại mật khẩu",
       "not-a-member": "Không là thành viên?",
-      "have-account": "Đã có tài khoản?"
+      "have-account": "Đã có tài khoản?",
+      "resend-otp": "gửi lại"
     },
     "Errors": {
       "name": "Tên phải ít nhất 5 kí tự",
@@ -81,6 +82,7 @@
     "otp": "Mã OTP" ,
     "verify-success": "Tài khoản đã được xác minh",
     "verify-failure": "Xác thực tài khoản không thành công, hãy thử lại",
-    "verify-none": "Tài khoản chưa được xác minh"
+    "verify-none": "Tài khoản chưa được xác minh",
+    "verify-now": "Xác thực tài khoản ngay"
   }
 }

@@ -25,6 +25,7 @@ const LoginForm = () => {
 
   const [errors, setErrors] = React.useState<ErrorProps[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [showButtonLogin, setShowButtonLogin] = React.useState<boolean>(true);
 
   React.useLayoutEffect(() => {
     if (session?.status === "authenticated") {
@@ -63,12 +64,12 @@ const LoginForm = () => {
           },
           body: JSON.stringify({
             email,
-            OTP: "aaaaa",
+            OTP: "login",
           }),
         });
+        const json = await res.json();
         if (res.status === 200) {
           // login now
-          console.log("Inside hello");
           const res = await signIn("credentials", {
             email,
             password,
@@ -81,7 +82,10 @@ const LoginForm = () => {
             toast.success(t("Auth.login-success"));
             router.push("/");
           }
-        } else throw new Error("error");
+        } else {
+          toast.error(json.message as string);
+          if (json.code === "123") setShowButtonLogin(false);
+        }
       } catch (error) {
         toast.error(t("Auth.verify-none"));
       }
@@ -123,8 +127,23 @@ const LoginForm = () => {
                   {t("Header.signup") + " " + t("Global.now")}
                 </Link>
               </Stack>
-              <Button variant="contained" className="w-full" type="submit" disabled={isLoading}>
+              <Button
+                variant="contained"
+                className="w-full"
+                type="submit"
+                disabled={isLoading}
+                hidden={!showButtonLogin}
+              >
                 {t("Header.login")}
+              </Button>
+              <Button
+                variant="contained"
+                className="w-full"
+                onClick={() => router.push("/auth/verify")}
+                disabled={isLoading}
+                hidden={showButtonLogin}
+              >
+                {t("Auth.verify-now")}
               </Button>
             </Stack>
           </form>

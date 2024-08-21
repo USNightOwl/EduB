@@ -12,10 +12,6 @@ const orange = {
       text: "#ffffff",
       bg: "#EB5B00",
     },
-    secondary: {
-      main: "#427D9D",
-      light: "#DDF2FD",
-    },
     error: {
       main: "#f44336",
     },

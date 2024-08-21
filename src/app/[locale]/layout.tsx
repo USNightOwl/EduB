@@ -18,7 +18,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html lang={locale}>
       <body suppressHydrationWarning={true}>
-        <Toaster position="top-center" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} toastOptions={{ className: "w-fit" }} />
         <GlobalContextProvider>
           <AuthContext>
             <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>

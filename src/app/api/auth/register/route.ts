@@ -16,8 +16,8 @@ export async function POST(request: Request) {
     }
 
     const user = await createUser(name as string, email as string, password as string);
-    const isSendOTP = await sendOTPverifyEmail(email as string);
-    if (!isSendOTP) return NextResponse.json({ message: "Opps! Send email error" }, { status: 400 });
+    const sendOTP = await sendOTPverifyEmail(email as string);
+    if (sendOTP.status === 400) return NextResponse.json({ message: sendOTP.message }, { status: 400 });
 
     return NextResponse.json({ message: "success", data: user });
   } catch (error) {

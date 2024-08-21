@@ -62,7 +62,8 @@
       "password": "Password",
       "re-password": "Re-password",
       "not-a-member": "Not a member?",
-      "have-account": "Already have an account?"
+      "have-account": "Already have an account?",
+      "resend-otp": "resend"
     },
     "Errors": {
       "name": "Name must be at least 5 characters",
@@ -81,6 +82,7 @@
     "otp": "OTP Code",
     "verify-success": "Account has been verified",
     "verify-failure": "Account authentication failed, please try again",
-    "verify-none": "Account is not verified"
+    "verify-none": "Account is not verified",
+    "verify-now": "Verify account now"
   }
 }

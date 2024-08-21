@@ -11,6 +11,7 @@ import { type ErrorProps } from "./login-form";
 import InputField from "@/ui/common/input-field";
 import { verifyFormSchema } from "@/schemas/verify-form.schema";
 import { useRouter } from "@/navigation";
+import { cn } from "@/lib/utils";
 
 const VerifyForm = () => {
   const t = useTranslations();
@@ -71,6 +72,27 @@ const VerifyForm = () => {
     }
   };
 
+  const handleResendOTP = async () => {
+    if (!email) return toast.error("Missing email");
+    try {
+      const res = await fetch("/api/auth/resend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      });
+      const json = await res.json();
+      if (res.status === 200) {
+        toast.success(json.message as string);
+      } else toast.error(json.message as string);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex w-[60%] max-md:w-full max-lg:w-[80%] mx-auto py-5 max-sm:py-3">
       <Paper elevation={5} className="p-4 w-full" sx={{ bgcolor: "box.bg", color: "box.text" }}>
@@ -90,15 +112,25 @@ const VerifyForm = () => {
               setValue={setEmail}
               errorMessage={errors.find((error) => error.for === "email")?.message}
             />
-            <InputField
-              title="Auth.otp"
-              placeholder="Eg. 12345"
-              value={OTP}
-              setValue={setOTP}
-              errorMessage={errors.find((error) => error.for === "OTP")?.message}
-            />
+            <div
+              className={cn(
+                "flex gap-2 items-end w-full",
+                errors.find((error) => error.for === "OTP")?.message && "items-center",
+              )}
+            >
+              <InputField
+                title="Auth.otp"
+                placeholder="Eg. 12345"
+                value={OTP}
+                setValue={setOTP}
+                errorMessage={errors.find((error) => error.for === "OTP")?.message}
+              />
+              <Button variant="contained" className="w-fit text-nowrap" onClick={handleResendOTP}>
+                {t("Auth.Form.resend-otp")}
+              </Button>
+            </div>
             <Stack direction="column" className="w-full" spacing={1} mt={1}>
-              <Button variant="contained" className="w-full" type="submit" disabled={isLoading}>
+              <Button variant="contained" color="secondary" className="w-full" type="submit" disabled={isLoading}>
                 {t("Global.confirm")}
               </Button>
             </Stack>
