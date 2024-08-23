@@ -106,6 +106,7 @@ const VerifyForm = () => {
             onSubmit={onSubmit}
           >
             <InputField
+              disabled={isLoading}
               title="Auth.Form.email"
               placeholder="Eg. email@domain.com"
               value={email}
@@ -119,6 +120,7 @@ const VerifyForm = () => {
               )}
             >
               <InputField
+                disabled={isLoading}
                 title="Auth.otp"
                 placeholder="Eg. 12345"
                 value={OTP}

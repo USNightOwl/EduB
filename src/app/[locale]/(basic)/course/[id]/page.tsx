@@ -11,7 +11,7 @@ import RelevantCourse from "@/ui/course/relevant-course";
 export const metadata: Metadata = {
   title: "EduB - Course React Native - The Practical Guide [2023]",
   description: "Choose your course, master your future",
-  icons: "/logo.svg",
+  icons: "/logo.png",
 };
 
 const listBread: IBreadcumb[] = [

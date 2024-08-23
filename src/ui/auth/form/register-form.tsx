@@ -96,6 +96,7 @@ const RegisterForm = () => {
             onSubmit={onSubmit}
           >
             <InputField
+              disabled={isLoading}
               title="Auth.Form.fullname"
               placeholder="Eg. Brad Traversy"
               value={name}
@@ -103,6 +104,7 @@ const RegisterForm = () => {
               errorMessage={errors.find((error) => error.for === "name")?.message}
             />
             <InputField
+              disabled={isLoading}
               title="Auth.Form.email"
               placeholder="Eg. email@domain.com"
               value={email}
@@ -110,12 +112,14 @@ const RegisterForm = () => {
               errorMessage={errors.find((error) => error.for === "email")?.message}
             />
             <PasswordField
+              disabled={isLoading}
               title="Auth.Form.password"
               value={password}
               setValue={setPassword}
               errorMessage={errors.find((error) => error.for === "password")?.message}
             />
             <PasswordField
+              disabled={isLoading}
               title="Auth.Form.re-password"
               value={rePassword}
               setValue={setRePassword}

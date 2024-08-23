@@ -14,7 +14,7 @@ const LoginGroup = ({ handleClose }: { handleClose?: () => void }) => {
   const { data: session, status } = useSession();
   const t = useTranslations("Header");
   const handleClick = () => {
-    if (handleClose) {
+    if (typeof handleClose === "function") {
       handleClose();
     }
   };
@@ -29,7 +29,7 @@ const LoginGroup = ({ handleClose }: { handleClose?: () => void }) => {
       ) : (
         <React.Fragment>
           {status === "authenticated" ? (
-            <UserMenu auth={session} />
+            <UserMenu auth={session} handleCloseRoot={handleClose} />
           ) : (
             <React.Fragment>
               <Button variant="text" className="gap-1 text-nowrap">

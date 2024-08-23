@@ -12,10 +12,18 @@ interface InputProps {
   placeholder?: string;
   value: string;
   errorMessage?: string;
+  disabled?: boolean;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const PasswordField = ({ title, value, setValue, errorMessage, placeholder = "Type your password" }: InputProps) => {
+const PasswordField = ({
+  title,
+  value,
+  setValue,
+  errorMessage,
+  placeholder = "Type your password",
+  disabled = false,
+}: InputProps) => {
   const t = useTranslations();
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -37,6 +45,7 @@ const PasswordField = ({ title, value, setValue, errorMessage, placeholder = "Ty
         placeholder={placeholder}
         type={showPassword ? "text" : "password"}
         value={value}
+        disabled={disabled}
         onChange={(e) => setValue(e.target.value)}
         endAdornment={
           <InputAdornment position="end">

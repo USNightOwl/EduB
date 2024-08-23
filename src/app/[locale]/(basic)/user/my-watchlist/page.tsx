@@ -2,10 +2,9 @@ import Container from "@mui/material/Container";
 import React from "react";
 import { type Metadata } from "next";
 import SideBar from "@/ui/user/side-bar";
-import AccountSetting from "@/ui/user/right-side/account-setting";
 
 export const metadata: Metadata = {
-  title: "EduB - User - Choose your course, master your future",
+  title: "EduB - My watchlist - Choose your course, master your future",
   description: "Choose your course, master your future",
   icons: "/logo.png",
 };
@@ -18,7 +17,7 @@ const Page = () => {
       className="flex gap-2 relative w-full p-0 overflow-x-hidden"
     >
       <SideBar>
-        <AccountSetting />
+        <div>My watchlist Page</div>
       </SideBar>
     </Container>
   );

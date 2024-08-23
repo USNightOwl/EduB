@@ -9,9 +9,15 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Image from "next/image";
 import { signOut } from "next-auth/react";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+import SchoolIcon from "@mui/icons-material/School";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import { Link } from "@/navigation";
+import { type TPathname } from "@/utils/locales";
 
 interface Props {
   auth: Session;
+  handleCloseRoot?: () => void;
 }
 
 const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -33,8 +39,26 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-const UserMenu = ({ auth }: Props) => {
-  const t = useTranslations("Header");
+const listNavigation = [
+  {
+    title: "User.my-learning",
+    icon: <SchoolIcon />,
+    url: "/user/my-learning",
+  },
+  {
+    title: "User.my-watchlist",
+    icon: <BookmarkIcon />,
+    url: "/user/my-watchlist",
+  },
+  {
+    title: "User.account",
+    icon: <ManageAccountsIcon />,
+    url: "/user/account",
+  },
+];
+
+const UserMenu = ({ auth, handleCloseRoot }: Props) => {
+  const t = useTranslations();
   const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
@@ -43,6 +67,13 @@ const UserMenu = ({ auth }: Props) => {
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const handleCloseAll = () => {
+    handleClose();
+    if (typeof handleCloseRoot === "function") {
+      handleCloseRoot();
+    }
   };
 
   return (
@@ -61,9 +92,22 @@ const UserMenu = ({ auth }: Props) => {
               )}
               <Typography className="text-base font-bold">{auth?.user?.name}</Typography>
               <Typography className="text-base text-slate-400 mt-1">{auth?.user?.email}</Typography>
-              <div className="w-full border-b py-1 mb-2"></div>
+              <div className="flex flex-col mt-4 w-full">
+                {listNavigation.map((nav, idx) => (
+                  <Link
+                    key={idx}
+                    href={{ pathname: nav.url as TPathname }}
+                    onClick={handleCloseAll}
+                    className="flex items-center hover:text-amber-500 transition-colors cursor-pointer w-full gap-3 justify-start border-t py-2 px-4"
+                  >
+                    {nav.icon}
+                    <Typography>{t(nav.title)}</Typography>
+                  </Link>
+                ))}
+              </div>
+              <div className="w-full border-b mb-2"></div>
               <Button startIcon={<LogoutIcon />} color="error" onClick={() => signOut()}>
-                {t("logout")}
+                {t("Header.logout")}
               </Button>
             </div>
           }

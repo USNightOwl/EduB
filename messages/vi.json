@@ -11,7 +11,10 @@
     },
     "now": "ngay",
     "with": "với",
-    "confirm": "Xác thực"
+    "confirm": "Xác thực",
+    "change": "Thay đổi",
+    "save": "Lưu",
+    "close": "Đóng"
   },
   "Course": {
     "course-contents": "nội dung khóa học",
@@ -63,7 +66,12 @@
       "re-password": "Nhập lại mật khẩu",
       "not-a-member": "Không là thành viên?",
       "have-account": "Đã có tài khoản?",
-      "resend-otp": "gửi lại"
+      "resend-otp": "gửi lại",
+
+      "current-name": "Tên hiện tại",
+      "new-name": "Tên mới",
+      "current-password": "Mật khẩu hiện tại",
+      "new-password": "Mật khẩu mới"
     },
     "Errors": {
       "name": "Tên phải ít nhất 5 kí tự",
@@ -79,7 +87,7 @@
     "login-success": "Đăng nhập thành công",
     "login-failure": "Đăng nhập thất bại",
     "verify-account": "Xác thực tài khoản",
-    "otp": "Mã OTP" ,
+    "otp": "Mã OTP",
     "verify-success": "Tài khoản đã được xác minh",
     "verify-failure": "Xác thực tài khoản không thành công, hãy thử lại",
     "verify-none": "Tài khoản chưa được xác minh",
@@ -89,6 +97,7 @@
     "user-profile": "Hồ sơ cá nhân",
     "my-learning": "Học tập",
     "my-watchlist": "Theo dõi",
-    "account": "Tài khoản"
+    "account": "Tài khoản",
+    "account-setting": "Cài đặt tài khoản"
   }
 }

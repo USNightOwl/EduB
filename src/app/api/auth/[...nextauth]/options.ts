@@ -4,7 +4,7 @@ import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prismadb";
-import { auth, verificationEmail } from "@/models/user";
+import { auth } from "@/models/user";
 const MAX_AGE = 1 * 24 * 60 * 60;
 
 const authOptions: AuthOptions = {
@@ -52,18 +52,36 @@ const authOptions: AuthOptions = {
           image: user.image,
           email: user.email,
           name: user.name,
+          role: user.role,
         };
       },
     }),
   ],
   callbacks: {
+    async signIn({ user, account }) {
+      return true;
+    },
+    async jwt({ token, user, trigger, session }) {
+      if (trigger === "update") {
+        return { ...token, user: { ...token.user, ...session.user } };
+      }
+      if (user) {
+        return {
+          ...token,
+          user: {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            image: user.image,
+          },
+        };
+      }
+      return token;
+    },
     async session({ session, token }) {
       if (token) {
-        session.user = {
-          image: token.picture,
-          email: token.email,
-          name: token.name,
-        };
+        session.user = token.user;
       }
       return session;
     },

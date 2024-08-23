@@ -11,7 +11,10 @@
     },
     "now": "now",
     "with": "with",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "change": "Change",
+    "save": "Save",
+    "close": "Close"
   },
   "Course": {
     "course-contents": "course's contents",
@@ -63,7 +66,12 @@
       "re-password": "Re-password",
       "not-a-member": "Not a member?",
       "have-account": "Already have an account?",
-      "resend-otp": "resend"
+      "resend-otp": "resend",
+
+      "current-name": "Current name",
+      "new-name": "New name",
+      "current-password": "Current password",
+      "new-password": "New password"
     },
     "Errors": {
       "name": "Name must be at least 5 characters",
@@ -89,6 +97,7 @@
     "user-profile": "User profile",
     "my-learning": "Learning",
     "my-watchlist": "Watchlist",
-    "account": "Account"
+    "account": "Account",
+    "account-setting": "Account Setting"
   }
 }

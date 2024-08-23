@@ -7,7 +7,7 @@ import LeftSideBar from "./left-side-bar";
 import RightSideBar from "./right-side-bar";
 import { cn } from "@/lib/utils";
 
-const SideBar = () => {
+const SideBar = ({ children }: { children: React.ReactNode }) => {
   const [openSideLeft, setOpenSideLeft] = React.useState<boolean>(true);
 
   return (
@@ -35,7 +35,9 @@ const SideBar = () => {
               <FormatIndentIncreaseIcon fontSize="inherit" />
             )}
           </IconButton>
-          <RightSideBar openSideLeft={openSideLeft} />
+
+          {/* change content by page here */}
+          <RightSideBar openSideLeft={openSideLeft}>{children}</RightSideBar>
         </Container>
       </div>
     </div>

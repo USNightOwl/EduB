@@ -112,12 +112,14 @@ const LoginForm = () => {
               placeholder="Eg. email@domain.com"
               value={email}
               setValue={setEmail}
+              disabled={isLoading}
               errorMessage={errors.find((error) => error.for === "email")?.message}
             />
             <PasswordField
               title="Auth.Form.password"
               value={password}
               setValue={setPassword}
+              disabled={isLoading}
               errorMessage={errors.find((error) => error.for === "password")?.message}
             />
             <Stack direction="column" className="w-full" spacing={1} mt={1}>

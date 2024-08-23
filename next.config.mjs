@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "robohash.org",
+        hostname: "avatar.iran.liara.run",
         pathname: "**",
       },
       {

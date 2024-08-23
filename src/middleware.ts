@@ -9,7 +9,7 @@ const intlMiddleware = createMiddleware({
 });
 
 const authMiddleware = withAuth(
-  function onSuccess(req) {
+  function middleware(req) {
     return intlMiddleware(req);
   },
   {
@@ -17,7 +17,7 @@ const authMiddleware = withAuth(
       authorized: ({ token }) => token != null,
     },
     pages: {
-      signIn: "/",
+      signIn: "/en/auth/login",
     },
   },
 );
@@ -41,5 +41,5 @@ export default function middleware(req: NextRequest) {
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ["/", `/(en|vi)/:path*`],
+  matcher: ["/api/:path*", "/(en|vi)/:path*"],
 };

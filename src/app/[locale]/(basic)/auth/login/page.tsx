@@ -6,7 +6,7 @@ import LoginForm from "@/ui/auth/form/login-form";
 export const metadata: Metadata = {
   title: "EduB - Login - Choose your course, master your future",
   description: "Choose your course, master your future",
-  icons: "/logo.svg",
+  icons: "/logo.png",
 };
 
 const Page = () => {

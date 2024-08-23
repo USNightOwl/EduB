@@ -18,4 +18,9 @@ export const pathnames = {
   "/auth/login": "/auth/login",
   "/auth/verify": "/auth/verify",
   "/course/[id]": "/course/[id]",
+  "/user/account": "/user/account",
+  "/user/my-learning": "/user/my-learning",
+  "/user/my-watchlist": "/user/my-watchlist",
 };
+
+export type TPathname = "/user/account" | "/user/my-learning" | "/user/my-watchlist";

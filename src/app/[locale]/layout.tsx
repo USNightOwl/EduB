@@ -8,7 +8,7 @@ import AuthContext from "@/context/AuthContext";
 export const metadata: Metadata = {
   title: "EduB - Choose your course, master your future",
   description: "Choose your course, master your future",
-  icons: "/logo.svg",
+  icons: "/logo.png",
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

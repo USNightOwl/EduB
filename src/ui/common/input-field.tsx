@@ -44,17 +44,21 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
     borderColor: theme.palette.error.main,
     color: theme.palette.error.main,
   },
+  "& .MuiInputBase-input.Mui-disabled": {
+    WebkitTextFillColor: alpha(theme.palette.primary.main, 0.6),
+  },
 }));
 
 interface InputProps {
   title: string;
   placeholder?: string;
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  value?: string;
+  setValue?: React.Dispatch<React.SetStateAction<string>>;
   errorMessage?: string;
+  disabled?: boolean;
 }
 
-const InputField = ({ title, value, setValue, errorMessage, placeholder = "" }: InputProps) => {
+const InputField = ({ title, value, setValue, errorMessage, placeholder = "", disabled = false }: InputProps) => {
   const t = useTranslations();
   return (
     <div className="w-full">
@@ -62,12 +66,16 @@ const InputField = ({ title, value, setValue, errorMessage, placeholder = "" }: 
         <Typography className="text-lg">{t(title)}</Typography>
       </label>
       <BootstrapInput
+        disabled={disabled}
         error={errorMessage ? true : false}
         id={`${title}-input`}
         className="w-full"
         placeholder={placeholder}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => {
+          if (setValue) setValue(e.target.value);
+        }}
+        endAdornment={<></>}
       />
       {errorMessage && (
         <Typography className="text-[0.8rem] font-[600] text-[#FF0000]">{t(`Auth.Errors.${errorMessage}`)}</Typography>

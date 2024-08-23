@@ -26,7 +26,7 @@ const Cate = ({ children, title, slug }: ICate) => {
   }, [cateOpenSlug]);
 
   return (
-    <>
+    <React.Fragment>
       <ListItemButton onClick={handleClick} className="text-slate-700">
         <ListItemText primary={title} className="capitalize text-nowrap" />
         {open && cateOpenSlug === slug ? <ExpandLess /> : <ExpandMore />}
@@ -36,7 +36,7 @@ const Cate = ({ children, title, slug }: ICate) => {
           {children}
         </List>
       </Collapse>
-    </>
+    </React.Fragment>
   );
 };
 

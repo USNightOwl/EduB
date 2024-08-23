@@ -3,15 +3,19 @@ import { Resend } from "resend";
 import prisma from "@/lib/prismadb";
 import { generateOTP } from "@/utils/helper";
 
+export const UserNotFound = new Error("User does not exist");
+export const InvalidCredentials = new Error("Invalid Credentials");
+export const PhoneAlreadyExists = new Error("Phone number already exists");
+export const Unauthorized = new Error("Unauthorized");
+
 export async function createUser(name: string, email: string, password: string) {
   const hashedPassword = await bcrypt.hash(password, 10);
-  const hashedEmail = await bcrypt.hash(email, 10);
   const user = await prisma.user.create({
     data: {
       name,
       email,
       password: hashedPassword,
-      image: `https://robohash.org/${hashedEmail}.png?set=set4`,
+      image: `https://avatar.iran.liara.run/username?username=${name}`,
       emailVerifiedByUser: false,
     },
   });
@@ -92,4 +96,50 @@ export async function auth(email: string, password: string) {
   }
 
   return user;
+}
+
+export async function updateName(email: string, name: string) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
+  if (!user) throw new Error("Invalid Credentials");
+  const updateName = await prisma.user.update({
+    where: { email },
+    data: { name },
+  });
+
+  return updateName;
+}
+
+export async function changePassword(email: string, currentPassword: string, newPassword: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      email,
+    },
+  });
+
+  if (!user) {
+    throw UserNotFound;
+  }
+
+  let match = true;
+  if (user.password) {
+    match = await bcrypt.compare(currentPassword, user.password);
+  }
+
+  if (!match) {
+    throw InvalidCredentials;
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+  const res = await prisma.user.update({
+    where: {
+      email,
+    },
+    data: {
+      password: hashedPassword,
+    },
+  });
+
+  return res;
 }

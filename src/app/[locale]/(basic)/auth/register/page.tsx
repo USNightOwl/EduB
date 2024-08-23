@@ -6,7 +6,7 @@ import RegisterForm from "@/ui/auth/form/register-form";
 export const metadata: Metadata = {
   title: "EduB - Register - Choose your course, master your future",
   description: "Choose your course, master your future",
-  icons: "/logo.svg",
+  icons: "/logo.png",
 };
 
 const Page = () => {
