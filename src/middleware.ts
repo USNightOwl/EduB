@@ -17,7 +17,7 @@ const authMiddleware = withAuth(
       authorized: ({ token }) => token != null,
     },
     pages: {
-      signIn: "/en/auth/login",
+      signIn: "/",
     },
   },
 );
@@ -41,5 +41,5 @@ export default function middleware(req: NextRequest) {
 
 export const config = {
   // Match only internationalized pathnames
-  matcher: ["/api/:path*", "/(en|vi)/:path*"],
+  matcher: ["/", "/api/:path*", "/(en|vi)/:path*"],
 };
