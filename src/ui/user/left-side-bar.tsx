@@ -29,7 +29,7 @@ const LeftSideBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="text-center md:pb-4">
+    <div className="py-1 md:py-2 text-center md:pb-4">
       <Typography variant="h4" className="pb-2 md:pb-4 px-1">
         {t("User.user-profile")}
       </Typography>
