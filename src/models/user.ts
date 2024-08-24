@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-import { Resend } from "resend";
 import prisma from "@/lib/prismadb";
 import { generateOTP } from "@/utils/helper";
+import { sendMail } from "@/lib/send-mail";
 
 export const UserNotFound = new Error("User does not exist");
 export const InvalidCredentials = new Error("Invalid Credentials");
@@ -37,17 +37,10 @@ export async function sendOTPverifyEmail(email: string) {
     data: { OTP: token },
   });
   // send OTP to email
-  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
-    const { error } = await resend.emails.send({
-      from: "EduB <onboarding@resend.dev>",
-      to: [email],
-      subject: "OTP verify account EduB",
-      html: `<h1>Your token: ${token}</h1>`,
-    });
-    if (error) throw new Error(error.message);
+    await sendMail({ email, text: token });
     return { message: "success", status: 200 };
-  } catch (error) {
+  } catch (err) {
     return { message: "Opps! Send email error", status: 400 };
   }
 }
