@@ -20,7 +20,7 @@ const SideBar = ({ LeftSide, RightSide }: Props) => {
         !openSideLeft && "max-md:-translate-x-0 -translate-x-[25%] max-lg:-translate-x-[34%]",
       )}
     >
-      <Box className="w-[25%] max-lg:w-[34%] py-1 md:py-2 max-md:w-full" sx={{ bgcolor: "box.bg", color: "box.text" }}>
+      <Box className="w-[25%] max-lg:w-[34%] max-md:w-full" sx={{ bgcolor: "box.bg", color: "box.text" }}>
         {LeftSide}
       </Box>
 

@@ -12,6 +12,8 @@ import ClickAwayListener from "@mui/material/ClickAwayListener";
 import SchoolIcon from "@mui/icons-material/School";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import LocalLibraryOutlinedIcon from "@mui/icons-material/LocalLibraryOutlined";
+import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import { Link } from "@/navigation";
 import { type TPathname } from "@/utils/locales";
 
@@ -44,16 +46,36 @@ const listNavigation = [
     title: "User.my-learning",
     icon: <SchoolIcon />,
     url: "/user/my-learning",
+    isAD: true,
+    isUser: true,
   },
   {
     title: "User.my-watchlist",
     icon: <BookmarkIcon />,
     url: "/user/my-watchlist",
+    isAD: true,
+    isUser: true,
   },
   {
     title: "User.account",
     icon: <ManageAccountsIcon />,
     url: "/user/account",
+    isAD: false,
+    isUser: true,
+  },
+  {
+    title: "User.account",
+    icon: <AssignmentIndOutlinedIcon />,
+    url: "/instructor/profile",
+    isAD: true,
+    isUser: false,
+  },
+  {
+    title: "User.course",
+    icon: <LocalLibraryOutlinedIcon />,
+    url: "/instructor/course",
+    isAD: true,
+    isUser: false,
   },
 ];
 
@@ -96,17 +118,21 @@ const UserMenu = ({ auth, handleCloseRoot }: Props) => {
               )}
               <Typography className="text-base text-slate-400 mt-1">{auth?.user?.email}</Typography>
               <div className="flex flex-col mt-4 w-full">
-                {listNavigation.map((nav, idx) => (
-                  <Link
-                    key={idx}
-                    href={{ pathname: nav.url as TPathname }}
-                    onClick={handleCloseAll}
-                    className="flex items-center hover:text-amber-500 transition-colors cursor-pointer w-full gap-3 justify-start border-t py-2 px-4"
-                  >
-                    {nav.icon}
-                    <Typography>{t(nav.title)}</Typography>
-                  </Link>
-                ))}
+                {listNavigation.map((nav, idx) => {
+                  if ((auth?.user?.role === "ADMIN" && nav.isAD) || (auth?.user?.role !== "ADMIN" && nav.isUser))
+                    return (
+                      <Link
+                        key={idx}
+                        href={{ pathname: nav.url as TPathname }}
+                        onClick={handleCloseAll}
+                        className="flex items-center hover:text-amber-500 transition-colors cursor-pointer w-full gap-3 justify-start border-t py-2 px-4"
+                      >
+                        {nav.icon}
+                        <Typography>{t(nav.title)}</Typography>
+                      </Link>
+                    );
+                  return <div key={idx} className="hidden"></div>;
+                })}
               </div>
               <div className="w-full border-b mb-2"></div>
               <Button startIcon={<LogoutIcon />} color="error" onClick={() => signOut()}>

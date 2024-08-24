@@ -6,7 +6,7 @@ import LeftSideBar from "@/ui/instructor/left-side-bar";
 import RightSideBar from "@/ui/instructor/right-side-bar";
 
 export const metadata: Metadata = {
-  title: "EduB - Instructor Profile - Choose your course, master your future",
+  title: "EduB - Add New Course - Choose your course, master your future",
   description: "Choose your course, master your future",
   icons: "/logo.png",
 };

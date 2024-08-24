@@ -98,6 +98,15 @@
     "my-learning": "Học tập",
     "my-watchlist": "Theo dõi",
     "account": "Tài khoản",
+    "account-setting": "Cài đặt tài khoản",
+    "course": "Khóa học"
+  },
+  "Admin": {
+    "management-courses": "Quản lý khóa học",
+    "about-your-course": "Về khóa học",
+    "add-new-course": "Thêm mới",
+    "your-courses": "Các khóa học",
+    "personal-profile": "Hồ sơ cá nhân",
     "account-setting": "Cài đặt tài khoản"
   }
 }

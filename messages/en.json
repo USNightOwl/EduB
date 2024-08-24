@@ -98,6 +98,15 @@
     "my-learning": "Learning",
     "my-watchlist": "Watchlist",
     "account": "Account",
+    "account-setting": "Account Setting",
+    "course": "Course"
+  },
+  "Admin": {
+    "management-courses": "Management Courses",
+    "about-your-course": "About your courses",
+    "add-new-course": "Add new course",
+    "your-courses": "Your courses",
+    "personal-profile": "Personal Profile",
     "account-setting": "Account Setting"
   }
 }
