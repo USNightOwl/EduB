@@ -3,11 +3,14 @@ import React from "react";
 import { Box, Container, IconButton } from "@mui/material";
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
-import LeftSideBar from "./left-side-bar";
-import RightSideBar from "./right-side-bar";
 import { cn } from "@/lib/utils";
 
-const SideBar = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  LeftSide: React.ReactNode;
+  RightSide: React.ReactNode;
+}
+
+const SideBar = ({ LeftSide, RightSide }: Props) => {
   const [openSideLeft, setOpenSideLeft] = React.useState<boolean>(true);
 
   return (
@@ -18,7 +21,7 @@ const SideBar = ({ children }: { children: React.ReactNode }) => {
       )}
     >
       <Box className="w-[25%] max-lg:w-[34%] py-1 md:py-2 max-md:w-full" sx={{ bgcolor: "box.bg", color: "box.text" }}>
-        <LeftSideBar />
+        {LeftSide}
       </Box>
 
       {/* right side */}
@@ -37,7 +40,9 @@ const SideBar = ({ children }: { children: React.ReactNode }) => {
           </IconButton>
 
           {/* change content by page here */}
-          <RightSideBar openSideLeft={openSideLeft}>{children}</RightSideBar>
+          <div className={cn("px-1 w-full", !openSideLeft && "w-[134%] max-lg:w-[153%] max-md:w-full")}>
+            {RightSide}
+          </div>
         </Container>
       </div>
     </div>
