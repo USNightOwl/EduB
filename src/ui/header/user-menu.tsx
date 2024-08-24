@@ -91,6 +91,9 @@ const UserMenu = ({ auth, handleCloseRoot }: Props) => {
                 <Image src={auth?.user?.image} alt={"avatar"} height={60} width={60} className="rounded-full" />
               )}
               <Typography className="text-base font-bold">{auth?.user?.name}</Typography>
+              {auth?.user?.role === "ADMIN" && (
+                <Typography className="text-sm text-green-600 font-semibold">{auth?.user?.role}</Typography>
+              )}
               <Typography className="text-base text-slate-400 mt-1">{auth?.user?.email}</Typography>
               <div className="flex flex-col mt-4 w-full">
                 {listNavigation.map((nav, idx) => (

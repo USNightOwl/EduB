@@ -1,7 +1,10 @@
 import createMiddleware from "next-intl/middleware";
 import { withAuth } from "next-auth/middleware";
-import { type NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { locales } from "./utils/locales";
+
+const publicPages = ["/", "/auth/.*", "/course/.*"];
+const adminPages = ["/instructor/.*"];
 
 const intlMiddleware = createMiddleware({
   locales,
@@ -10,6 +13,14 @@ const intlMiddleware = createMiddleware({
 
 const authMiddleware = withAuth(
   function middleware(req) {
+    const adminPathnameRegex = RegExp(
+      `^(/(${locales.join("|")}))?(${adminPages.flatMap((p) => (p === "/" ? ["", "/"] : p)).join("|")})/?$`,
+      "i",
+    );
+    const isAdminPage = adminPathnameRegex.test(req.nextUrl.pathname);
+    if (isAdminPage && req.nextauth.token?.user.role !== "ADMIN") {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
     return intlMiddleware(req);
   },
   {
@@ -21,8 +32,6 @@ const authMiddleware = withAuth(
     },
   },
 );
-
-const publicPages = ["/", "/auth/.*", "/course/.*"];
 
 export default function middleware(req: NextRequest) {
   const publicPathnameRegex = RegExp(
