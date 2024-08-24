@@ -33,7 +33,6 @@ export async function sendMail({ email, text }: { email: string; text: string })
   try {
     const info = await transporter.sendMail(mailOptions);
     console.log("Sent mail:", console.log("Email sent: " + info.response));
-    if (info.rejected) throw new Error("Send mail failed");
   } catch (error) {
     throw new Error("Send mail failed");
   }
