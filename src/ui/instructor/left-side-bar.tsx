@@ -49,7 +49,7 @@ const LeftSideBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="text-center md:pb-4 py-1 md:py-2 bg-[#0c1e35] text-[#b3b8d4]">
+    <div className="text-center md:pb-4 py-1 md:py-2 bg-[#0c1e35] text-[#b3b8d4] h-full">
       <Typography variant="h6" className="font-bold uppercase pb-2 px-1">
         {t("Admin.management-courses")}
       </Typography>

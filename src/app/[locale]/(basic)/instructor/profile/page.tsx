@@ -3,7 +3,7 @@ import React from "react";
 import { type Metadata } from "next";
 import SideBar from "@/ui/user/side-bar";
 import LeftSideBar from "@/ui/instructor/left-side-bar";
-import RightSideBar from "@/ui/instructor/right-side-bar";
+import ChangeProfile from "@/ui/instructor/right-side/change-profile";
 
 export const metadata: Metadata = {
   title: "EduB - Instructor Profile - Choose your course, master your future",
@@ -18,7 +18,7 @@ const Page = () => {
       sx={{ bgcolor: "background.main", color: "primary.main" }}
       className="flex gap-2 relative w-full p-0 overflow-x-hidden"
     >
-      <SideBar LeftSide={<LeftSideBar />} RightSide={<RightSideBar />} />
+      <SideBar LeftSide={<LeftSideBar />} RightSide={<ChangeProfile />} />
     </Container>
   );
 };
