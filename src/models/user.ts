@@ -104,6 +104,27 @@ export async function updateName(email: string, name: string) {
   return updateName;
 }
 
+export async function updateBio(email: string, bio: string) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
+  if (!user) throw new Error("Invalid Credentials");
+  const updateBio = await prisma.user.update({
+    where: { email },
+    data: { Bio: bio },
+  });
+
+  return updateBio;
+}
+
+export async function getBio(email: string) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+  });
+  if (!user) throw new Error("Invalid Credentials");
+  return user.Bio || "";
+}
+
 export async function changePassword(email: string, currentPassword: string, newPassword: string) {
   const user = await prisma.user.findUnique({
     where: {
