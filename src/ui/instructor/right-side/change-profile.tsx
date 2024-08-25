@@ -52,7 +52,7 @@ const ChangeProfile = () => {
       <Typography variant="h5" className="border-b mb-4 font-bold border-slate-500">
         {t("Admin.update-personal-information")}
       </Typography>
-      <div className="flex gap-1 flex-col">
+      <div className="flex gap-1 flex-col mt-3">
         <div className="flex gap-1 items-center px-1 font-semibold">
           <ContactEmergencyIcon />
           <div className="text-lg">{t("Admin.biographic")}</div>

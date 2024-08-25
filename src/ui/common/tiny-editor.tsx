@@ -19,7 +19,7 @@ const TinyEditor = ({ value, setValue, handleSubmit, title, disabled = false }: 
         value={value}
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         onEditorChange={(newValue) => setValue(newValue)}
-        apiKey="kwdua3b2t3la4w6nf8cov26t5s55wdrnykhgjro1drs3l2my"
+        apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API}
         init={{
           plugins:
             "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
