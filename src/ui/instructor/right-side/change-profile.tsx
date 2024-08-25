@@ -22,7 +22,7 @@ const ChangeProfile = () => {
           setValue(json.data as string);
         }
       } catch (error) {}
-      setIsLoading(true);
+      setIsLoading(false);
     }
     getBio();
   }, []);
