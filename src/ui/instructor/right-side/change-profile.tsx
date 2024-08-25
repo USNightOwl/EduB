@@ -15,12 +15,14 @@ const ChangeProfile = () => {
     setValue("");
     async function getBio() {
       try {
+        setIsLoading(true);
         const res = await fetch("/api/auth/update/profile");
         const json = await res.json();
         if (json.message === "success") {
           setValue(json.data as string);
         }
       } catch (error) {}
+      setIsLoading(true);
     }
     getBio();
   }, []);
