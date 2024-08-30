@@ -17,6 +17,17 @@
     "close": "Close"
   },
   "Course": {
+    "course-information": "Course information",
+    "course-title": "Course title",
+    "course-brief-description": "Course brief description",
+    "detail-destination": "Detail destination",
+    "category": "Category",
+    "topic": "Topic",
+    "photo": "Photo",
+    "price": "Price",
+    "discount-percent": "Discount percent",
+    "curriculum": "Curriculum",
+
     "course-contents": "course's contents",
     "total-lecture": "Total lecture: ",
     "total-length": "Total length: ",
@@ -31,6 +42,15 @@
       "buy-now": "buy now",
       "refund": "Ensuring refund in 30 days",
       "lifetime": "Full lifetime access"
+    },
+    "New": {
+      "chapter": "Chapter",
+      "chapter-name": "Chapter Name",
+      "add-more-chapter": "Add more chapter",
+      "lecture": "Lecture",
+      "lecture-name": "Lecture Name",
+      "add-more-lecture": "Add more lecture",
+      "complete-the-course-creation-process": "Complete the course creation process"
     },
     "relevant-course": "Relevant Course"
   },

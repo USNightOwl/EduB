@@ -17,6 +17,17 @@
     "close": "Đóng"
   },
   "Course": {
+    "course-information": "Thông tin khóa học",
+    "course-title": "Tên khóa học",
+    "course-brief-description": "Mô tả ngắn gọn",
+    "detail-destination": "Mô tả chi tiết",
+    "category": "Thể loại",
+    "topic": "Chủ đề",
+    "photo": "Ảnh",
+    "price": "giá",
+    "discount-percent": "Phần trăm giảm giá",
+    "curriculum": "Chương trình giảng dạy",
+
     "course-contents": "nội dung khóa học",
     "total-lecture": "Tổng số bài học: ",
     "total-length": "Tổng thời gian học: ",
@@ -31,6 +42,15 @@
       "buy-now": "Mua ngay",
       "refund": "Đảm bảo hoàn tiền trong 30 ngày",
       "lifetime": "Truy cập trọn đời"
+    },
+    "New": {
+      "chapter": "Chương",
+      "chapter-name": "Tên chương",
+      "add-more-chapter": "Thêm chương",
+      "lecture": "Bài giảng",
+      "lecture-name": "Tên bài giảng",
+      "add-more-lecture": "Thêm bài giảng",
+      "complete-the-course-creation-process": "Hoàn tất quá trình tạo khóa học"
     },
     "relevant-course": "Khóa học liên quan"
   },

@@ -10,3 +10,16 @@ export interface ICourseContent {
 export interface ICourse extends ICourseContent {
   thumbnail: string; // link image
 }
+
+export interface ILecture {
+  lectureId: number;
+  lectureName: string;
+  urlVideo: string;
+  preview: boolean;
+}
+
+export interface IChapter {
+  chapterId: number;
+  chapterName: string;
+  lecture: ILecture[];
+}
