@@ -14,7 +14,8 @@
     "confirm": "Confirm",
     "change": "Change",
     "save": "Save",
-    "close": "Close"
+    "close": "Close",
+    "photo": "Photo"
   },
   "Course": {
     "course-information": "Course information",

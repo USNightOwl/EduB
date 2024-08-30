@@ -8,6 +8,7 @@ import TinyEditor from "@/ui/common/tiny-editor";
 import CustomSelect from "@/ui/common/custom-select";
 import ChapterBox from "@/ui/course/new/chapter-box";
 import { type IChapter } from "@/types/course";
+import UploadImage from "@/ui/common/upload-image";
 
 const AddNewCourse = () => {
   const [editor, setEditor] = React.useState<string>("");
@@ -103,8 +104,14 @@ const AddNewCourse = () => {
           <TinyEditor value={editor} setValue={setEditor} />
         </div>
         <div className="flex gap-2 justify-between px-1 flex-wrap">
-          <CustomSelect label={"Category"} />
-          <CustomSelect label={"Topic"} />
+          <CustomSelect label={t("Course.category")} />
+          <CustomSelect label={t("Course.topic")} />
+        </div>
+        <div className="flex flex-col gap-2">
+          <Typography variant="h5" className="font-bold">
+            {t("Global.photo")}
+          </Typography>
+          <UploadImage />
         </div>
         <div className="flex gap-2 justify-between px-1 flex-wrap w-full">
           <InputFieldNoBorder title={t("Course.price")} />
