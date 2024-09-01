@@ -9,6 +9,7 @@ import LocalLibraryOutlinedIcon from "@mui/icons-material/LocalLibraryOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import Button from "@mui/material/Button";
+import CategoryIcon from "@mui/icons-material/Category";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 import { Link, usePathname } from "@/navigation";
@@ -16,6 +17,11 @@ import { type TPathname } from "@/utils/locales";
 import { cn } from "@/lib/utils";
 
 const listNavigation = [
+  {
+    title: "Course.category",
+    url: "/instructor/category",
+    icon: <CategoryIcon />,
+  },
   {
     title: "Admin.about-your-course",
     icon: <BusinessCenterOutlinedIcon />,
@@ -53,24 +59,24 @@ const LeftSideBar = () => {
       <Typography variant="h6" className="font-bold uppercase pb-2 px-1">
         {t("Admin.management-courses")}
       </Typography>
-      <div className="flex md:flex-col justify-center flex-wrap border-y md:mb-5 py-3 border-slate-500">
+      <div className="flex md:flex-col justify-center flex-wrap border-y md:mb-5 py-3 border-slate-500 gap-1">
         {listNavigation.map((nav, idx) =>
           nav.children && nav.children?.length > 0 ? (
             <div key={idx}>
               <div className="transition-colors text-base p-1 md:p-2 flex justify-between max-md:hidden">
                 <ContentNavLink title={t(nav.title)} icon={nav.icon} />
               </div>
-              <div className="max-md:flex">
+              <div className="flex md:flex-col gap-1">
                 {nav.children.map((nv, idx) => (
                   <Link
                     href={{ pathname: nv.url as TPathname }}
                     key={idx}
                     className={cn(
-                      "transition-colors text-base cursor-pointer p-1 md:p-2 hover:bg-slate-400 hover:text-white flex justify-between",
+                      "transition-colors text-base cursor-pointer p-1 md:p-2 hover:bg-slate-400 hover:text-white rounded-xl flex justify-between",
                       pathname === nv.url && "bg-slate-600 text-white",
                     )}
                   >
-                    <ContentNavLink title={t(nv.title)} icon={nv.icon} className="pl-4" />
+                    <ContentNavLink title={t(nv.title)} icon={nv.icon} className="md:pl-4" />
                   </Link>
                 ))}
               </div>
@@ -80,7 +86,7 @@ const LeftSideBar = () => {
               href={{ pathname: nav.url as TPathname }}
               key={idx}
               className={cn(
-                "transition-colors text-base cursor-pointer p-1 md:p-2 hover:bg-slate-400 hover:text-white flex justify-between",
+                "transition-colors text-base cursor-pointer p-1 md:p-2 hover:bg-slate-400 hover:text-white rounded-xl flex justify-between",
                 pathname === nav.url && "bg-slate-600 text-white",
               )}
             >
@@ -109,7 +115,7 @@ const ContentNavLink = ({
 }) => {
   return (
     <React.Fragment>
-      <div className={cn("flex gap-2 items-center", className)}>
+      <div className={cn("pl-1 flex gap-2 items-center", className)}>
         <div className="max-md:hidden">{icon}</div>
         <span>{title}</span>
       </div>

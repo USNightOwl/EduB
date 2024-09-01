@@ -7,12 +7,12 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 interface Props {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  handleSubmit: () => void;
-  title: string;
+  handleSubmit?: () => void;
+  title?: string;
   disabled?: boolean;
 }
 
-const TinyEditor = ({ value, setValue, handleSubmit, title, disabled = false }: Props) => {
+const TinyEditor = ({ value, setValue, handleSubmit, title = "", disabled = false }: Props) => {
   return (
     <React.Fragment>
       <Editor
@@ -34,18 +34,20 @@ const TinyEditor = ({ value, setValue, handleSubmit, title, disabled = false }: 
           ],
         }}
       />
-      <div className="my-2 flex justify-end">
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={handleSubmit}
-          disabled={disabled}
-          className="flex text-nowrap items-center gap-1"
-        >
-          <ModeEditOutlineIcon className="text-lg" />
-          {title}
-        </Button>
-      </div>
+      {title.length > 0 && (
+        <div className="my-2 flex justify-end">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={handleSubmit}
+            disabled={disabled}
+            className="flex text-nowrap items-center gap-1"
+          >
+            <ModeEditOutlineIcon className="text-lg" />
+            {title}
+          </Button>
+        </div>
+      )}
     </React.Fragment>
   );
 };

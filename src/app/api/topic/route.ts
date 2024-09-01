@@ -3,12 +3,12 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { getServerSession } from "next-auth";
 import authOptions from "../auth/[...nextauth]/options";
 import { getErrorMessage } from "@/utils/helper";
-import { listCategories, newCategory } from "@/models/category";
+import { newTopic, listTopics } from "@/models/category";
 
 export async function GET() {
   try {
-    const categories = await listCategories();
-    return NextResponse.json({ message: "success", data: categories });
+    const topics = await listTopics();
+    return NextResponse.json({ message: "success", data: topics });
   } catch (error) {
     console.log("Error getting all categories", getErrorMessage(error));
 
@@ -28,14 +28,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Unauthenticated" }, { status: 401 });
     }
 
-    const { category } = await request.json();
+    const { topic, categoryId } = await request.json();
 
-    if (!category) {
-      return NextResponse.json({ message: "Missing category" }, { status: 400 });
+    if (!topic || !categoryId) {
+      return NextResponse.json({ message: "Missing topic or category" }, { status: 400 });
     }
 
-    const nCategory = await newCategory((category as string).toLowerCase());
-    return NextResponse.json({ message: "success", data: nCategory });
+    const nTopic = await newTopic((topic as string).toLowerCase(), categoryId as string);
+    return NextResponse.json({ message: "success", data: nTopic });
   } catch (error) {
     if (error instanceof SyntaxError) {
       return NextResponse.json({ message: `Invalid JSON: ${getErrorMessage(error)}` }, { status: 400 });
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 
     if (error instanceof PrismaClientKnownRequestError) {
       if (error.code === "P2002") {
-        return NextResponse.json({ message: "Category already exists" }, { status: 400 });
+        return NextResponse.json({ message: "Topic already exists" }, { status: 400 });
       }
     }
 

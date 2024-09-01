@@ -33,17 +33,17 @@ const LeftSideBar = () => {
       <Typography variant="h4" className="pb-2 md:pb-4 px-1">
         {t("User.user-profile")}
       </Typography>
-      <div className="flex md:flex-col justify-center flex-wrap border-y md:mb-5 py-3">
+      <div className="flex md:flex-col justify-center flex-wrap border-y md:mb-5 py-3 gap-1">
         {listNavigation.map((nav, idx) => (
           <Link
             href={{ pathname: nav.url as TPathname }}
             key={idx}
             className={cn(
-              "transition-colors text-lg cursor-pointer p-1 md:p-2 hover:bg-slate-400 hover:text-white flex justify-between",
+              "rounded-xl transition-colors text-lg cursor-pointer p-1 md:p-2 hover:bg-slate-400 hover:text-white flex justify-between",
               pathname === nav.url && "bg-slate-600 text-white",
             )}
           >
-            <span>{t(nav.title)}</span>
+            <span className="pl-1">{t(nav.title)}</span>
             <ArrowRightIcon />
           </Link>
         ))}
