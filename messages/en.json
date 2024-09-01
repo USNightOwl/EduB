@@ -108,7 +108,8 @@
       "rePassword": "Confirm password must be at least 8 characters",
       "rePassword-match": "Confirm password do not match",
       "otp-length": "OTP must be 5 numeric characters long",
-      "category-required": "Category is required"
+      "category-required": "Category is required",
+      "topic-required": "Topic is required"
     },
     "register-success": "Registered successfully",
     "register-failure": "Registration failed",

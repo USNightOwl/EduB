@@ -61,7 +61,7 @@ model Topic {
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   category        Category        @relation(fields: [categoryId], references: [id])
-  categoryId      String          @db.ObjectId @unique
+  categoryId      String          @db.ObjectId
 }
 
 model Course {

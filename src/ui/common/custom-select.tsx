@@ -5,27 +5,29 @@ import MenuItem from "@mui/material/MenuItem";
 import Select, { type SelectChangeEvent } from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import { Typography } from "@mui/material";
+import { type ICategory } from "@/types/category";
 
 interface Props {
   label: string;
+  data?: ICategory[];
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const CustomSelect = ({ label }: Props) => {
-  const [selected, setSelected] = React.useState<string>();
-
+const CustomSelect = ({ label, data, value, setValue }: Props) => {
   const handleChange = (event: SelectChangeEvent) => {
-    setSelected(event.target.value);
+    setValue(event.target.value);
   };
 
   return (
     <div className="flex flex-col mx-1">
-      <Typography className="text-xl font-semibold">{label}</Typography>
+      <Typography className="text-xl">{label}</Typography>
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={selected}
+          value={value}
           label={label}
           onChange={handleChange}
           sx={{
@@ -48,9 +50,11 @@ const CustomSelect = ({ label }: Props) => {
             },
           }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {data?.map((d) => (
+            <MenuItem key={d.id} value={d.id}>
+              {d.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

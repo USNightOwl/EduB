@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CircularProgress from "@mui/material/CircularProgress";
-import { type ICategory } from "@/types/category";
+import { type ITopicResponse, type ICategory } from "@/types/category";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -38,10 +38,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 interface Props {
   isLoading?: boolean;
   header: string[];
-  data: ICategory[];
+  data: ICategory[] | ITopicResponse[];
+  onDelete: (id: string) => void;
 }
 
-const CustomTable = ({ header, data, isLoading = false }: Props) => {
+const CustomTable = ({ header, data, onDelete, isLoading = false }: Props) => {
   const t = useTranslations();
 
   return (
@@ -79,11 +80,16 @@ const CustomTable = ({ header, data, isLoading = false }: Props) => {
                 <StyledTableCell align="left" component="th" scope="row">
                   <Typography className="text-base capitalize">{row.name}</Typography>
                 </StyledTableCell>
+                {"category" in row && (
+                  <StyledTableCell align="left" component="th" scope="row">
+                    <Typography className="text-base capitalize">{row.category.name}</Typography>
+                  </StyledTableCell>
+                )}
                 <StyledTableCell align="right" component="th" scope="row" className="flex gap-2">
                   <Button variant="contained" color="warning" className="text-white" startIcon={<EditIcon />}>
                     {t("Global.edit")}
                   </Button>
-                  <Button variant="contained" color="error" startIcon={<DeleteIcon />}>
+                  <Button variant="contained" color="error" startIcon={<DeleteIcon />} onClick={() => onDelete(row.id)}>
                     {t("Global.delete")}
                   </Button>
                 </StyledTableCell>

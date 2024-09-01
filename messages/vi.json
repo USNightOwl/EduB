@@ -108,7 +108,8 @@
       "rePassword": "Xác nhận mật khẩu phải ít nhất 8 kí tự",
       "rePassword-match": "Xác nhận mật khẩu không khớp",
       "otp-length": "OTP phải có độ dài là 5 kí tự số",
-      "category-required": "Thể loại là bắt buộc"
+      "category-required": "Thể loại là bắt buộc",
+      "topic-required": "Chủ đề là bắt buộc"
     },
     "register-success": "Đăng ký thành công",
     "register-failure": "Đăng ký thất bại",
