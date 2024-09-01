@@ -104,8 +104,8 @@ const AddNewCourse = () => {
           <TinyEditor value={editor} setValue={setEditor} />
         </div>
         <div className="flex gap-2 justify-between px-1 flex-wrap">
-          <CustomSelect label={t("Course.category")} />
-          <CustomSelect label={t("Course.topic")} />
+          <CustomSelect label={t("Course.category")} value="" setValue={() => {}} />
+          <CustomSelect label={t("Course.topic")} value="" setValue={() => {}} />
         </div>
         <div className="flex flex-col gap-2">
           <Typography variant="h5" className="font-bold">
