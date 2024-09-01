@@ -15,7 +15,11 @@
     "change": "Thay đổi",
     "save": "Lưu",
     "close": "Đóng",
-    "photo": "Ảnh"
+    "photo": "Ảnh",
+    "actions": "Hành động",
+    "add": "Thêm",
+    "delete": "Xóa",
+    "edit": "Sửa"
   },
   "Course": {
     "course-information": "Thông tin khóa học",
@@ -23,7 +27,9 @@
     "course-brief-description": "Mô tả ngắn gọn",
     "detail-destination": "Mô tả chi tiết",
     "category": "Thể loại",
+    "new-category": "Thêm thể loại",
     "topic": "Chủ đề",
+    "new-topic": "Thêm chủ đề",
     "photo": "Ảnh",
     "price": "giá",
     "discount-percent": "Phần trăm giảm giá",
@@ -96,12 +102,13 @@
     },
     "Errors": {
       "name": "Tên phải ít nhất 5 kí tự",
-      "emai-required": "Email là bắt buộc",
+      "email-required": "Email là bắt buộc",
       "email-valid": "Email không hợp lệ",
       "password": "Mật khẩu phải ít nhất 8 kí tự",
       "rePassword": "Xác nhận mật khẩu phải ít nhất 8 kí tự",
       "rePassword-match": "Xác nhận mật khẩu không khớp",
-      "otp-length": "OTP phải có độ dài là 5 kí tự số"
+      "otp-length": "OTP phải có độ dài là 5 kí tự số",
+      "category-required": "Thể loại là bắt buộc"
     },
     "register-success": "Đăng ký thành công",
     "register-failure": "Đăng ký thất bại",

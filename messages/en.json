@@ -15,7 +15,11 @@
     "change": "Change",
     "save": "Save",
     "close": "Close",
-    "photo": "Photo"
+    "photo": "Photo",
+    "actions": "Actions",
+    "add": "Add",
+    "delete": "Delete",
+    "edit": "Edit"
   },
   "Course": {
     "course-information": "Course information",
@@ -23,7 +27,9 @@
     "course-brief-description": "Course brief description",
     "detail-destination": "Detail destination",
     "category": "Category",
+    "new-category": "New category",
     "topic": "Topic",
+    "new-topic": "New topic",
     "photo": "Photo",
     "price": "Price",
     "discount-percent": "Discount percent",
@@ -96,12 +102,13 @@
     },
     "Errors": {
       "name": "Name must be at least 5 characters",
-      "emai-required": "Email is required",
+      "email-required": "Email is required",
       "email-valid": "Invalid email",
       "password": "Password must be at least 8 characters",
       "rePassword": "Confirm password must be at least 8 characters",
       "rePassword-match": "Confirm password do not match",
-      "otp-length": "OTP must be 5 numeric characters long"
+      "otp-length": "OTP must be 5 numeric characters long",
+      "category-required": "Category is required"
     },
     "register-success": "Registered successfully",
     "register-failure": "Registration failed",

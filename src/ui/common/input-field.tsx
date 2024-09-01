@@ -77,7 +77,7 @@ const InputField = ({ title, value, setValue, errorMessage, placeholder = "", di
         }}
         endAdornment={<></>}
       />
-      {errorMessage && (
+      {errorMessage && errorMessage.length > 0 && (
         <Typography className="text-[0.8rem] font-[600] text-[#FF0000]">{t(`Auth.Errors.${errorMessage}`)}</Typography>
       )}
     </div>

@@ -24,6 +24,7 @@ export const pathnames = {
 
   "/instructor/profile": "/instructor/profile",
   "/instructor/course": "/instructor/course",
+  "/instructor/category": "/instructor/category",
   "/instructor/course/new": "/instructor/course/new",
 };
 
@@ -33,4 +34,5 @@ export type TPathname =
   | "/user/my-watchlist"
   | "/instructor/profile"
   | "/instructor/course"
-  | "/instructor/course/new";
+  | "/instructor/course/new"
+  | "/instructor/category";

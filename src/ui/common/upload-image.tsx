@@ -2,7 +2,11 @@
 import React from "react";
 import { FileInputButton, FileCard, type ExtFile } from "@files-ui/react";
 
-const UploadImage = () => {
+interface Props {
+  maxFiles?: number;
+}
+
+const UploadImage = ({ maxFiles = 1 }: Props) => {
   const [files, setFiles] = React.useState<ExtFile[]>([]);
   const updateFiles = (incommingFiles: ExtFile[]) => {
     //do something with the files
@@ -20,7 +24,7 @@ const UploadImage = () => {
         value={files}
         accept={"image/*"}
         maxFileSize={28 * 1024 * 1024}
-        maxFiles={1}
+        maxFiles={maxFiles}
         fakeUpload
       />
       {files.length > 0 && (

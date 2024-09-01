@@ -9,6 +9,7 @@ import LocalLibraryOutlinedIcon from "@mui/icons-material/LocalLibraryOutlined";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import Button from "@mui/material/Button";
+import CategoryIcon from "@mui/icons-material/Category";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from "next-auth/react";
 import { Link, usePathname } from "@/navigation";
@@ -16,6 +17,11 @@ import { type TPathname } from "@/utils/locales";
 import { cn } from "@/lib/utils";
 
 const listNavigation = [
+  {
+    title: "Course.category",
+    url: "/instructor/category",
+    icon: <CategoryIcon />,
+  },
   {
     title: "Admin.about-your-course",
     icon: <BusinessCenterOutlinedIcon />,
