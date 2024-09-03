@@ -4,7 +4,7 @@ import { validateEmail, validateOTPcode } from "@/utils/helper";
 export const verifyFormSchema = z.object({
   email: z
     .string()
-    .min(1, { message: "emai-required" })
+    .min(1, { message: "email-required" })
     .refine((e) => validateEmail(e), { message: "email-valid" }),
   OTP: z
     .string()

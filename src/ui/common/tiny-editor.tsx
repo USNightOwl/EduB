@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import { useTranslations } from "next-intl";
 
 interface Props {
   value: string;
@@ -10,13 +11,17 @@ interface Props {
   handleSubmit?: () => void;
   title?: string;
   disabled?: boolean;
+  errorMessage?: string;
 }
 
-const TinyEditor = ({ value, setValue, handleSubmit, title = "", disabled = false }: Props) => {
+const TinyEditor = ({ value, setValue, handleSubmit, errorMessage, title = "", disabled = false }: Props) => {
+  const t = useTranslations();
+
   return (
     <React.Fragment>
       <Editor
         value={value}
+        id="editor"
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         onEditorChange={(newValue) => setValue(newValue)}
         apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API}
@@ -34,6 +39,9 @@ const TinyEditor = ({ value, setValue, handleSubmit, title = "", disabled = fals
           ],
         }}
       />
+      {errorMessage && errorMessage.length > 0 && (
+        <Typography className="text-[0.8rem] font-[600] text-[#FF0000]">{t(`Auth.Errors.${errorMessage}`)}</Typography>
+      )}
       {title.length > 0 && (
         <div className="my-2 flex justify-end">
           <Button
