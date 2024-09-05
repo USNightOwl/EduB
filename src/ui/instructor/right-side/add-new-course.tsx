@@ -1,21 +1,20 @@
 "use client";
 import { Button, Typography } from "@mui/material";
-import React from "react";
+import React, { type ChangeEvent } from "react";
 import { useTranslations } from "next-intl";
-import { type ExtFile } from "@files-ui/react";
+import toast from "react-hot-toast";
 import SelectCategory from "./new-course/select-category";
 import ChapterHandle from "./new-course/chapter-handle";
 import InputFieldNoBorder from "@/ui/common/input-field-no-border";
 import TinyEditor from "@/ui/common/tiny-editor";
 import { type IChapter } from "@/types/course";
-import UploadImage from "@/ui/common/upload-image";
 import { type ErrorProps } from "@/ui/auth/form/login-form";
 import { courseFormSchema } from "@/schemas/course-form.schema";
+import InputImage from "@/ui/common/input-image";
 
 const AddNewCourse = () => {
   const t = useTranslations();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [files, setFiles] = React.useState<ExtFile[]>([]);
   const [title, setTitle] = React.useState<string>("");
   const [brief, setBrief] = React.useState<string>("");
   const [editor, setEditor] = React.useState<string>("");
@@ -23,6 +22,7 @@ const AddNewCourse = () => {
   const [discount, setDiscount] = React.useState<string>("");
   const [category, setCategory] = React.useState<string>("");
   const [topic, setTopic] = React.useState<string>("");
+  const [attachments, setAttachments] = React.useState<string[]>([]);
 
   const [errors, setErrors] = React.useState<ErrorProps[]>([]);
   const [curriculum, setCurriculum] = React.useState<IChapter[]>([
@@ -40,7 +40,32 @@ const AddNewCourse = () => {
     },
   ]);
 
-  const handleSubmit = () => {
+  function handleOnChange(changeEvent: ChangeEvent<HTMLInputElement>, multiple = true) {
+    if (!changeEvent.target.files) return;
+
+    if (multiple) {
+      for (const file of Array.from(changeEvent.target.files)) {
+        const reader = new FileReader();
+
+        reader.onload = function (onLoadEvent) {
+          setAttachments((attachments) => [...attachments, onLoadEvent.target?.result as string]);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    } else {
+      const file = Array.from(changeEvent.target.files)[0];
+      const reader = new FileReader();
+
+      reader.onload = function (onLoadEvent) {
+        setAttachments([onLoadEvent.target?.result as string]);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  const handleSubmit = async () => {
     try {
       const response = courseFormSchema.safeParse({
         title,
@@ -64,6 +89,30 @@ const AddNewCourse = () => {
       }
 
       setErrors([]);
+      // add new course
+
+      try {
+        const res = await fetch("/api/course", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            brief,
+            detail: editor,
+            categoryId: category,
+            topicId: topic,
+            price: Number(price),
+            discount: Number(discount),
+            photo: attachments,
+            curriculum,
+          }),
+        });
+        const json = await res.json();
+      } catch (error) {
+        toast.error(t("Auth.verify-none"));
+      }
     } catch (err) {}
   };
 
@@ -108,7 +157,12 @@ const AddNewCourse = () => {
           <Typography variant="h5" className="font-bold">
             {t("Global.photo")}
           </Typography>
-          <UploadImage files={files} setFiles={setFiles} />
+          <InputImage
+            attachments={attachments}
+            handleOnChange={handleOnChange}
+            setAttachments={setAttachments}
+            multiple={false}
+          />
         </div>
         <div className="flex gap-2 justify-between px-1 flex-wrap w-full">
           <InputFieldNoBorder

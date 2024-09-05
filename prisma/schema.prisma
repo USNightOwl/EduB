@@ -62,6 +62,7 @@ model Topic {
   updatedAt       DateTime        @updatedAt
   category        Category        @relation(fields: [categoryId], references: [id])
   categoryId      String          @db.ObjectId
+  course          Course[]
 }
 
 model Course {
@@ -69,9 +70,9 @@ model Course {
   title               String
   biefDescription     String
   detailDescription   String
-
-  category            String
-  topic               String
+  attachment          Attachment?
+  topic               Topic?           @relation(fields: [topicId], references: [id])
+  topicId             String?          @db.ObjectId
   photo               String
   price               BigInt
   discountPercent     Int
@@ -90,6 +91,16 @@ model Lecture {
   preview             Boolean         @default(false)
   chapterId           String          @db.ObjectId
   chapter             Chapter         @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+}
+
+model Attachment {
+    id         String         @id @default(auto()) @map("_id") @db.ObjectId
+    name       String
+    path       String
+    createdAt  DateTime       @default(now())
+    updatedAt  DateTime       @updatedAt
+    course     Course         @relation(fields: [courseId], references: [id])
+    courseId   String         @unique @db.ObjectId
 }
 
 enum Role {
