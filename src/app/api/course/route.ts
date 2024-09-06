@@ -13,18 +13,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Unauthenticated" }, { status: 401 });
     }
 
-    const { title, brief, detail, categoryId, topicId, price, discount, photo, curriculum } = await request.json();
+    const { title, brief, detail, topicId, price, discount, photo, curriculum } = await request.json();
 
     if (!title || !brief || !detail) {
       return NextResponse.json({ message: "Missing title, brief description or detail description" }, { status: 400 });
     }
-    if (!topicId || !categoryId) {
-      return NextResponse.json({ message: "Missing topic or category" }, { status: 400 });
+    if (!topicId) {
+      return NextResponse.json({ message: "Missing topic" }, { status: 400 });
     }
     if (price < 0 || discount < 0 || discount > 100) {
       return NextResponse.json({ message: "Price or discount invalid" }, { status: 400 });
     }
-    if (curriculum || curriculum.length < 0) {
+    if (!curriculum || curriculum.length < 0) {
       return NextResponse.json({ message: "Curriculum must have" }, { status: 400 });
     }
 
@@ -33,7 +33,6 @@ export async function POST(request: Request) {
       title as string,
       brief as string,
       detail as string,
-      categoryId as string,
       topicId as string,
       price as number,
       discount as number,

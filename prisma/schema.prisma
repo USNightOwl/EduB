@@ -68,20 +68,24 @@ model Topic {
 model Course {
   id                  String          @id @default(auto()) @map("_id") @db.ObjectId
   title               String
-  biefDescription     String
+  briefDescription    String
   detailDescription   String
   attachment          Attachment?
   topic               Topic?           @relation(fields: [topicId], references: [id])
   topicId             String?          @db.ObjectId
-  photo               String
   price               BigInt
   discountPercent     Int
+  chapter             Chapter[]
 }
 
 model Chapter {
   id                  String          @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   lecture             Lecture[]
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  courseId            String?         @db.ObjectId
+  course              Course?        @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
 
 model Lecture {
@@ -89,8 +93,10 @@ model Lecture {
   name                String
   url                 String
   preview             Boolean         @default(false)
-  chapterId           String          @db.ObjectId
-  chapter             Chapter         @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId           String?         @db.ObjectId
+  chapter             Chapter?        @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
 }
 
 model Attachment {
@@ -99,8 +105,8 @@ model Attachment {
     path       String
     createdAt  DateTime       @default(now())
     updatedAt  DateTime       @updatedAt
-    course     Course         @relation(fields: [courseId], references: [id])
-    courseId   String         @unique @db.ObjectId
+    course     Course?        @relation(fields: [courseId], references: [id])
+    courseId   String?        @unique @db.ObjectId
 }
 
 enum Role {

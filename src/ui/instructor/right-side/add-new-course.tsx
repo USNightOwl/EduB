@@ -20,7 +20,6 @@ const AddNewCourse = () => {
   const [editor, setEditor] = React.useState<string>("");
   const [price, setPrice] = React.useState<string>("");
   const [discount, setDiscount] = React.useState<string>("");
-  const [category, setCategory] = React.useState<string>("");
   const [topic, setTopic] = React.useState<string>("");
   const [attachments, setAttachments] = React.useState<string[]>([]);
 
@@ -71,7 +70,6 @@ const AddNewCourse = () => {
         title,
         brief,
         detail: editor,
-        category,
         topic,
         price: parseInt(price),
         discount: parseInt(discount),
@@ -92,6 +90,7 @@ const AddNewCourse = () => {
       // add new course
 
       try {
+        setIsLoading(true);
         const res = await fetch("/api/course", {
           method: "POST",
           headers: {
@@ -101,7 +100,6 @@ const AddNewCourse = () => {
             title,
             brief,
             detail: editor,
-            categoryId: category,
             topicId: topic,
             price: Number(price),
             discount: Number(discount),
@@ -110,10 +108,18 @@ const AddNewCourse = () => {
           }),
         });
         const json = await res.json();
+        if (res.status === 200) {
+          console.log("Course created successfully");
+        } else {
+          console.log(json.message);
+        }
       } catch (error) {
         toast.error(t("Auth.verify-none"));
       }
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      setIsLoading(true);
+    }
   };
 
   return (
@@ -127,12 +133,14 @@ const AddNewCourse = () => {
           value={title}
           setValue={setTitle}
           errorMessage={errors.find((error) => error.for === "title")?.message}
+          disabled={isLoading}
         />
         <InputFieldNoBorder
           title={t("Course.course-brief-description")}
           value={brief}
           setValue={setBrief}
           errorMessage={errors.find((error) => error.for === "brief")?.message}
+          disabled={isLoading}
         />
         <div>
           <Typography variant="h6" className="font-bold">
@@ -142,15 +150,13 @@ const AddNewCourse = () => {
             value={editor}
             setValue={setEditor}
             errorMessage={errors.find((error) => error.for === "detail")?.message}
+            disabled={isLoading}
           />
         </div>
         <SelectCategory
-          category={category}
           topic={topic}
-          setCategory={setCategory}
           setTopic={setTopic}
-          errorMessage1={errors.find((error) => error.for === "category")?.message}
-          errorMessage2={errors.find((error) => error.for === "topic")?.message}
+          errorMessage={errors.find((error) => error.for === "topic")?.message}
           disabled={isLoading}
         />
         <div className="flex flex-col gap-2">
@@ -183,7 +189,7 @@ const AddNewCourse = () => {
         <ChapterHandle curriculum={curriculum} setCurriculum={setCurriculum} />
       </div>
       <div className="flex items-center justify-center mt-8 mb-2">
-        <Button variant="contained" onClick={handleSubmit}>
+        <Button variant="contained" onClick={handleSubmit} disabled={isLoading}>
           <Typography className="text-base md:text-xl">
             {t("Course.New.complete-the-course-creation-process")}
           </Typography>

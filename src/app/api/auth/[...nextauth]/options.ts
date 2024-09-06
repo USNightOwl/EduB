@@ -5,14 +5,13 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prismadb";
 import { auth } from "@/models/user";
-const MAX_AGE = 1 * 24 * 60 * 60;
 
 const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   debug: process.env.NODE_ENV === "development" ? true : false,
   session: {
     strategy: "jwt",
-    maxAge: MAX_AGE,
+    maxAge: 1 * 24 * 60 * 60,
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {

@@ -4,7 +4,6 @@ export const courseFormSchema = z.object({
   title: z.string().min(1, { message: "title-required" }),
   brief: z.string().min(1, { message: "brief-required" }),
   detail: z.string().min(1, { message: "detail-required" }),
-  category: z.string().min(1, { message: "category-required" }),
   topic: z.string().min(1, { message: "topic-required" }),
   price: z.number({ message: "price-number" }).int({ message: "price-number" }).gt(1000, { message: "price-gt" }),
   discount: z
