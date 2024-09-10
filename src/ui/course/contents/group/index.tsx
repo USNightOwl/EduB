@@ -1,11 +1,16 @@
 import React from "react";
 import ContentCell from "./content-cell";
+import { type ILectureResponse } from "@/types/course";
 
-const GroupContent = () => {
+interface Props {
+  listLecture: ILectureResponse[];
+}
+
+const GroupContent = ({ listLecture }: Props) => {
   return (
     <div>
-      {[1, 2, 3].map((num) => (
-        <ContentCell key={num} />
+      {listLecture.map((lecture, idx) => (
+        <ContentCell key={lecture.id} lecture={lecture} idx={idx + 1} />
       ))}
     </div>
   );

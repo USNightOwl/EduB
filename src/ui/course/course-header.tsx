@@ -1,19 +1,24 @@
+"use client";
 import { Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import React from "react";
 import StarIcon from "@mui/icons-material/Star";
+import { type ICourseResponse } from "@/types/course";
 
-const CourseHeader = () => {
+interface Props {
+  course: ICourseResponse;
+}
+
+const CourseHeader = ({ course }: Props) => {
   const t = useTranslations("Course");
 
   return (
     <div className="mt-5">
       <Typography variant="h4" className="font-semibold my-3">
-        React Native - The Practical Guide [2023]
+        {course.title}
       </Typography>
       <Typography variant="h6" className="">
-        Use React Native and your React knowledge to build native iOS and Android Apps - incl. Push Notifications,
-        Hooks, Redux
+        {course.briefDescription}
       </Typography>
       <Stack spacing={2} direction="column" mt={3} className="text-base">
         <Typography>{t("total-lecture")}12</Typography>

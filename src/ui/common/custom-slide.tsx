@@ -20,15 +20,17 @@ const fontSans = Roboto_Mono({
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { type ICourseResponse } from "@/types/course";
 
 interface ISlide {
   title: string;
   description?: string;
   isSingleSlide?: boolean;
   perView?: number;
+  courses: ICourseResponse[];
 }
 
-const CustomSlide = ({ title, description, isSingleSlide = false, perView = 4 }: ISlide) => {
+const CustomSlide = ({ title, description, courses, isSingleSlide = false, perView = 4 }: ISlide) => {
   const matches_1 = useMediaQuery("(max-width:1380px)");
   const matches_2 = useMediaQuery("(max-width:1024px)");
   const matches_3 = useMediaQuery("(max-width:640px)");
@@ -68,17 +70,18 @@ const CustomSlide = ({ title, description, isSingleSlide = false, perView = 4 }:
         }}
         modules={[Autoplay, Pagination]}
       >
-        {[1, 2, 3, 4, 5, 6].map((num) => (
-          <SwiperSlide key={num} className="pb-7">
+        {courses.map((course) => (
+          <SwiperSlide key={course.id} className="pb-7">
             <CourseCard
-              thumbnail="https://www.courses.tutorialswebsite.com/assets/front/img/category/reactjs-banner.jpeg"
-              title="The Complete 2020 Fullstack Web Developer Course React"
-              topic="web development"
-              author="nxhawk"
+              thumbnail={course.attachment.path}
+              title={course.title}
+              topic={course.topic.name}
+              author={course.author.name}
               rating={3.5}
-              price={560000}
-              discount={50}
+              price={course.price}
+              discount={course.discountPercent}
               isSingleSlide={isSingleSlide}
+              id={course.id}
             />
           </SwiperSlide>
         ))}

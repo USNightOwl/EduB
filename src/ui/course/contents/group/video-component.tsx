@@ -6,11 +6,13 @@ interface IVideo {
 }
 
 export default async function VideoComponent({ vidRef, src }: IVideo) {
+  // src={`https://www.youtube.com/embed/${src}?enablejsapi=1`}
+
   return (
     <iframe
       ref={vidRef}
       className="w-full aspect-video self-stretch min-h-[400px]"
-      src={`https://www.youtube.com/embed/${src}?enablejsapi=1`}
+      src={src}
       frameBorder="0"
       title="Overview Video"
       aria-hidden="true"

@@ -109,16 +109,16 @@ const AddNewCourse = () => {
         });
         const json = await res.json();
         if (res.status === 200) {
-          console.log("Course created successfully");
+          toast.success("Course created successfully");
         } else {
-          console.log(json.message);
+          toast.error((json.message as string) || "Error creating course");
         }
       } catch (error) {
         toast.error(t("Auth.verify-none"));
       }
     } catch (err) {
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 

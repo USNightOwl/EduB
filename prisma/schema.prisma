@@ -23,6 +23,7 @@ model User {
   createdAt           DateTime        @default(now())
   updatedAt           DateTime        @updatedAt
   accounts            Account[]
+  courses             Course[]
 }
 
 model Account {
@@ -60,7 +61,7 @@ model Topic {
   slug            String          @unique
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
-  category        Category        @relation(fields: [categoryId], references: [id])
+  category        Category        @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId      String          @db.ObjectId
   course          Course[]
 }
@@ -71,11 +72,16 @@ model Course {
   briefDescription    String
   detailDescription   String
   attachment          Attachment?
-  topic               Topic?           @relation(fields: [topicId], references: [id])
+  topic               Topic?           @relation(fields: [topicId], references: [id], onDelete: Cascade)
   topicId             String?          @db.ObjectId
-  price               BigInt
+  price               Int
   discountPercent     Int
   chapter             Chapter[]
+
+  author              User?            @relation(fields: [authorId], references: [id])
+  authorId            String?          @db.ObjectId
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
 }
 
 model Chapter {

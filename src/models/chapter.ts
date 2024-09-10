@@ -17,6 +17,7 @@ export async function createChapter(chapter: IChapter) {
       id: initialChapter.id,
     },
     data: {
+      name: chapter.chapterName,
       lecture: {
         connect: newLectures.map((lecture) => {
           return { id: lecture.id };

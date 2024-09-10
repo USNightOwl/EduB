@@ -5,15 +5,20 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import GroupContent from "./group";
+import { type IChapterResponse } from "@/types/course";
 
-const SingleContent = () => {
+interface Props {
+  chapter: IChapterResponse;
+}
+
+const SingleContent = ({ chapter }: Props) => {
   return (
     <Accordion defaultExpanded={true} sx={{ color: "box.text", bgcolor: "box.bg" }}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content" id="panel1-header">
-        <Typography variant="h5">Introduction</Typography>
+        <Typography variant="h5">{chapter.name}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <GroupContent />
+        <GroupContent listLecture={chapter.lecture} />
       </AccordionDetails>
     </Accordion>
   );

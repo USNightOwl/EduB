@@ -1,12 +1,11 @@
 import { Container } from "@mui/material";
-import { useTranslations } from "next-intl";
+import { Suspense } from "react";
 import Banner from "@/ui/common/banner";
-import CustomSlide from "@/ui/common/custom-slide";
 import RecommendedTopic from "@/ui/topic/recommended-topic";
+import NewestCourseSlider from "@/ui/home/newest-course-slider";
+import CourseCardSkeleton from "@/ui/skeleton/course-card-skeleton";
 
 export default function Home() {
-  const t = useTranslations("Global.Title.Card");
-
   return (
     <div>
       <Banner />
@@ -15,9 +14,11 @@ export default function Home() {
         sx={{ bgcolor: "background.main", color: "primary.main" }}
         className="p-2 py-4 max-md:px-1"
       >
-        <CustomSlide title={t("popular-course")} description={t("popular-course-desc")} perView={3} />
-        <CustomSlide title={t("most-viewing")} isSingleSlide={true} />
-        <CustomSlide title={t("newest-course")} />
+        {/* <CustomSlide title={t("popular-course")} description={t("popular-course-desc")} perView={3} />
+        <CustomSlide title={t("most-viewing")} isSingleSlide={true} /> */}
+        <Suspense fallback={<CourseCardSkeleton />}>
+          <NewestCourseSlider />
+        </Suspense>
         <RecommendedTopic />
       </Container>
     </div>

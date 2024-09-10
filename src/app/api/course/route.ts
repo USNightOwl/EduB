@@ -3,8 +3,22 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { getServerSession } from "next-auth";
 import authOptions from "../auth/[...nextauth]/options";
 import { getErrorMessage } from "@/utils/helper";
-import { createCourse } from "@/models/course";
+import { createCourse, getNewestCourses } from "@/models/course";
 import { type IChapter } from "@/types/course";
+
+export async function GET() {
+  try {
+    const newest_courses = await getNewestCourses();
+    return NextResponse.json({ message: "success", data: newest_courses });
+  } catch (error) {
+    return NextResponse.json(
+      { message: `Internal Server Error: ${getErrorMessage(error)}` },
+      {
+        status: 500,
+      },
+    );
+  }
+}
 
 export async function POST(request: Request) {
   try {
@@ -29,6 +43,7 @@ export async function POST(request: Request) {
     }
 
     // add new course
+    const authorId = session.user.id;
     const course = createCourse(
       title as string,
       brief as string,
@@ -38,6 +53,7 @@ export async function POST(request: Request) {
       discount as number,
       photo as string[],
       curriculum as IChapter[],
+      authorId,
     );
 
     return NextResponse.json({ message: "success", data: course });

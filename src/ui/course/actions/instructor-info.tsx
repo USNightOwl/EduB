@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -7,7 +8,12 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import { useTranslations } from "next-intl";
 
-const InstructorInfo = () => {
+interface Props {
+  name: string;
+  info: string;
+}
+
+const InstructorInfo = ({ name, info }: Props) => {
   const t = useTranslations("Course");
 
   return (
@@ -19,17 +25,8 @@ const InstructorInfo = () => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails className="max-h-[15rem] overflow-y-auto">
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-          lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
-          amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-          lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo
-          lobortis eget.
-        </Typography>
+        <div className="text-center text-2xl font-bold">{name}</div>
+        <div className="prose" dangerouslySetInnerHTML={{ __html: info }}></div>
       </AccordionDetails>
     </Accordion>
   );
