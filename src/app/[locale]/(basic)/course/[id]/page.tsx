@@ -35,7 +35,7 @@ const Page = async ({
   params: { id: string };
   searchParams?: Record<string, string | string[] | undefined>;
 }) => {
-  const data = await fetch(`${process.env.NEXTAUTH_URL}/api/course/${params.id}`, { cache: "no-cache" });
+  const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_API}/course/${params.id}`, { cache: "no-cache" });
   const course = await data.json();
 
   return (
