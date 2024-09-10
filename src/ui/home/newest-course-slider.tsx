@@ -4,7 +4,7 @@ import CustomSlide from "../common/custom-slide";
 
 export default async function NewestCourseSlider() {
   const t = await getTranslations("Global.Title.Card");
-  const data = await fetch(process.env.NEXT_PUBLIC_SERVER_API + "/course");
+  const data = await fetch(process.env.NEXT_PUBLIC_SERVER_API + "/course", { cache: "no-store" });
   const courses = await data.json();
 
   return <CustomSlide title={t("newest-course")} courses={courses.data} />;
