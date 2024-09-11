@@ -1,19 +1,29 @@
 "use client";
 import { Button, Typography } from "@mui/material";
-import React from "react";
+import React, { type ChangeEvent } from "react";
 import { useTranslations } from "next-intl";
-import AddIcon from "@mui/icons-material/Add";
+import toast from "react-hot-toast";
+import SelectCategory from "./new-course/select-category";
+import ChapterHandle from "./new-course/chapter-handle";
 import InputFieldNoBorder from "@/ui/common/input-field-no-border";
 import TinyEditor from "@/ui/common/tiny-editor";
-import CustomSelect from "@/ui/common/custom-select";
-import ChapterBox from "@/ui/course/new/chapter-box";
 import { type IChapter } from "@/types/course";
-import UploadImage from "@/ui/common/upload-image";
+import { type ErrorProps } from "@/ui/auth/form/login-form";
+import { courseFormSchema } from "@/schemas/course-form.schema";
+import InputImage from "@/ui/common/input-image";
 
 const AddNewCourse = () => {
-  const [editor, setEditor] = React.useState<string>("");
   const t = useTranslations();
-  const [cntChapter, setCntChapter] = React.useState<number>(1);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [title, setTitle] = React.useState<string>("");
+  const [brief, setBrief] = React.useState<string>("");
+  const [editor, setEditor] = React.useState<string>("");
+  const [price, setPrice] = React.useState<string>("");
+  const [discount, setDiscount] = React.useState<string>("");
+  const [topic, setTopic] = React.useState<string>("");
+  const [attachments, setAttachments] = React.useState<string[]>([]);
+
+  const [errors, setErrors] = React.useState<ErrorProps[]>([]);
   const [curriculum, setCurriculum] = React.useState<IChapter[]>([
     {
       chapterId: 1,
@@ -29,64 +39,87 @@ const AddNewCourse = () => {
     },
   ]);
 
-  const createNewChapter = () => {
-    const countChapter = cntChapter + 1;
-    setCntChapter(countChapter);
-    setCurriculum([
-      ...curriculum,
-      {
-        chapterId: countChapter,
-        chapterName: "",
-        lecture: [
-          {
-            lectureId: 1,
-            lectureName: "",
-            urlVideo: "",
-            preview: false,
+  function handleOnChange(changeEvent: ChangeEvent<HTMLInputElement>, multiple = true) {
+    if (!changeEvent.target.files) return;
+
+    if (multiple) {
+      for (const file of Array.from(changeEvent.target.files)) {
+        const reader = new FileReader();
+
+        reader.onload = function (onLoadEvent) {
+          setAttachments((attachments) => [...attachments, onLoadEvent.target?.result as string]);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    } else {
+      const file = Array.from(changeEvent.target.files)[0];
+      const reader = new FileReader();
+
+      reader.onload = function (onLoadEvent) {
+        setAttachments([onLoadEvent.target?.result as string]);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  const handleSubmit = async () => {
+    try {
+      const response = courseFormSchema.safeParse({
+        title,
+        brief,
+        detail: editor,
+        topic,
+        price: parseInt(price),
+        discount: parseInt(discount),
+      });
+
+      if (!response.success) {
+        const errArr: ErrorProps[] = [];
+        const { errors: err } = response.error;
+        for (const er of err) {
+          errArr.push({ for: er.path[0], message: er.message });
+        }
+        setErrors(errArr);
+        console.log(errArr);
+        throw err;
+      }
+
+      setErrors([]);
+      // add new course
+
+      try {
+        setIsLoading(true);
+        const res = await fetch("/api/course", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        ],
-      },
-    ]);
-  };
-
-  const createNewLecture = (chapterId: number) => {
-    const chapter: IChapter = curriculum.filter((chapter) => chapter.chapterId === chapterId)[0];
-    const restChapter = curriculum.filter((chapter) => chapter.chapterId !== chapterId);
-    chapter.lecture.push({
-      lectureId: chapter.lecture.length + 1,
-      lectureName: "",
-      urlVideo: "",
-      preview: false,
-    });
-    const array = [...restChapter, chapter].sort((a, b) => a.chapterId - b.chapterId);
-    setCurriculum([...array]);
-  };
-
-  const removeChapter = (chapterId: number) => {
-    const countChapter = cntChapter - 1;
-    setCntChapter(countChapter);
-    const restChapter = curriculum.filter((chapter) => chapter.chapterId !== chapterId);
-    for (let i = 0; i < countChapter; i++) {
-      restChapter[i].chapterId = i + 1;
+          body: JSON.stringify({
+            title,
+            brief,
+            detail: editor,
+            topicId: topic,
+            price: Number(price),
+            discount: Number(discount),
+            photo: attachments,
+            curriculum,
+          }),
+        });
+        const json = await res.json();
+        if (res.status === 200) {
+          toast.success("Course created successfully");
+        } else {
+          toast.error((json.message as string) || "Error creating course");
+        }
+      } catch (error) {
+        toast.error(t("Auth.verify-none"));
+      }
+    } catch (err) {
+    } finally {
+      setIsLoading(false);
     }
-    setCurriculum([...restChapter]);
-  };
-
-  const removeLecture = (chapterId: number, lectureId: number) => {
-    const chapter: IChapter = curriculum.filter((chapter) => chapter.chapterId === chapterId)[0];
-    const restChapter = curriculum.filter((chapter) => chapter.chapterId !== chapterId);
-    // remove lecture
-    const restLecture = chapter.lecture.filter((lecture) => lecture.lectureId !== lectureId);
-    for (let i = 0; i < restLecture.length; i++) {
-      restLecture[i].lectureId = i + 1;
-    }
-    const updateChapter: IChapter = {
-      chapterId: chapter.chapterId,
-      chapterName: chapter.chapterName,
-      lecture: restLecture,
-    };
-    const array = [...restChapter, updateChapter].sort((a, b) => a.chapterId - b.chapterId);
-    setCurriculum([...array]);
   };
 
   return (
@@ -95,50 +128,68 @@ const AddNewCourse = () => {
         {t("Course.course-information")}
       </Typography>
       <div className="flex flex-col gap-8">
-        <InputFieldNoBorder title={t("Course.course-title")} />
-        <InputFieldNoBorder title={t("Course.course-brief-description")} />
+        <InputFieldNoBorder
+          title={t("Course.course-title")}
+          value={title}
+          setValue={setTitle}
+          errorMessage={errors.find((error) => error.for === "title")?.message}
+          disabled={isLoading}
+        />
+        <InputFieldNoBorder
+          title={t("Course.course-brief-description")}
+          value={brief}
+          setValue={setBrief}
+          errorMessage={errors.find((error) => error.for === "brief")?.message}
+          disabled={isLoading}
+        />
         <div>
           <Typography variant="h6" className="font-bold">
-            {t("Course.detail-destination")}
+            {t("Course.detail-description")}
           </Typography>
-          <TinyEditor value={editor} setValue={setEditor} />
+          <TinyEditor
+            value={editor}
+            setValue={setEditor}
+            errorMessage={errors.find((error) => error.for === "detail")?.message}
+            disabled={isLoading}
+          />
         </div>
-        <div className="flex gap-2 justify-between px-1 flex-wrap">
-          <CustomSelect label={t("Course.category")} value="" setValue={() => {}} />
-          <CustomSelect label={t("Course.topic")} value="" setValue={() => {}} />
-        </div>
+        <SelectCategory
+          topic={topic}
+          setTopic={setTopic}
+          errorMessage={errors.find((error) => error.for === "topic")?.message}
+          disabled={isLoading}
+        />
         <div className="flex flex-col gap-2">
           <Typography variant="h5" className="font-bold">
             {t("Global.photo")}
           </Typography>
-          <UploadImage />
+          <InputImage
+            attachments={attachments}
+            handleOnChange={handleOnChange}
+            setAttachments={setAttachments}
+            multiple={false}
+          />
         </div>
         <div className="flex gap-2 justify-between px-1 flex-wrap w-full">
-          <InputFieldNoBorder title={t("Course.price")} />
-          <InputFieldNoBorder title={t("Course.discount-percent")} />
+          <InputFieldNoBorder
+            title={t("Course.price")}
+            value={price}
+            setValue={setPrice}
+            disabled={isLoading}
+            errorMessage={errors.find((error) => error.for === "price")?.message}
+          />
+          <InputFieldNoBorder
+            title={t("Course.discount-percent")}
+            value={discount}
+            setValue={setDiscount}
+            disabled={isLoading}
+            errorMessage={errors.find((error) => error.for === "discount")?.message}
+          />
         </div>
-        <div className="flex flex-col gap-5">
-          <Typography variant="h4" className="border-b-2 italic w-full mb-4">
-            {t("Course.curriculum")}
-          </Typography>
-          {curriculum.map((chapter) => (
-            <ChapterBox
-              key={chapter.chapterId}
-              createNewLecture={createNewLecture}
-              removeChapter={removeChapter}
-              removeLecture={removeLecture}
-              chapter={chapter}
-            />
-          ))}
-          <div className="w-fit ml-2">
-            <Button variant="outlined" startIcon={<AddIcon />} onClick={createNewChapter}>
-              {t("Course.New.add-more-chapter")}
-            </Button>
-          </div>
-        </div>
+        <ChapterHandle curriculum={curriculum} setCurriculum={setCurriculum} />
       </div>
       <div className="flex items-center justify-center mt-8 mb-2">
-        <Button variant="contained">
+        <Button variant="contained" onClick={handleSubmit} disabled={isLoading}>
           <Typography className="text-base md:text-xl">
             {t("Course.New.complete-the-course-creation-process")}
           </Typography>

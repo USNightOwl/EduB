@@ -6,7 +6,7 @@ export const registerFormSchema = z
     name: z.string().min(5, { message: "name" }),
     email: z
       .string()
-      .min(1, { message: "emai-required" })
+      .min(1, { message: "email-required" })
       .refine((e) => validateEmail(e), { message: "email-valid" }),
     password: z.string().min(8, { message: "password" }),
     rePassword: z.string().min(8, { message: "rePassword" }),

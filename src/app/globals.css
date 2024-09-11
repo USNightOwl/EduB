@@ -67,3 +67,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* dismiss warning notification tinyMCE (premium) */
+.tox-notifications-container, 
+.tox-notification__body,
+.tox-notification--in,
+.tox-notification--warning,
+.tox-notification__icon,
+.tox-notification, 
+.tox-notification__dismiss {
+  display: none!important;
+  height: 0!important;
+  width: 0!important;
+  opacity: 0!important;
+  font-size: 0px!important;
+  border: none!important;
+}
+/* ---------------------------------------------- */

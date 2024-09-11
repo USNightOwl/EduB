@@ -8,7 +8,7 @@ import { Link } from "@/navigation";
 const CourseContent = (props: ICourseContent) => {
   return (
     <React.Fragment>
-      <Link href={{ pathname: "/course/[id]", params: { id: "1" } }}>
+      <Link href={{ pathname: "/course/[id]", params: { id: props.id } }}>
         <Typography component="div" className="font-semibold text-lg">
           {props.title}
         </Typography>

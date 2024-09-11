@@ -25,7 +25,7 @@
     "course-information": "Course information",
     "course-title": "Course title",
     "course-brief-description": "Course brief description",
-    "detail-destination": "Detail destination",
+    "detail-description": "Detail description",
     "category": "Category",
     "new-category": "New category",
     "topic": "Topic",
@@ -109,7 +109,15 @@
       "rePassword-match": "Confirm password do not match",
       "otp-length": "OTP must be 5 numeric characters long",
       "category-required": "Category is required",
-      "topic-required": "Topic is required"
+      "topic-required": "Topic is required",
+
+      "title-required": "Title is required",
+      "brief-required": "Brief description is required",
+      "detail-required": "Detail description is required",
+      "price-number": "Price must be a number",
+      "discount-number": "Discount must be a number",
+      "price-gt": "Price must be greater or equal to 1000",
+      "discount-range": "Discount must be between 0 and 100"
     },
     "register-success": "Registered successfully",
     "register-failure": "Registration failed",

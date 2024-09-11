@@ -25,13 +25,13 @@
     "course-information": "Thông tin khóa học",
     "course-title": "Tên khóa học",
     "course-brief-description": "Mô tả ngắn gọn",
-    "detail-destination": "Mô tả chi tiết",
+    "detail-description": "Mô tả chi tiết",
     "category": "Thể loại",
     "new-category": "Thêm thể loại",
     "topic": "Chủ đề",
     "new-topic": "Thêm chủ đề",
     "photo": "Ảnh",
-    "price": "giá",
+    "price": "Giá",
     "discount-percent": "Phần trăm giảm giá",
     "curriculum": "Chương trình giảng dạy",
 
@@ -109,7 +109,15 @@
       "rePassword-match": "Xác nhận mật khẩu không khớp",
       "otp-length": "OTP phải có độ dài là 5 kí tự số",
       "category-required": "Thể loại là bắt buộc",
-      "topic-required": "Chủ đề là bắt buộc"
+      "topic-required": "Chủ đề là bắt buộc",
+
+      "title-required": "Tiêu đề là bắt buộc",
+      "brief-required": "Mô tả ngắn gọn là bắt buộc",
+      "detail-required": "Mô tả chi tiết là bắt buộc",
+      "price-number": "Giá phải là số nguyên",
+      "discount-number": "Giảm giá phải là số nguyên",
+      "price-gt": "Giá phải lớn hơn hoặc bằng 1000",
+      "discount-range": "Mức giảm giá phải nằm trong khoảng từ 0 đến 100"
     },
     "register-success": "Đăng ký thành công",
     "register-failure": "Đăng ký thất bại",

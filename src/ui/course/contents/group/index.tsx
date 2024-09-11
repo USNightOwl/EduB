@@ -1,11 +1,16 @@
 import React from "react";
+import { type Lecture } from "@prisma/client";
 import ContentCell from "./content-cell";
 
-const GroupContent = () => {
+interface Props {
+  listLecture: Lecture[];
+}
+
+const GroupContent = ({ listLecture }: Props) => {
   return (
     <div>
-      {[1, 2, 3].map((num) => (
-        <ContentCell key={num} />
+      {listLecture.map((lecture, idx) => (
+        <ContentCell key={lecture.id} lecture={lecture} idx={idx + 1} />
       ))}
     </div>
   );

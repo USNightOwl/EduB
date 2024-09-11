@@ -21,7 +21,11 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
-const DialogPreview = () => {
+interface Props {
+  url: string;
+}
+
+const DialogPreview = ({ url }: Props) => {
   const vidRef = useRef<HTMLIFrameElement>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -61,7 +65,7 @@ const DialogPreview = () => {
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description" className="w-full">
             <Suspense fallback={<p>Loading video...</p>}>
-              <VideoComponent vidRef={vidRef} src="zbxCAZuj16g" />
+              <VideoComponent vidRef={vidRef} src={url} />
             </Suspense>
           </DialogContentText>
         </DialogContent>

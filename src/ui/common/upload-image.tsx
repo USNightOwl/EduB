@@ -4,10 +4,11 @@ import { FileInputButton, FileCard, type ExtFile } from "@files-ui/react";
 
 interface Props {
   maxFiles?: number;
+  files: ExtFile[];
+  setFiles: React.Dispatch<React.SetStateAction<ExtFile[]>>;
 }
 
-const UploadImage = ({ maxFiles = 1 }: Props) => {
-  const [files, setFiles] = React.useState<ExtFile[]>([]);
+const UploadImage = ({ files, setFiles, maxFiles = 1 }: Props) => {
   const updateFiles = (incommingFiles: ExtFile[]) => {
     //do something with the files
     setFiles(incommingFiles);

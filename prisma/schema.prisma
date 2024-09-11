@@ -23,6 +23,7 @@ model User {
   createdAt           DateTime        @default(now())
   updatedAt           DateTime        @updatedAt
   accounts            Account[]
+  courses             Course[]
 }
 
 model Account {
@@ -60,27 +61,37 @@ model Topic {
   slug            String          @unique
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
-  category        Category        @relation(fields: [categoryId], references: [id])
+  category        Category        @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId      String          @db.ObjectId
+  course          Course[]
 }
 
 model Course {
   id                  String          @id @default(auto()) @map("_id") @db.ObjectId
   title               String
-  biefDescription     String
+  briefDescription    String
   detailDescription   String
-
-  category            String
-  topic               String
-  photo               String
-  price               BigInt
+  attachment          Attachment?
+  topic               Topic?           @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  topicId             String?          @db.ObjectId
+  price               Int
   discountPercent     Int
+  chapter             Chapter[]
+
+  author              User?            @relation(fields: [authorId], references: [id])
+  authorId            String?          @db.ObjectId
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
 }
 
 model Chapter {
   id                  String          @id @default(auto()) @map("_id") @db.ObjectId
   name                String
   lecture             Lecture[]
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  courseId            String?         @db.ObjectId
+  course              Course?        @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
 
 model Lecture {
@@ -88,8 +99,20 @@ model Lecture {
   name                String
   url                 String
   preview             Boolean         @default(false)
-  chapterId           String          @db.ObjectId
-  chapter             Chapter         @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId           String?         @db.ObjectId
+  chapter             Chapter?        @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+}
+
+model Attachment {
+    id         String         @id @default(auto()) @map("_id") @db.ObjectId
+    name       String
+    path       String
+    createdAt  DateTime       @default(now())
+    updatedAt  DateTime       @updatedAt
+    course     Course?        @relation(fields: [courseId], references: [id])
+    courseId   String?        @unique @db.ObjectId
 }
 
 enum Role {
