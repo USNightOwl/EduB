@@ -1,12 +1,11 @@
-"use client";
 import { Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import React from "react";
-import { type Chapter } from "@prisma/client";
 import SingleContent from "./single-content";
+import { type FullChapter } from "@/models/chapter";
 
 interface Props {
-  listChapter: Chapter[] | null;
+  listChapter: FullChapter[] | null;
 }
 
 const ListContent = ({ listChapter }: Props) => {
