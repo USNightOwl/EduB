@@ -1,11 +1,11 @@
 import React from "react";
 import { getTranslations } from "next-intl/server";
 import CustomSlide from "../common/custom-slide";
+import { getNewestCourses } from "@/models/course";
 
 export default async function NewestCourseSlider() {
   const t = await getTranslations("Global.Title.Card");
-  const data = await fetch(process.env.NEXT_PUBLIC_SERVER_API + "/course", { cache: "no-store" });
-  const courses = await data.json();
+  const courses = await getNewestCourses();
 
-  return <CustomSlide title={t("newest-course")} courses={courses.data} />;
+  return <CustomSlide title={t("newest-course")} courses={courses} />;
 }

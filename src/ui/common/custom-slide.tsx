@@ -20,14 +20,14 @@ const fontSans = Roboto_Mono({
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { type ICourseResponse } from "@/types/course";
+import { type FullCourse } from "@/models/course";
 
 interface ISlide {
   title: string;
   description?: string;
   isSingleSlide?: boolean;
   perView?: number;
-  courses: ICourseResponse[];
+  courses: FullCourse[];
 }
 
 const CustomSlide = ({ title, description, courses, isSingleSlide = false, perView = 4 }: ISlide) => {
@@ -73,10 +73,10 @@ const CustomSlide = ({ title, description, courses, isSingleSlide = false, perVi
         {courses.map((course) => (
           <SwiperSlide key={course.id} className="pb-7">
             <CourseCard
-              thumbnail={course.attachment.path}
+              thumbnail={course.attachment?.path || ""}
               title={course.title}
-              topic={course.topic.name}
-              author={course.author.name}
+              topic={course.topic?.name || ""}
+              author={course.author?.name || ""}
               rating={3.5}
               price={course.price}
               discount={course.discountPercent}

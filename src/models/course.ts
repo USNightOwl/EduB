@@ -1,7 +1,14 @@
+import { type Topic, type User, type Attachment, type Course } from "@prisma/client";
 import { createChapters } from "./chapter";
 import { createAttachment } from "./attachment";
 import { type IChapter } from "@/types/course";
 import prisma from "@/lib/prismadb";
+
+export type FullCourse = Course & {
+  attachment: Attachment | null;
+  topic: Topic | null;
+  author: User | null;
+};
 
 export async function getCourseById(courseId: string) {
   const course = await prisma.course.findUnique({
@@ -34,6 +41,7 @@ export async function getNewestCourses() {
       topic: true,
       attachment: true,
       author: true,
+      chapter: true,
     },
     take: 10,
   });
