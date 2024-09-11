@@ -7,7 +7,7 @@ import { type IBreadcumb } from "@/types/global";
 import CourseHeader from "@/ui/course/course-header";
 import CourseActions from "@/ui/course/actions";
 import RelevantCourse from "@/ui/course/relevant-course";
-import { type ICourseResponse } from "@/types/course";
+import { type FullCourse, getCourseById } from "@/models/course";
 
 export const metadata: Metadata = {
   title: "EduB - Course React Native - The Practical Guide [2023]",
@@ -35,19 +35,18 @@ const Page = async ({
   params: { id: string };
   searchParams?: Record<string, string | string[] | undefined>;
 }) => {
-  const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_API}/course/${params.id}`, { cache: "no-cache" });
-  const course = await data.json();
+  const course = await getCourseById(params.id);
 
   return (
     <React.Fragment>
-      <Banner img={(course.data as ICourseResponse).attachment.path} />
+      <Banner img={(course as FullCourse).attachment?.path || ""} />
       <Container maxWidth={false} className="p-2 py-4 max-md:px-1 text-white bg-black/90">
         <MyBreadcrumbs listBread={listBread} />
-        <CourseHeader course={course.data} />
+        <CourseHeader course={course} />
       </Container>
       <Container maxWidth={false} sx={{ bgcolor: "background.main", color: "primary.main" }} className="max-sm:px-1">
         <Container className="py-4 max-sm:px-1">
-          <CourseActions course={course.data} />
+          <CourseActions course={course} />
         </Container>
         <RelevantCourse />
       </Container>

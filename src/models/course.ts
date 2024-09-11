@@ -1,5 +1,5 @@
-import { type Topic, type User, type Attachment, type Course } from "@prisma/client";
-import { createChapters } from "./chapter";
+import { type Topic, type User, type Attachment, type Course, type Chapter, type Lecture } from "@prisma/client";
+import { createChapters, type FullChapter } from "./chapter";
 import { createAttachment } from "./attachment";
 import { type IChapter } from "@/types/course";
 import prisma from "@/lib/prismadb";
@@ -8,6 +8,7 @@ export type FullCourse = Course & {
   attachment: Attachment | null;
   topic: Topic | null;
   author: User | null;
+  chapter: FullChapter[];
 };
 
 export async function getCourseById(courseId: string) {
@@ -41,7 +42,11 @@ export async function getNewestCourses() {
       topic: true,
       attachment: true,
       author: true,
-      chapter: true,
+      chapter: {
+        include: {
+          lecture: true,
+        },
+      },
     },
     take: 10,
   });

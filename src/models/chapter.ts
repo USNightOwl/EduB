@@ -1,5 +1,10 @@
+import { type Lecture, type Chapter } from "@prisma/client";
 import { type ILecture, type IChapter } from "@/types/course";
 import prisma from "@/lib/prismadb";
+
+export type FullChapter = Chapter & {
+  lecture: Lecture[];
+};
 
 export async function createChapter(chapter: IChapter) {
   const initialChapter = await prisma.chapter.create({

@@ -1,9 +1,9 @@
 import React from "react";
+import { type Lecture } from "@prisma/client";
 import ContentCell from "./content-cell";
-import { type ILectureResponse } from "@/types/course";
 
 interface Props {
-  listLecture: ILectureResponse[];
+  listLecture: Lecture[];
 }
 
 const GroupContent = ({ listLecture }: Props) => {

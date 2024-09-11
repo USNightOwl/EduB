@@ -5,10 +5,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import GroupContent from "./group";
-import { type IChapterResponse } from "@/types/course";
+import { type FullChapter } from "@/models/chapter";
 
 interface Props {
-  chapter: IChapterResponse;
+  chapter: FullChapter;
 }
 
 const SingleContent = ({ chapter }: Props) => {

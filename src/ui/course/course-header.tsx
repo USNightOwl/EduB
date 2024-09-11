@@ -3,10 +3,10 @@ import { Stack, Typography } from "@mui/material";
 import { useTranslations } from "next-intl";
 import React from "react";
 import StarIcon from "@mui/icons-material/Star";
-import { type ICourseResponse } from "@/types/course";
+import { type FullCourse } from "@/models/course";
 
 interface Props {
-  course: ICourseResponse;
+  course: FullCourse | null;
 }
 
 const CourseHeader = ({ course }: Props) => {
@@ -15,10 +15,10 @@ const CourseHeader = ({ course }: Props) => {
   return (
     <div className="mt-5">
       <Typography variant="h4" className="font-semibold my-3">
-        {course.title}
+        {course?.title}
       </Typography>
       <Typography variant="h6" className="">
-        {course.briefDescription}
+        {course?.briefDescription}
       </Typography>
       <Stack spacing={2} direction="column" mt={3} className="text-base">
         <Typography>{t("total-lecture")}12</Typography>
