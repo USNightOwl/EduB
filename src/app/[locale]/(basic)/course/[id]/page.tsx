@@ -35,7 +35,7 @@ const Page = async ({
   params: { id: string };
   searchParams?: Record<string, string | string[] | undefined>;
 }) => {
-  const course = await getCourseById(params.id);
+  const course = await getCourseById(params.id, true);
 
   return (
     <React.Fragment>

@@ -82,6 +82,8 @@ model Course {
   authorId            String?          @db.ObjectId
   createdAt           DateTime         @default(now())
   updatedAt           DateTime         @updatedAt
+  views               Int              @default(0)
+  disable             Boolean          @default(false)
 }
 
 model Chapter {
