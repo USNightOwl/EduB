@@ -1,3 +1,4 @@
+"use client";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";

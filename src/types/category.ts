@@ -19,3 +19,10 @@ export interface ITopicResponse {
   slug: string;
   category: { id: string; name: string; slug: string };
 }
+
+export interface ICategoryResponse {
+  name: string;
+  id: string;
+  slug: string;
+  topics: { id: string; name: string; slug: string }[];
+}

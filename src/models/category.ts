@@ -1,6 +1,20 @@
 import prisma from "@/lib/prismadb";
 import { toSlug } from "@/utils/helper";
 
+export async function listCategoriesWithTopics() {
+  const categories = await prisma.category.findMany({
+    orderBy: [
+      {
+        updatedAt: "desc",
+      },
+    ],
+    include: {
+      topics: true,
+    },
+  });
+  return categories;
+}
+
 export async function listCategories() {
   const categories = await prisma.category.findMany({
     orderBy: [

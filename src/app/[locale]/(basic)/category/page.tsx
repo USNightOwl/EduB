@@ -8,9 +8,11 @@ const Page = async ({
   params: { id: string };
   searchParams?: Record<string, string | string[] | undefined>;
 }) => {
+  const cateId = searchParams?.cateId || null;
+  const topicId = searchParams?.topicId || null;
+
   return (
     <div className="flex gap-3">
-      {/* {searchParams?.cateID} */}
       <div className="w-4/12">
         <LeftSide />
       </div>
