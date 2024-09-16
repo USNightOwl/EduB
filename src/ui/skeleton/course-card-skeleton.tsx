@@ -1,11 +1,22 @@
 import { Box } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import React from "react";
+import { cn } from "@/lib/utils";
 
-const CourseCardSkeleton = () => {
+interface Props {
+  numberOfSlide?: number;
+}
+
+const CourseCardSkeleton = ({ numberOfSlide = 3 }: Props) => {
+  function getClassName(numberOfSlide: number) {
+    if (numberOfSlide === 3) return "md:grid-cols-2 xl:grid-cols-3";
+    if (numberOfSlide === 2) return "md:grid-cols-2";
+    return "";
+  }
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 items-center justify-center px-2 sm:px-4">
-      {[1, 2, 3].map((num) => (
+    <div className={cn("grid grid-cols-1 gap-4 items-center justify-center px-2 sm:px-4", getClassName(numberOfSlide))}>
+      {[...Array(numberOfSlide)].map((num) => (
         <Box sx={{ width: "100%" }} key={num}>
           <Skeleton variant="rectangular" height={200} />
           <div>

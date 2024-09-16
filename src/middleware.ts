@@ -3,7 +3,7 @@ import { withAuth } from "next-auth/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { locales } from "./utils/locales";
 
-const publicPages = ["/", "/auth/.*", "/course/.*"];
+const publicPages = ["/", "/auth/.*", "/course/.*", "/category"];
 const adminPages = ["/instructor/.*"];
 
 const intlMiddleware = createMiddleware({

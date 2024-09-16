@@ -3,62 +3,9 @@ import React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem, treeItemClasses } from "@mui/x-tree-view/TreeItem";
+import CircularProgress from "@mui/material/CircularProgress";
 import Topic from "./topic";
-
-const listCategory = [
-  {
-    name: "development",
-    slug: "development",
-    children: [
-      {
-        name: "web development",
-        slug: "web-development",
-      },
-      {
-        name: "game development",
-        slug: "game-development",
-      },
-    ],
-  },
-  {
-    name: "design",
-    slug: "design",
-    children: [
-      {
-        name: "3D & Animation",
-        slug: "3d-animation",
-      },
-      {
-        name: "design tools",
-        slug: "design-tools",
-      },
-    ],
-  },
-  {
-    name: "office productivity",
-    slug: "office-productivity",
-    children: [
-      {
-        name: "microsoft office",
-        slug: "microsoft-office",
-      },
-      {
-        name: "powerpoint",
-        slug: "powerpoint",
-      },
-    ],
-  },
-  {
-    name: "marketing",
-    slug: "marketing",
-    children: [
-      {
-        name: "digital marketing",
-        slug: "digital-marketing",
-      },
-    ],
-  },
-];
+import { type ICategoryResponse } from "@/types/category";
 
 export const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
   color: theme.palette.mode === "light" ? theme.palette.grey[800] : theme.palette.grey[200],
@@ -87,10 +34,27 @@ export const CustomTreeItem = styled(TreeItem)(({ theme }) => ({
 }));
 
 const TreeCategory = () => {
+  const [categories, setCategories] = React.useState<ICategoryResponse[]>([]);
+
+  React.useEffect(() => {
+    const getCategory = async () => {
+      const res = await fetch(`/api/category/topic`);
+      const json = await res.json();
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      setCategories(json.data);
+    };
+    getCategory();
+  }, []);
+
   return (
     <SimpleTreeView defaultExpandedItems={["grid"]} className="mt-2 px-2">
-      {listCategory.map((category) => {
-        if (category.children.length > 0) {
+      {categories.length <= 0 && (
+        <div className="w-full flex items-center justify-center">
+          <CircularProgress />
+        </div>
+      )}
+      {categories?.map((category) => {
+        if (category.topics?.length > 0) {
           return (
             <CustomTreeItem
               key={category.slug}
@@ -99,13 +63,13 @@ const TreeCategory = () => {
               sx={{ color: "primary.main" }}
               className="capitalize text-nowrap"
             >
-              {category.children.map((cate) => (
-                <Topic key={cate.slug} title={cate.name} slug={cate.slug} />
+              {category.topics.map((cate) => (
+                <Topic key={cate.slug} title={cate.name} slug={cate.slug} cateId={category.id} topicId={cate.id} />
               ))}
             </CustomTreeItem>
           );
         }
-        return <Topic key={category.slug} title={category.name} slug={category.slug} />;
+        return <Topic key={category.slug} title={category.name} slug={category.slug} cateId={category.id} />;
       })}
     </SimpleTreeView>
   );

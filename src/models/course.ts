@@ -11,7 +11,29 @@ export type FullCourse = Course & {
   chapter: FullChapter[];
 };
 
-export async function getCourseById(courseId: string) {
+export async function getCourseById(courseId: string, updateView = false) {
+  if (updateView) {
+    const updateCourse = await prisma.course.update({
+      where: { id: courseId },
+      data: {
+        views: {
+          increment: 1,
+        },
+      },
+      include: {
+        topic: true,
+        attachment: true,
+        author: true,
+        chapter: {
+          include: {
+            lecture: true,
+          },
+        },
+      },
+    });
+
+    return updateCourse;
+  }
   const course = await prisma.course.findUnique({
     where: {
       id: courseId,
@@ -52,6 +74,32 @@ export async function getNewestCourses() {
   });
 
   return newest_course;
+}
+
+export async function getMostViewingCourses() {
+  const views_course = await prisma.course.findMany({
+    orderBy: [
+      {
+        views: "desc",
+      },
+      {
+        createdAt: "desc",
+      },
+    ],
+    include: {
+      topic: true,
+      attachment: true,
+      author: true,
+      chapter: {
+        include: {
+          lecture: true,
+        },
+      },
+    },
+    take: 10,
+  });
+
+  return views_course;
 }
 
 export async function createCourse(

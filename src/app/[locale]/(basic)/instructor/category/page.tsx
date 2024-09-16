@@ -3,7 +3,6 @@ import React from "react";
 import { type Metadata } from "next";
 import SideBar from "@/ui/user/side-bar";
 import LeftSideBar from "@/ui/instructor/left-side-bar";
-import AddNewCourse from "@/ui/instructor/right-side/add-new-course";
 import Category from "@/ui/instructor/right-side/category";
 
 export const metadata: Metadata = {
