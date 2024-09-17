@@ -1,5 +1,5 @@
 import React from "react";
-import { getCategoryById, listCategoriesWithTopics } from "@/models/category";
+import { listCategoriesWithTopics } from "@/models/category";
 import { cn } from "@/lib/utils";
 import { Link } from "@/navigation";
 

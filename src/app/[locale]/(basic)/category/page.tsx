@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import Container from "@mui/material/Container";
 import LeftSide from "@/ui/category/left-side";
 import SideBar from "@/ui/user/side-bar";
+import RightSide from "@/ui/category/right-side";
+import CategoryListSkeleton from "@/ui/skeleton/category-list-skeleton";
 
 const Page = async ({
   params,
@@ -21,11 +23,15 @@ const Page = async ({
     >
       <SideBar
         LeftSide={
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<CategoryListSkeleton />}>
             <LeftSide cateId={cateId} topicId={topicId} />
           </Suspense>
         }
-        RightSide={<></>}
+        RightSide={
+          <Suspense fallback={<div>Loading...</div>}>
+            <RightSide cateId={cateId} topicId={topicId} />
+          </Suspense>
+        }
       />
     </Container>
   );

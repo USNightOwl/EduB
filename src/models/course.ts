@@ -1,4 +1,4 @@
-import { type Topic, type User, type Attachment, type Course, type Chapter, type Lecture } from "@prisma/client";
+import { type Topic, type User, type Attachment, type Course } from "@prisma/client";
 import { createChapters, type FullChapter } from "./chapter";
 import { createAttachment } from "./attachment";
 import { type IChapter } from "@/types/course";
@@ -10,6 +10,58 @@ export type FullCourse = Course & {
   author: User | null;
   chapter: FullChapter[];
 };
+
+export async function getListCourseByTheme(categoryId: string, topicId: string) {
+  if (topicId) {
+    const courses = await prisma.course.findMany({
+      where: {
+        topicId,
+      },
+      include: {
+        topic: true,
+        attachment: true,
+        author: true,
+        chapter: {
+          include: {
+            lecture: true,
+          },
+        },
+      },
+      orderBy: [
+        {
+          createdAt: "desc",
+        },
+      ],
+    });
+
+    return courses;
+  }
+
+  const courses = await prisma.course.findMany({
+    where: {
+      topic: {
+        categoryId,
+      },
+    },
+    include: {
+      topic: true,
+      attachment: true,
+      author: true,
+      chapter: {
+        include: {
+          lecture: true,
+        },
+      },
+    },
+    orderBy: [
+      {
+        createdAt: "desc",
+      },
+    ],
+  });
+
+  return courses;
+}
 
 export async function getCourseById(courseId: string, updateView = false) {
   if (updateView) {
